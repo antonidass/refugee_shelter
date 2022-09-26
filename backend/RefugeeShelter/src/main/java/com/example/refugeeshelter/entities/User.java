@@ -1,6 +1,7 @@
 package com.example.refugeeshelter.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,10 +9,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+
 @Table(name = "users")
 @Entity
 public class User {
@@ -44,4 +47,12 @@ public class User {
                     @JoinColumn(name = "roles_id", referencedColumnName = "id", nullable = false, updatable = false)
             })
     private Collection<Role> roles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Rooms> rooms;
+
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<Reservations> reservations;
 }
