@@ -30,4 +30,11 @@ public class Reservations {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    public void setFields(Reservations newReservation) {
+        startDate = newReservation.getStartDate();
+        endDate = newReservation.getEndDate();
+//        user = newReservation.getUser(); // TODO ????
+//        room = newReservation.getRoom();
+    }
 }

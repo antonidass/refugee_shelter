@@ -81,10 +81,10 @@ VALUES (1, 'Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good 
 
 
 INSERT INTO Reservations(id, start_date, end_date, room_id, user_id)
-VALUES (1, '2022-04-23', '2022-05-23', 2, 3),
-       (2, '2022-05-13', '2022-08-10', 3, 2),
-       (3, '2022-03-13', '2022-07-05', 4, 3),
-       (4, '2022-02-22', '2022-05-10', 1, 1);
+VALUES (1, '2022-04-23', '2022-05-23', 5, 3),
+       (2, '2022-05-13', '2022-08-10', 6, 2),
+       (3, '2022-03-13', '2022-07-05', 7, 3),
+       (4, '2022-02-22', '2022-05-10', 8, 1);
 
 DROP TABLE IF EXISTS user_roles;
 drop table if exists role;
