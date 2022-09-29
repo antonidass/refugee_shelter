@@ -1,7 +1,9 @@
 package com.example.refugeeshelter.service;
 
+import com.example.refugeeshelter.entities.Reservations;
 import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.User;
+import com.example.refugeeshelter.exceptions.FileStorageException;
 import com.example.refugeeshelter.repositories.RoleRepo;
 import com.example.refugeeshelter.repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -41,11 +43,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void addRoleToUser(String email, String roleName) {
-        log.info("Add role {} to user {} to the database", roleName, email);
-        User user = userRepo.findByEmail(email);
+    public void addRoleToUser(String username, String roleName) {
+        log.info("Add role {} to user {} to the database", roleName, username);
+        User user = userRepo.findByUsername(username);
         Role role = roleRepo.findByName(roleName);
-
         user.getRoles().add(role);
     }
 
@@ -59,6 +60,20 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public List<User> getUsers() {
         log.info("Fetching all users from database");
         return userRepo.findAll();
+    }
+
+    @Override
+    public User updateUser(Long id, User newUser) {
+        User user = userRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find user with id = " + id));
+        user.setFields(newUser);
+        return user;
+    }
+
+    @Override
+    public User deleteUser(Long id) {
+        User user = userRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find user with id = " + id));
+        userRepo.delete(user);
+        return user;
     }
 
     @Override

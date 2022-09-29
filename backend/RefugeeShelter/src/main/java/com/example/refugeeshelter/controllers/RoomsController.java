@@ -10,7 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -58,7 +59,8 @@ public class RoomsController {
         } catch (FileStorageException e) {
             return ResponseEntity.badRequest().body("Owner with id = " + ownerId + " not founded!");
         }
-        return ResponseEntity.ok().body(room);
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/rooms/{ownerId}").toUriString());
+        return ResponseEntity.created(uri).body(room);
     }
 
     @PutMapping("/rooms/{id}")

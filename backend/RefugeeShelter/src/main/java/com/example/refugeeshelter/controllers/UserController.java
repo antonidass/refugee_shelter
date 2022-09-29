@@ -6,28 +6,30 @@ import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.User;
+import com.example.refugeeshelter.exceptions.FileStorageException;
 import com.example.refugeeshelter.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.net.URI;
 import java.util.*;
 import java.util.stream.Collectors;
-
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
+@Slf4j
 public class UserController {
     private final UserService userService;
 
@@ -36,19 +38,42 @@ public class UserController {
         return ResponseEntity.ok().body(userService.getUsers());
     }
 
-    @PostMapping("/user/save")
+    @PostMapping("/users")
     public ResponseEntity<User> saveUser(@RequestBody User user) {
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/user/save").toUriString());
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveUser(user));
     }
 
-    @PostMapping("/role/save")
+    @PutMapping("/users/{id}")
+    public ResponseEntity<?> updateUser(@PathVariable Long id, @RequestBody User newUser) {
+        User user;
+        try {
+            user = userService.updateUser(id, newUser);
+        } catch (FileStorageException e) {
+            return ResponseEntity.badRequest().body("User with id = " + id + " not founded!");
+        }
+        return ResponseEntity.ok().body(user);
+    }
+
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
+        User user;
+        try {
+            user = userService.deleteUser(id);
+        } catch (FileStorageException e) {
+            return ResponseEntity.badRequest().body("User with id = " + id + " not founded!");
+        }
+
+        return ResponseEntity.ok().body(user);
+    }
+
+    @PostMapping("/roles")
     public ResponseEntity<Role> saveRole(@RequestBody Role role) {
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/role/save").toUriString());
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/roles/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
 
-    @PostMapping("/role/addtouser")
+    @PostMapping("/users/save/role")
     public ResponseEntity<?> saveRoleToUser(@RequestBody RoleToUserForm form) {
         userService.addRoleToUser(form.getUserName(), form.getRoleName());
         return ResponseEntity.ok().build();
@@ -93,6 +118,7 @@ public class UserController {
     }
 
     @Data
+    // TODO нихуя непонятно как эту залупу делать!!!
     class RoleToUserForm {
         private String userName;
         private String roleName;

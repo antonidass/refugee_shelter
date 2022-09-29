@@ -14,12 +14,11 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
 @Table(name = "users")
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -55,4 +54,12 @@ public class User {
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<Reservations> reservations;
+
+    public void setFields(User newUser) {
+        name = newUser.getName();
+        username = newUser.getUsername();
+        email = newUser.getEmail();
+        password = newUser.getPassword();
+        phone = newUser.getPhone();
+    }
 }

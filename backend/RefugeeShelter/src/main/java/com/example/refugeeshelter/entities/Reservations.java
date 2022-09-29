@@ -34,7 +34,5 @@ public class Reservations {
     public void setFields(Reservations newReservation) {
         startDate = newReservation.getStartDate();
         endDate = newReservation.getEndDate();
-//        user = newReservation.getUser(); // TODO ????
-//        room = newReservation.getRoom();
     }
 }
