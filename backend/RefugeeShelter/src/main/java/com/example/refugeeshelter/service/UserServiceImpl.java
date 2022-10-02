@@ -1,6 +1,5 @@
 package com.example.refugeeshelter.service;
 
-import com.example.refugeeshelter.entities.Reservations;
 import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.FileStorageException;
@@ -43,11 +42,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void addRoleToUser(String username, String roleName) {
+    public User addRoleToUser(String username, String roleName) {
         log.info("Add role {} to user {} to the database", roleName, username);
         User user = userRepo.findByUsername(username);
         Role role = roleRepo.findByName(roleName);
         user.getRoles().add(role);
+        return user;
     }
 
     @Override

@@ -7,9 +7,9 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.FileStorageException;
+import com.example.refugeeshelter.payload.RoleToUserRequest;
 import com.example.refugeeshelter.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -74,9 +74,9 @@ public class UserController {
     }
 
     @PostMapping("/users/save/role")
-    public ResponseEntity<?> saveRoleToUser(@RequestBody RoleToUserForm form) {
-        userService.addRoleToUser(form.getUserName(), form.getRoleName());
-        return ResponseEntity.ok().build();
+    public ResponseEntity<?> saveRoleToUser(@RequestBody RoleToUserRequest form) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/save/role").toUriString());
+        return ResponseEntity.created(uri).body(userService.addRoleToUser(form.getUserName(), form.getRoleName()));
     }
 
     @GetMapping("/token/refresh")
@@ -105,7 +105,7 @@ public class UserController {
                 response.setContentType(APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), token);
             } catch (Exception e) {
-                response.setHeader("error", "ahahah");
+//                response.setHeader("error", "ahahah");
                 response.setStatus(FORBIDDEN.value());
                 Map<String, String> error = new HashMap<>();
                 error.put("error_message", e.getMessage());
@@ -117,10 +117,5 @@ public class UserController {
         }
     }
 
-    @Data
-    // TODO нихуя непонятно как эту залупу делать!!!
-    class RoleToUserForm {
-        private String userName;
-        private String roleName;
-    }
+
 }

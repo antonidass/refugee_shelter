@@ -28,13 +28,13 @@
 
 ![use_case](./docs/img/er.png)
 
+### Figma
+
+[Click me](<https://www.figma.com/file/5JGn1TqVEQ73GlIRsDyllJ/SE-(Copy)?node-id=14%3A16>)
+
 ### swagger
 
 [Click me](https://app.swaggerhub.com/apis/Sunshine-ki/WEB/1.0.0)
-
-### Figma
-
-[Click me](https://www.figma.com/file/UCTIiw26m0M98zIjS76zjg/SE?node-id=0%3A1)
 
 ### Moodboard
 
