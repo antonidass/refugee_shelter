@@ -21,7 +21,7 @@ import java.util.List;
 public class RoomsController {
     private final RoomsService roomsService;
 
-    @GetMapping("/rooms")
+    @GetMapping(value = "/rooms")
     public ResponseEntity<?> getRooms() {
         List<Rooms> roomsList = roomsService.getRooms();
         return ResponseEntity.ok().body(roomsList);
@@ -51,8 +51,8 @@ public class RoomsController {
         return ResponseEntity.ok().body(room);
     }
 
-    @PostMapping("/rooms/{ownerId}")
-    public ResponseEntity<?> saveRoom(@PathVariable Long ownerId, @RequestBody Rooms newRoom) {
+    @PostMapping(value = "/rooms", consumes = "application/json")
+    public ResponseEntity<?> saveRoom(@RequestParam Long ownerId, @RequestBody Rooms newRoom) {
         Rooms room;
         try {
             room = roomsService.saveRoom(ownerId, newRoom);
@@ -68,6 +68,17 @@ public class RoomsController {
         Rooms room;
         try {
             room = roomsService.updateRoom(id, newRoom);
+        } catch (FileStorageException e) {
+            return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
+        }
+        return ResponseEntity.ok().body(room);
+    }
+
+    @PatchMapping("/rooms/{id}")
+    public ResponseEntity<?> patchRoomById(@PathVariable Long id, @RequestBody Rooms newRoom) {
+        Rooms room;
+        try {
+            room = roomsService.patchRoom(id, newRoom);
         } catch (FileStorageException e) {
             return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
         }

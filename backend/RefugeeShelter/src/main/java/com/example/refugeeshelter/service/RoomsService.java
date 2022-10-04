@@ -1,10 +1,8 @@
 package com.example.refugeeshelter.service;
 
-import com.example.refugeeshelter.entities.Reservations;
 import com.example.refugeeshelter.entities.Rooms;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.FileStorageException;
-import com.example.refugeeshelter.repositories.ReservationsRepo;
 import com.example.refugeeshelter.repositories.RoomsRepo;
 import com.example.refugeeshelter.repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
@@ -44,6 +42,43 @@ public class RoomsService {
     public Rooms updateRoom(Long id, Rooms newRoom)  {
         Rooms room = roomsRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find room with id = " + id));
         room.setFields(newRoom);
+        return roomsRepo.save(room);
+    }
+
+    public Rooms patchRoom(Long id, Rooms newRoom)  {
+        Rooms room = roomsRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find room with id = " + id));
+
+        if (newRoom.getHasBathroom() != null) {
+            room.setHasBathroom(newRoom.getHasBathroom());
+        }
+
+        if (newRoom.getHasKitchen() != null) {
+            room.setHasKitchen(newRoom.getHasKitchen());
+        }
+
+        if (newRoom.getAddress() != null) {
+            room.setAddress(newRoom.getAddress());
+        }
+
+        if (newRoom.getDescription() != null) {
+            room.setDescription(newRoom.getDescription());
+        }
+
+        if (newRoom.getLatitude() != null) {
+            room.setLatitude(newRoom.getLatitude());
+        }
+
+        if (newRoom.getLongitude() != null) {
+            room.setLongitude(newRoom.getLongitude());
+        }
+
+        if (newRoom.getPrice() != null) {
+            room.setPrice(newRoom.getPrice());
+        }
+
+        if (newRoom.getUser() != null) {
+            room.setUser(newRoom.getUser());
+        }
         return roomsRepo.save(room);
     }
 
