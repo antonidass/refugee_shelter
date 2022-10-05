@@ -35,7 +35,3 @@
 ### swagger
 
 [Click me](https://app.swaggerhub.com/apis/AKRIKOFF/RefugeeShelter/1.0.0)
-
-### Moodboard
-
-[Click me](https://www.pinterest.ru/sukochevaalis/se-web/)

@@ -57,26 +57,24 @@ CREATE TABLE IF NOT EXISTS Reservations
 INSERT INTO Users (name, username, password, email, phone)
 VALUES ('Ivan Petrov', 'akrik', '$2a$10$NoRqTHgJnBCQa9njTunq9eux7nbJrD4.OacHv9n1QZ5EXNuM.5Hqm', 'akr@gmail.com',
         '89067132145'),
-       ('Maria Phil', 'pavel', 'qwertuyop', 'mari@gmail.com', '89053411190'),
-       ('Regina Khamizna', 'ivan', '5234123', 'regian123@gmail.com', '89032123562'),
-       ('Alexey Kekov', 'pidorka123', 'petrovich', 'pidorka228@gmail.com', '89046112352');
+       ('Maria Phil', 'maria', 'qwertuyop', 'mari@gmail.com', '89053411190'),
+       ('Admin adminov', 'ivan', '5234123', 'regian123@gmail.com', '89032123562'),
+       ('Alexey Kekov', 'kek123', 'petrovich', 'kekes@gmail.com', '89046112352');
 
 INSERT INTO Role(name)
 VALUES ('ROLE_USER'),
        ('ROLE_MANAGER'),
-       ('ROLE_ADMIN'),
-       ('ROLE_SUPER_ADMIN');
+       ('ROLE_ADMIN');
+
 
 INSERT INTO user_roles(user_id, roles_id)
 VALUES (1, 1),
        (2, 2),
-       (3, 4),
+       (3, 2),
        (4, 3);
-
 
 INSERT INTO user_roles(user_id, roles_id)
-VALUES (4, 2),
-       (4, 3);
+VALUES (1, 3);
 
 
 INSERT INTO Rooms( address, latitude, longitude, price, has_kitchen, has_bathroom, description, owner_id)

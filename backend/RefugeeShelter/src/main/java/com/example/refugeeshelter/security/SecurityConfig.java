@@ -5,21 +5,17 @@ import com.example.refugeeshelter.filter.CustomAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static org.springframework.http.HttpMethod.GET;
-import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.*;
 
 
 @Configuration
@@ -42,15 +38,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-//        http.authorizeRequests().antMatchers("/api/v1/login/**", "/api/v1/token/refresh/**").permitAll();
-//        http.authorizeRequests().antMatchers(GET, "/api/v1/users/**").hasAnyAuthority("ROLE_USER");
-//        http.authorizeRequests().antMatchers(POST, "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_USER");
-//        http.authorizeRequests().antMatchers(GET, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER");
-//        http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER");
-//        http.authorizeRequests().antMatchers(GET, "/api/v1/").permitAll();
-//        http.authorizeRequests().anyRequest().authenticated();
-        http.authorizeRequests().anyRequest().permitAll();
+        http.headers().disable();
+        http.authorizeRequests().antMatchers("/api/v1/login/**", "/api/v1/token/refresh/**").permitAll();
+        http.authorizeRequests().antMatchers(POST,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(PUT,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(DELETE,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(GET, "/api/v1/users/**").hasAnyAuthority("ROLE_ADMIN");
 
+        http.authorizeRequests().antMatchers(GET, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_MANAGER");
+        http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(GET, "/api/v1/").permitAll();
+        http.authorizeRequests().anyRequest().authenticated();
+//        http.authorizeRequests().anyRequest().permitAll();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
