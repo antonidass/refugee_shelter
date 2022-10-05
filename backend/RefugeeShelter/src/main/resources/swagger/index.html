@@ -1,0 +1,2254 @@
+<!doctype html>
+<html>
+  <head>
+    <title>refugee-shelter-api</title>
+    <style type="text/css">
+      body {
+      	font-family: Trebuchet MS, sans-serif;
+      	font-size: 15px;
+      	color: #444;
+      	margin-right: 24px;
+      }
+      
+      h1	{
+      	font-size: 25px;
+      }
+      h2	{
+      	font-size: 20px;
+      }
+      h3	{
+      	font-size: 16px;
+      	font-weight: bold;
+      }
+      hr	{
+      	height: 1px;
+      	border: 0;
+      	color: #ddd;
+      	background-color: #ddd;
+      }
+      
+      .app-desc {
+        clear: both;
+        margin-left: 20px;
+      }
+      .param-name {
+        width: 100%;
+      }
+      .license-info {
+        margin-left: 20px;
+      }
+      
+      .license-url {
+        margin-left: 20px;
+      }
+      
+      .model {
+        margin: 0 0 0px 20px;
+      }
+      
+      .method {
+        margin-left: 20px;
+      }
+      
+      .method-notes	{
+      	margin: 10px 0 20px 0;
+      	font-size: 90%;
+      	color: #555;
+      }
+      
+      pre {
+        padding: 10px;
+        margin-bottom: 2px;
+      }
+      
+      .http-method {
+       text-transform: uppercase;
+      }
+      
+      pre.get {
+        background-color: #0f6ab4;
+      }
+      
+      pre.post {
+        background-color: #10a54a;
+      }
+      
+      pre.put {
+        background-color: #c5862b;
+      }
+      
+      pre.delete {
+        background-color: #a41e22;
+      }
+      
+      .huge	{
+      	color: #fff;
+      }
+      
+      pre.example {
+        background-color: #f3f3f3;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      
+      code {
+        white-space: pre;
+      }
+      
+      .nickname {
+        font-weight: bold;
+      }
+      
+      .method-path {
+        font-size: 1.5em;
+        background-color: #0f6ab4;
+      }
+      
+      .up {
+        float:right;
+      }
+      
+      .parameter {
+        width: 500px;
+      }
+      
+      .param {
+        width: 500px;
+        padding: 10px 0 0 20px;
+        font-weight: bold;
+      }
+      
+      .param-desc {
+        width: 700px;
+        padding: 0 0 0 20px;
+        color: #777;
+      }
+      
+      .param-type {
+        font-style: italic;
+      }
+      
+      .param-enum-header {
+      width: 700px;
+      padding: 0 0 0 60px;
+      color: #777;
+      font-weight: bold;
+      }
+      
+      .param-enum {
+      width: 700px;
+      padding: 0 0 0 80px;
+      color: #777;
+      font-style: italic;
+      }
+      
+      .field-label {
+        padding: 0;
+        margin: 0;
+        clear: both;
+      }
+      
+      .field-items	{
+      	padding: 0 0 15px 0;
+      	margin-bottom: 15px;
+      }
+      
+      .return-type {
+        clear: both;
+        padding-bottom: 10px;
+      }
+      
+      .param-header {
+        font-weight: bold;
+      }
+      
+      .method-tags {
+        text-align: right;
+      }
+      
+      .method-tag {
+        background: none repeat scroll 0% 0% #24A600;
+        border-radius: 3px;
+        padding: 2px 10px;
+        margin: 2px;
+        color: #FFF;
+        display: inline-block;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+  <h1>refugee-shelter-api</h1>
+    <div class="app-desc">The API for the Refugee Shelter project</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="akrikoff@gmail.com">akrikoff@gmail.com</a></div>
+    <div class="app-desc">Version: 1.0.0</div>
+    <div class="app-desc">BasePath:/AKRIKOFF/RefugeeShelter/1.0.0</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+    <ol>
+      <li></li>
+    </ol>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#Reservation">Reservation</a></h4>
+  <ul>
+  <li><a href="#apiV1ReservationsGet"><code><span class="http-method">get</span> /api/v1/reservations</code></a></li>
+  <li><a href="#apiV1ReservationsReservationIdDelete"><code><span class="http-method">delete</span> /api/v1/reservations/{reservationId}</code></a></li>
+  <li><a href="#apiV1ReservationsReservationIdGet"><code><span class="http-method">get</span> /api/v1/reservations/{reservationId}</code></a></li>
+  <li><a href="#apiV1ReservationsReservationIdPut"><code><span class="http-method">put</span> /api/v1/reservations/{reservationId}</code></a></li>
+  <li><a href="#apiV1ReservationsUsersUserIdGet"><code><span class="http-method">get</span> /api/v1/reservations/users/{userId}</code></a></li>
+  <li><a href="#apiV1ReservationsUsersUserIdRoomsRoomIdPost"><code><span class="http-method">post</span> /api/v1/reservations/users/{userId}/rooms/{roomId}</code></a></li>
+  </ul>
+  <h4><a href="#Room">Room</a></h4>
+  <ul>
+  <li><a href="#apiV1RoomsGet"><code><span class="http-method">get</span> /api/v1/rooms</code></a></li>
+  <li><a href="#apiV1RoomsPost"><code><span class="http-method">post</span> /api/v1/rooms</code></a></li>
+  <li><a href="#apiV1RoomsRoomIdDelete"><code><span class="http-method">delete</span> /api/v1/rooms/{roomId}</code></a></li>
+  <li><a href="#apiV1RoomsRoomIdGet"><code><span class="http-method">get</span> /api/v1/rooms/{roomId}</code></a></li>
+  <li><a href="#apiV1RoomsRoomIdPatch"><code><span class="http-method">patch</span> /api/v1/rooms/{roomId}</code></a></li>
+  <li><a href="#apiV1RoomsRoomIdPut"><code><span class="http-method">put</span> /api/v1/rooms/{roomId}</code></a></li>
+  <li><a href="#apiV1RoomsUserOwnerIdGet"><code><span class="http-method">get</span> /api/v1/rooms/user/{ownerId}</code></a></li>
+  </ul>
+  <h4><a href="#User">User</a></h4>
+  <ul>
+  <li><a href="#apiV1RolesPost"><code><span class="http-method">post</span> /api/v1/roles/</code></a></li>
+  <li><a href="#apiV1TokenRefreshGet"><code><span class="http-method">get</span> /api/v1/token/refresh/</code></a></li>
+  <li><a href="#apiV1UsersGet"><code><span class="http-method">get</span> /api/v1/users/</code></a></li>
+  <li><a href="#apiV1UsersPost"><code><span class="http-method">post</span> /api/v1/users/</code></a></li>
+  <li><a href="#apiV1UsersSaveRolesPost"><code><span class="http-method">post</span> /api/v1/users/save/roles/</code></a></li>
+  <li><a href="#apiV1UsersUserIdDelete"><code><span class="http-method">delete</span> /api/v1/users/{userId}</code></a></li>
+  <li><a href="#apiV1UsersUserIdPut"><code><span class="http-method">put</span> /api/v1/users/{userId}</code></a></li>
+  </ul>
+
+  <h1><a name="Reservation">Reservation</a></h1>
+  <div class="method"><a name="apiV1ReservationsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/reservations</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsGet</span>)</div>
+    <div class="method-notes">Returns all reservations</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_3">inline_response_200_3</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}, {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    All reservations
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ReservationsReservationIdDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/v1/reservations/{reservationId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsReservationIdDelete</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">reservationId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Reservation ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "endDate" : "2022-04-01",
+  "id" : 64,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "startDate" : "2022-03-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Delete Reservation by ID
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ReservationsReservationIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/reservations/{reservationId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsReservationIdGet</span>)</div>
+    <div class="method-notes">Return reservation by id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">reservationId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Reservation ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_3">inline_response_200_3</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Reservation by ID
+        <a href="#inline_response_200_3">inline_response_200_3</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ReservationsReservationIdPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/v1/reservations/{reservationId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsReservationIdPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">reservationId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Reservation ID </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#reservations_reservationId_body">reservations_reservationId_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_4">inline_response_200_4</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "endDate" : "2022-04-01",
+  "id" : 64,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "startDate" : "2022-03-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Updated Reservation by ID
+        <a href="#inline_response_200_4">inline_response_200_4</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ReservationsUsersUserIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/reservations/users/{userId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsUsersUserIdGet</span>)</div>
+    <div class="method-notes">Return reservation by owner id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Owner ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_3">inline_response_200_3</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}, {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Reservation by owner ID
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1ReservationsUsersUserIdRoomsRoomIdPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/reservations/users/{userId}/rooms/{roomId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1ReservationsUsersUserIdRoomsRoomIdPost</span>)</div>
+    <div class="method-notes">Create reservation</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User ID </div>      <div class="param">roomId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Room ID </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#rooms_roomId_body_2">rooms_roomId_body_2</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_3">inline_response_200_3</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+}, {
+  "endDate" : "2022-01-01",
+  "id" : 64,
+  "startDate" : "2022-01-01",
+  "room" : {
+    "address" : "address",
+    "price" : 5,
+    "hasKitchen" : true,
+    "latitude" : 6.027456183070403,
+    "description" : "description",
+    "id" : 0,
+    "hasBathroom" : true,
+    "user" : {
+      "password" : "password",
+      "phone" : "phone",
+      "roles" : [ {
+        "name" : "name",
+        "id" : 6
+      }, {
+        "name" : "name",
+        "id" : 6
+      } ],
+      "name" : "name",
+      "id" : 0,
+      "email" : "email",
+      "username" : "username"
+    },
+    "longitude" : 1.4658129805029452
+  }
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Reservation by owner ID
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Room">Room</a></h1>
+  <div class="method"><a name="apiV1RoomsGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/rooms</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsGet</span>)</div>
+    <div class="method-notes">Returns all rooms</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200">inline_response_200</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+}, {
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    All rooms
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/rooms</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsPost</span>)</div>
+    <div class="method-notes"></div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#v1_rooms_body">v1_rooms_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">ownerId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Current room owner </div>    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Save room
+        <a href="#inline_response_200">inline_response_200</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsRoomIdDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/v1/rooms/{roomId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsRoomIdDelete</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">roomId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Room ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_2">inline_response_200_2</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 1000,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Removed room
+        <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsRoomIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/rooms/{roomId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsRoomIdGet</span>)</div>
+    <div class="method-notes">Return room by id</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">roomId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Room ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_1">inline_response_200_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "longitude" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Room by ID
+        <a href="#inline_response_200_1">inline_response_200_1</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsRoomIdPatch"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /api/v1/rooms/{roomId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsRoomIdPatch</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">roomId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Room ID </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#rooms_roomId_body_1">rooms_roomId_body_1</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_2">inline_response_200_2</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 1000,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Updated room
+        <a href="#inline_response_200_2">inline_response_200_2</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsRoomIdPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/v1/rooms/{roomId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsRoomIdPut</span>)</div>
+    <div class="method-notes"></div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">roomId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Room ID </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#rooms_roomId_body">rooms_roomId_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200">inline_response_200</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "user" : {
+    "password" : "password",
+    "phone" : "phone",
+    "roles" : [ {
+      "name" : "name",
+      "id" : 6
+    }, {
+      "name" : "name",
+      "id" : 6
+    } ],
+    "name" : "name",
+    "id" : 0,
+    "email" : "email",
+    "username" : "username"
+  },
+  "longitude" : 123
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Updated room
+        <a href="#inline_response_200">inline_response_200</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1RoomsUserOwnerIdGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/rooms/user/{ownerId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RoomsUserOwnerIdGet</span>)</div>
+    <div class="method-notes">Return all user's rooms</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">ownerId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Owner ID </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_1">inline_response_200_1</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "longitude" : 123
+}, {
+  "address" : "Georgia, Tbilisi, Ivanova St, 8, 12",
+  "price" : 5300,
+  "hasKitchen" : true,
+  "latitude" : 32,
+  "description" : "This is really good flat for refugee from Ukraine And Russia",
+  "id" : 1,
+  "hasBathroom" : false,
+  "longitude" : 123
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Rooms by owner ID
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="User">User</a></h1>
+  <div class="method"><a name="apiV1RolesPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/roles/</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1RolesPost</span>)</div>
+    <div class="method-notes">Save role</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#v1_roles_body">v1_roles_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_201">inline_response_201</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "ROLE_MANAGER",
+  "id" : 4
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Saved role
+        <a href="#inline_response_201">inline_response_201</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1TokenRefreshGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/token/refresh/</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1TokenRefreshGet</span>)</div>
+    <div class="method-notes">Refresh token</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_7">inline_response_200_7</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "access_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJha3JpayIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiIvYXBpL3Rva2VuL3JlZnJlc2giLCJleHAiOjE2NjQ4Nzg0MjJ9.aBaLTKBqBUQKgBEll1M8LEQFCmRccmXYxSlDNcpTkkE",
+  "refresh_token" : "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJha3JpayIsImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NjQ4Nzk2MTV9.kmvm5nRpmjhyix6at3JkmdDeFGt4bwrlcMsed0mameA"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    New token
+        <a href="#inline_response_200_7">inline_response_200_7</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1UsersGet"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/v1/users/</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1UsersGet</span>)</div>
+    <div class="method-notes">Returns all users</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_5">inline_response_200_5</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Anton Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+}, {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Anton Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    All users
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1UsersPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/users/</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1UsersPost</span>)</div>
+    <div class="method-notes">Save user</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#v1_users_body">v1_users_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_5">inline_response_200_5</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Anton Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+}, {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Anton Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Saved user
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1UsersSaveRolesPost"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /api/v1/users/save/roles/</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1UsersSaveRolesPost</span>)</div>
+    <div class="method-notes">Add role to user</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#save_roles_body">save_roles_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_201_1">inline_response_201_1</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_ADMIN",
+    "id" : 2
+  }, {
+    "name" : "ROLE_ADMIN",
+    "id" : 2
+  } ],
+  "name" : "Anton Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    Added role to user
+        <a href="#inline_response_201_1">inline_response_201_1</a>
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1UsersUserIdDelete"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /api/v1/users/{userId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1UsersUserIdDelete</span>)</div>
+    <div class="method-notes">Delete user</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User Id </div>    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_6">inline_response_200_6</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Ivan Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+}, {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Ivan Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Deleted user
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="apiV1UsersUserIdPut"></a>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /api/v1/users/{userId}</code></pre></div>
+    <div class="method-summary"> (<span class="nickname">apiV1UsersUserIdPut</span>)</div>
+    <div class="method-notes">Update user</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">userId (required)</div>
+      
+            <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; User Id </div>    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#users_userId_body">users_userId_body</a> (optional)</div>
+      
+            <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+                </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#inline_response_200_6">inline_response_200_6</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Ivan Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+}, {
+  "password" : "#23vjjsKLSjfLdskjfdsls",
+  "roles" : [ {
+    "name" : "ROLE_USER",
+    "id" : 1
+  }, {
+    "name" : "ROLE_USER",
+    "id" : 1
+  } ],
+  "name" : "Ivan Krikov",
+  "id" : 2,
+  "email" : "antonidas@gmail.com",
+  "username" : "antonidas"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Updated user
+        
+    <h4 class="field-label">403</h4>
+    Unauthorized
+        <a href="#inline_response_403">inline_response_403</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#Reservation"><code>Reservation</code></a></li>
+    <li><a href="#Role"><code>Role</code></a></li>
+    <li><a href="#Room"><code>Room</code></a></li>
+    <li><a href="#User"><code>User</code></a></li>
+    <li><a href="#apiv1users_roles"><code>apiv1users_roles</code></a></li>
+    <li><a href="#inline_response_200"><code>inline_response_200</code></a></li>
+    <li><a href="#inline_response_200_1"><code>inline_response_200_1</code></a></li>
+    <li><a href="#inline_response_200_2"><code>inline_response_200_2</code></a></li>
+    <li><a href="#inline_response_200_3"><code>inline_response_200_3</code></a></li>
+    <li><a href="#inline_response_200_4"><code>inline_response_200_4</code></a></li>
+    <li><a href="#inline_response_200_5"><code>inline_response_200_5</code></a></li>
+    <li><a href="#inline_response_200_6"><code>inline_response_200_6</code></a></li>
+    <li><a href="#inline_response_200_7"><code>inline_response_200_7</code></a></li>
+    <li><a href="#inline_response_201"><code>inline_response_201</code></a></li>
+    <li><a href="#inline_response_201_1"><code>inline_response_201_1</code></a></li>
+    <li><a href="#inline_response_201_1_roles"><code>inline_response_201_1_roles</code></a></li>
+    <li><a href="#inline_response_403"><code>inline_response_403</code></a></li>
+    <li><a href="#reservations_reservationId_body"><code>reservations_reservationId_body</code></a></li>
+    <li><a href="#rooms_roomId_body"><code>rooms_roomId_body</code></a></li>
+    <li><a href="#rooms_roomId_body_1"><code>rooms_roomId_body_1</code></a></li>
+    <li><a href="#rooms_roomId_body_2"><code>rooms_roomId_body_2</code></a></li>
+    <li><a href="#save_roles_body"><code>save_roles_body</code></a></li>
+    <li><a href="#users_userId_body"><code>users_userId_body</code></a></li>
+    <li><a href="#v1_roles_body"><code>v1_roles_body</code></a></li>
+    <li><a href="#v1_rooms_body"><code>v1_rooms_body</code></a></li>
+    <li><a href="#v1_users_body"><code>v1_users_body</code></a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="Reservation"><code>Reservation</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">start_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">end_date (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">room (optional)</div><div class="param-desc"><span class="param-type"><a href="#Room">Room</a></span>  </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Role"><code>Role</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="Room"><code>Room</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="User"><code>User</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">phone (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#Role">array[Role]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="apiv1users_roles"><code>apiv1users_roles</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: ROLE_USER</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200"><code>inline_response_200</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Georgia, Tbilisi, Ivanova St, 8, 12</span></div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 32</span></div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 123</span></div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 5300</span></div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: true</span></div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: false</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: This is really good flat for refugee from Ukraine And Russia</span></div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_1"><code>inline_response_200_1</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Georgia, Tbilisi, Ivanova St, 8, 12</span></div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 32</span></div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 123</span></div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 5300</span></div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: true</span></div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: false</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: This is really good flat for refugee from Ukraine And Russia</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_2"><code>inline_response_200_2</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1</span></div>
+<div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Georgia, Tbilisi, Ivanova St, 8, 12</span></div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 32</span></div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 123</span></div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1000</span></div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: true</span></div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: false</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: This is really good flat for refugee from Ukraine And Russia</span></div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_3"><code>inline_response_200_3</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 64</span></div>
+<div class="param">startDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-01-01</span></div>
+<div class="param">endDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-01-01</span></div>
+<div class="param">room (optional)</div><div class="param-desc"><span class="param-type"><a href="#Room">Room</a></span>  </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_4"><code>inline_response_200_4</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 64</span></div>
+<div class="param">startDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-03-01</span></div>
+<div class="param">endDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-04-01</span></div>
+<div class="param">room (optional)</div><div class="param-desc"><span class="param-type"><a href="#Room">Room</a></span>  </div>
+<div class="param">user (optional)</div><div class="param-desc"><span class="param-type"><a href="#User">User</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_5"><code>inline_response_200_5</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Anton Krikov</span></div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas@gmail.com</span></div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: #23vjjsKLSjfLdskjfdsls</span></div>
+<div class="param">roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#apiv1users_roles">array[apiv1users_roles]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_6"><code>inline_response_200_6</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Ivan Krikov</span></div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas@gmail.com</span></div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: #23vjjsKLSjfLdskjfdsls</span></div>
+<div class="param">roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#apiv1users_roles">array[apiv1users_roles]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_7"><code>inline_response_200_7</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">access_token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJha3JpayIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiIvYXBpL3Rva2VuL3JlZnJlc2giLCJleHAiOjE2NjQ4Nzg0MjJ9.aBaLTKBqBUQKgBEll1M8LEQFCmRccmXYxSlDNcpTkkE</span></div>
+<div class="param">refresh_token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJha3JpayIsImlzcyI6Ii9hcGkvbG9naW4iLCJleHAiOjE2NjQ4Nzk2MTV9.kmvm5nRpmjhyix6at3JkmdDeFGt4bwrlcMsed0mameA</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_201"><code>inline_response_201</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 4</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: ROLE_MANAGER</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_201_1"><code>inline_response_201_1</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Anton Krikov</span></div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas@gmail.com</span></div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: #23vjjsKLSjfLdskjfdsls</span></div>
+<div class="param">roles (optional)</div><div class="param-desc"><span class="param-type"><a href="#inline_response_201_1_roles">array[inline_response_201_1_roles]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_201_1_roles"><code>inline_response_201_1_roles</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2</span></div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: ROLE_ADMIN</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_403"><code>inline_response_403</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">error_message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: The user is not logged in</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="reservations_reservationId_body"><code>reservations_reservationId_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">startDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-03-01</span></div>
+<div class="param">endDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-04-01</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="rooms_roomId_body"><code>rooms_roomId_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Georgia, Tbilisi, Ivanova St, 8, 12</span></div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 32</span></div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 123</span></div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 5300</span></div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: true</span></div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: false</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: This is really good flat for refugee from Ukraine And Russia</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="rooms_roomId_body_1"><code>rooms_roomId_body_1</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 1000</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="rooms_roomId_body_2"><code>rooms_roomId_body_2</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">startDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-01-01</span></div>
+<div class="param">endDate (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 2022-01-01</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="save_roles_body"><code>save_roles_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">userName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">roleName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: ROLE_ADMIN</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="users_userId_body"><code>users_userId_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Ivan Krikov</span></div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas@gmail.com</span></div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: vero1slb34!</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="v1_roles_body"><code>v1_roles_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: ROLE_MANAGER</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="v1_rooms_body"><code>v1_rooms_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">address (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Georgia, Tbilisi, Ivanova St, 8, 12</span></div>
+<div class="param">latitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 32</span></div>
+<div class="param">longitude (optional)</div><div class="param-desc"><span class="param-type"><a href="#BigDecimal">BigDecimal</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 123</span></div>
+<div class="param">price (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: 5300</span></div>
+<div class="param">hasKitchen (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: true</span></div>
+<div class="param">hasBathroom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: false</span></div>
+<div class="param">description (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: This is really good flat for refugee from Ukraine And Russia</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="v1_users_body"><code>v1_users_body</code></a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: Anton Krikov</span></div>
+<div class="param">username (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas</span></div>
+<div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: antonidas@gmail.com</span></div>
+<div class="param">password (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+          <div class="param-desc"><span class="param-type">example: vero1slb34!</span></div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>
