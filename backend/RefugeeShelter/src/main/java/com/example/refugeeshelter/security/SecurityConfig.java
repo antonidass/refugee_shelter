@@ -2,6 +2,7 @@ package com.example.refugeeshelter.security;
 
 import com.example.refugeeshelter.filter.CustomAuthenticationFilter;
 import com.example.refugeeshelter.filter.CustomAuthorizationFilter;
+import com.example.refugeeshelter.filter.CustomForbiddenHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.*;
@@ -39,24 +41,49 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.headers().disable();
-        http.authorizeRequests().antMatchers("/api/v1/login/**", "/api/v1/token/refresh/**").permitAll();
+
+
+        // Неавторизованные пользователи могут просматривать информацию о жилье
+        http.authorizeRequests().antMatchers(GET, "/api/v1/reservations/**", "/api/v1/rooms/**").permitAll();
+
+        // Авторизованные могут размещать жилье и бронировать...
+        http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(PUT, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(PATCH, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(DELETE, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(GET, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(POST, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(PUT, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(DELETE, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(PATCH, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(GET, "/api/v1/users/*/rooms/**").hasAnyAuthority("ROLE_USER");
+
+        // Админ может модифицировать пользователей
         http.authorizeRequests().antMatchers(POST,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(PATCH,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(DELETE,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/api/v1/users/**").hasAnyAuthority("ROLE_ADMIN");
 
-        http.authorizeRequests().antMatchers(GET, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN", "ROLE_MANAGER");
-        http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_MANAGER", "ROLE_ADMIN");
-        http.authorizeRequests().antMatchers(GET, "/api/v1/").permitAll();
+
+        // Неавторизованные пользователи могут логин, регистр, ифно о беке, обновить токен
+        http.authorizeRequests().antMatchers("/api/v1/login/**", "/api/v1/token/refresh/**", "/api/v1/register/**", "/api/v1/").permitAll();
+
         http.authorizeRequests().anyRequest().authenticated();
 //        http.authorizeRequests().anyRequest().permitAll();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.exceptionHandling().accessDeniedHandler(accessDeniedHandler());
     }
 
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public AccessDeniedHandler accessDeniedHandler(){
+        return new CustomForbiddenHandler();
     }
 }

@@ -10,7 +10,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 @RestController
 @RequestMapping("/api/v1")
 @Slf4j
@@ -18,10 +17,11 @@ public class InfoController {
     @GetMapping(value = "", produces = MediaType.TEXT_HTML_VALUE)
     public ResponseEntity getSwagger() throws IOException {
         ResponseEntity respEntity = null;
-        File result=new File("src/main/resources/swagger/index.html");
+        log.info("Working directory =  {}", System.getProperty("user.dir"));
 
+        File result=new File("/resources/swagger/index.html");
         if(result.exists()){
-            InputStream inputStream = new FileInputStream("src/main/resources/swagger/index.html");
+            InputStream inputStream = new FileInputStream("/resources/swagger/index.html");
             byte[]out=org.apache.commons.io.IOUtils.toByteArray(inputStream);
             respEntity = new ResponseEntity(out, HttpStatus.OK);
         }else{

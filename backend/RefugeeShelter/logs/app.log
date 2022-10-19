@@ -1,0 +1,957 @@
+2022-10-20 00:00:05.062  INFO 1193 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/ method = POST
+2022-10-20 00:00:05.118  WARN 1193 --- [http-nio-8081-exec-9] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/rooms/
+2022-10-20 00:01:51.776  INFO 1193 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:01:51.806  INFO 1193 --- [Thread-77] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:01:51.811  INFO 1193 --- [Thread-77] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-20 00:01:51.837  WARN 1193 --- [Thread-77] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-1] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1081)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2022-10-20 00:01:51.838  WARN 1193 --- [Thread-77] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [logback-2] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ sun.misc.Unsafe.park(Native Method)
+ java.util.concurrent.locks.LockSupport.park(LockSupport.java:175)
+ java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2039)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1081)
+ java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:809)
+ java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1074)
+ java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1134)
+ java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+ java.lang.Thread.run(Thread.java:748)
+2022-10-20 00:01:51.854  INFO 1193 --- [Thread-77] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:01:51.863  INFO 1193 --- [Thread-77] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown initiated...
+2022-10-20 00:01:51.867  INFO 1193 --- [Thread-77] com.zaxxer.hikari.HikariDataSource       : HikariPool-20 - Shutdown completed.
+2022-10-20 00:01:52.364  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 1193 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:01:52.367 DEBUG 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:01:52.368  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:01:52.534  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:01:52.552  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:01:52.673  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:01:52.676  INFO 1193 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:01:52.676  INFO 1193 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:01:52.685  INFO 1193 --- [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:01:52.686  INFO 1193 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 309 ms
+2022-10-20 00:01:52.719  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Starting...
+2022-10-20 00:01:52.780  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Start completed.
+2022-10-20 00:01:52.784  INFO 1193 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:01:52.791  INFO 1193 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:01:52.905  INFO 1193 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:01:52.906  INFO 1193 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:01:53.083  WARN 1193 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:01:53.110  INFO 1193 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@45ec64bb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@49ecc155, org.springframework.security.web.context.SecurityContextPersistenceFilter@42b0ad5d, org.springframework.security.web.authentication.logout.LogoutFilter@5d0b0a09, com.example.refugeeshelter.filter.CustomAuthorizationFilter@51c42c3a, com.example.refugeeshelter.filter.CustomAuthenticationFilter@3286b2ff, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@739b37d9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@22d95ece, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@14e9c1a8, org.springframework.security.web.session.SessionManagementFilter@7e68d3fd, org.springframework.security.web.access.ExceptionTranslationFilter@4a336400, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3c8bf548]
+2022-10-20 00:01:53.173  INFO 1193 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:01:53.182  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:01:53.187  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.938 seconds (JVM running for 2370.01)
+2022-10-20 00:01:53.188  INFO 1193 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:02:03.697  INFO 1193 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:02:03.712  INFO 1193 --- [Thread-81] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:02:03.729  INFO 1193 --- [Thread-81] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:02:03.731  INFO 1193 --- [Thread-81] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown initiated...
+2022-10-20 00:02:03.736  INFO 1193 --- [Thread-81] com.zaxxer.hikari.HikariDataSource       : HikariPool-21 - Shutdown completed.
+2022-10-20 00:02:04.120  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 1193 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:02:04.123 DEBUG 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:02:04.124  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:02:04.275  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:02:04.291  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:02:04.389  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:02:04.392  INFO 1193 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:02:04.392  INFO 1193 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:02:04.399  INFO 1193 --- [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:02:04.399  INFO 1193 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 269 ms
+2022-10-20 00:02:04.422  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Starting...
+2022-10-20 00:02:04.468  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Start completed.
+2022-10-20 00:02:04.471  INFO 1193 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:02:04.475  INFO 1193 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:02:04.597  INFO 1193 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:02:04.597  INFO 1193 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:02:04.764  WARN 1193 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:02:04.786  INFO 1193 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4e0430dc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6d69a514, org.springframework.security.web.context.SecurityContextPersistenceFilter@716b7c4e, org.springframework.security.web.authentication.logout.LogoutFilter@3efb6145, com.example.refugeeshelter.filter.CustomAuthorizationFilter@280dccd4, com.example.refugeeshelter.filter.CustomAuthenticationFilter@70276ad0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@f9aa1a3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@111664fb, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f4a26d8, org.springframework.security.web.session.SessionManagementFilter@3c973b9e, org.springframework.security.web.access.ExceptionTranslationFilter@1361ae6d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3f7ce1c4]
+2022-10-20 00:02:04.841  INFO 1193 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:02:04.849  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:02:04.854  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.836 seconds (JVM running for 2381.678)
+2022-10-20 00:02:04.856  INFO 1193 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:02:09.309  INFO 1193 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:02:09.326  INFO 1193 --- [Thread-85] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:02:09.337  INFO 1193 --- [Thread-85] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:02:09.338  INFO 1193 --- [Thread-85] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown initiated...
+2022-10-20 00:02:09.344  INFO 1193 --- [Thread-85] com.zaxxer.hikari.HikariDataSource       : HikariPool-22 - Shutdown completed.
+2022-10-20 00:02:09.727  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 1193 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:02:09.730 DEBUG 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:02:09.732  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:02:09.883  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:02:09.900  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:02:09.993  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:02:09.996  INFO 1193 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:02:09.996  INFO 1193 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:02:10.001  INFO 1193 --- [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:02:10.002  INFO 1193 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 260 ms
+2022-10-20 00:02:10.026  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Starting...
+2022-10-20 00:02:10.084  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Start completed.
+2022-10-20 00:02:10.087  INFO 1193 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:02:10.092  INFO 1193 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:02:10.199  INFO 1193 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:02:10.199  INFO 1193 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:02:10.359  WARN 1193 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:02:10.381  INFO 1193 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@10abba5b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5f9ec3b7, org.springframework.security.web.context.SecurityContextPersistenceFilter@24e37687, org.springframework.security.web.authentication.logout.LogoutFilter@4a608ffd, com.example.refugeeshelter.filter.CustomAuthorizationFilter@8ea8164, com.example.refugeeshelter.filter.CustomAuthenticationFilter@43d6853e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79653b1f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@28beaf25, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@ee2867d, org.springframework.security.web.session.SessionManagementFilter@7c2429ee, org.springframework.security.web.access.ExceptionTranslationFilter@4442b917, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@59225ab5]
+2022-10-20 00:02:10.440  INFO 1193 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:02:10.449  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:02:10.453  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.834 seconds (JVM running for 2387.277)
+2022-10-20 00:02:10.454  INFO 1193 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:03:22.698  INFO 1193 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:03:22.736  INFO 1193 --- [Thread-89] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:03:22.769  INFO 1193 --- [Thread-89] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:03:22.777  INFO 1193 --- [Thread-89] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown initiated...
+2022-10-20 00:03:22.781  INFO 1193 --- [Thread-89] com.zaxxer.hikari.HikariDataSource       : HikariPool-23 - Shutdown completed.
+2022-10-20 00:03:23.281  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 1193 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:03:23.285 DEBUG 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:03:23.286  INFO 1193 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:03:23.481  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:03:23.501  INFO 1193 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:03:23.624  INFO 1193 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:03:23.627  INFO 1193 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:03:23.627  INFO 1193 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:03:23.638  INFO 1193 --- [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/]     : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:03:23.638  INFO 1193 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 344 ms
+2022-10-20 00:03:23.665  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Starting...
+2022-10-20 00:03:23.741  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Start completed.
+2022-10-20 00:03:23.745  INFO 1193 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:03:23.751  INFO 1193 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:03:23.843  INFO 1193 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:03:23.844  INFO 1193 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:03:24.018  WARN 1193 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:03:24.043  WARN 1193 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+2022-10-20 00:03:24.043  INFO 1193 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:03:24.044  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown initiated...
+2022-10-20 00:03:24.066  INFO 1193 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-24 - Shutdown completed.
+2022-10-20 00:03:24.069  INFO 1193 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:03:24.075  INFO 1193 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-10-20 00:03:24.080 ERROR 1193 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.4.jar:2.7.4]
+	at com.example.refugeeshelter.RefugeeShelterApplication.main(RefugeeShelterApplication.java:16) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.7.4.jar:2.7.4]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 26 common frames omitted
+Caused by: java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.util.Assert.state(Assert.java:76) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry.antMatchers(AbstractRequestMatcherRegistry.java:117) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at com.example.refugeeshelter.security.SecurityConfig.configure(SecurityConfig.java:46) ~[classes/:na]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:221) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:319) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:96) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at com.example.refugeeshelter.security.SecurityConfig$$EnhancerBySpringCGLIB$$fe593093.init(<generated>) ~[classes/:na]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:338) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:300) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:38) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:125) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at sun.reflect.GeneratedMethodAccessor314.invoke(Unknown Source) ~[na:na]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 27 common frames omitted
+
+2022-10-20 00:03:40.844  INFO 5615 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5615 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:03:40.845 DEBUG 5615 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:03:40.846  INFO 5615 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:03:40.892  INFO 5615 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-20 00:03:40.892  INFO 5615 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-20 00:03:41.758  INFO 5615 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:03:41.883  INFO 5615 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 115 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:03:42.508  INFO 5615 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:03:42.513  INFO 5615 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:03:42.514  INFO 5615 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:03:42.567  INFO 5615 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:03:42.567  INFO 5615 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1674 ms
+2022-10-20 00:03:42.683  INFO 5615 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:03:42.887  INFO 5615 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:03:42.936  INFO 5615 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:03:43.023  INFO 5615 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:03:43.120  INFO 5615 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:03:43.182  INFO 5615 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:03:43.574  INFO 5615 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:03:43.579  INFO 5615 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:03:44.031  WARN 5615 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:03:44.125  WARN 5615 --- [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+2022-10-20 00:03:44.127  INFO 5615 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:03:44.129  INFO 5615 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:03:44.131  INFO 5615 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-20 00:03:44.133  INFO 5615 --- [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:03:44.146  INFO 5615 --- [restartedMain] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-10-20 00:03:44.168 ERROR 5615 --- [restartedMain] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'springSecurityFilterChain' defined in class path resource [org/springframework/security/config/annotation/web/configuration/WebSecurityConfiguration.class]: Bean instantiation via factory method failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:658) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:486) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1352) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1195) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:582) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:955) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:918) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583) ~[spring-context-5.3.23.jar:5.3.23]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147) ~[spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306) [spring-boot-2.7.4.jar:2.7.4]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295) [spring-boot-2.7.4.jar:2.7.4]
+	at com.example.refugeeshelter.RefugeeShelterApplication.main(RefugeeShelterApplication.java:16) [classes/:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:49) [spring-boot-devtools-2.7.4.jar:2.7.4]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [javax.servlet.Filter]: Factory method 'springSecurityFilterChain' threw exception; nested exception is java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:185) ~[spring-beans-5.3.23.jar:5.3.23]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:653) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 26 common frames omitted
+Caused by: java.lang.IllegalStateException: Can't configure antMatchers after anyRequest
+	at org.springframework.util.Assert.state(Assert.java:76) ~[spring-core-5.3.23.jar:5.3.23]
+	at org.springframework.security.config.annotation.web.AbstractRequestMatcherRegistry.antMatchers(AbstractRequestMatcherRegistry.java:117) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at com.example.refugeeshelter.security.SecurityConfig.configure(SecurityConfig.java:46) ~[classes/:na]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.getHttp(WebSecurityConfigurerAdapter.java:221) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:319) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter.init(WebSecurityConfigurerAdapter.java:96) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at com.example.refugeeshelter.security.SecurityConfig$$EnhancerBySpringCGLIB$$53a8bea5.init(<generated>) ~[classes/:na]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.init(AbstractConfiguredSecurityBuilder.java:338) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.AbstractConfiguredSecurityBuilder.doBuild(AbstractConfiguredSecurityBuilder.java:300) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.AbstractSecurityBuilder.build(AbstractSecurityBuilder.java:38) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration.springSecurityFilterChain(WebSecurityConfiguration.java:125) ~[spring-security-config-5.7.3.jar:5.7.3]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_311]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_311]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_311]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_311]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:154) ~[spring-beans-5.3.23.jar:5.3.23]
+	... 27 common frames omitted
+
+2022-10-20 00:04:10.853  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:04:10.854 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:04:10.855  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:04:10.910  INFO 5680 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-10-20 00:04:10.910  INFO 5680 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-10-20 00:04:11.687  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:04:11.786  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 91 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:04:12.372  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:04:12.377  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:04:12.377  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:04:12.429  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:04:12.429  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1518 ms
+2022-10-20 00:04:12.544  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:04:12.764  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:04:12.816  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:04:12.899  INFO 5680 --- [restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:04:12.996  INFO 5680 --- [restartedMain] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:04:13.054  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:04:13.441  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:04:13.446  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:04:13.882  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:04:14.007  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d8a8d04, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@432c77e3, org.springframework.security.web.context.SecurityContextPersistenceFilter@32c57a2, org.springframework.security.web.authentication.logout.LogoutFilter@2e4fb78, com.example.refugeeshelter.filter.CustomAuthorizationFilter@71ac1d22, com.example.refugeeshelter.filter.CustomAuthenticationFilter@38c837d3, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7048b57, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@569a3bfd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@61736f63, org.springframework.security.web.session.SessionManagementFilter@1b93208b, org.springframework.security.web.access.ExceptionTranslationFilter@23e076e9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7c5624d3]
+2022-10-20 00:04:14.280  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:04:14.334  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:04:14.353  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 3.877 seconds (JVM running for 4.638)
+2022-10-20 00:05:03.353  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:05:03.384  INFO 5680 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:05:03.410  INFO 5680 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:05:03.423  INFO 5680 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:05:03.428  INFO 5680 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-20 00:05:03.783  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:05:03.784 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:05:03.785  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:05:04.078  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:05:04.099  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:05:04.261  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:05:04.267  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:05:04.271  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:05:04.284  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:05:04.285  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 491 ms
+2022-10-20 00:05:04.313  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-10-20 00:05:04.366  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-10-20 00:05:04.371  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:05:04.375  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:05:04.503  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:05:04.504  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:05:04.704  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:05:04.750  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d29589, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@182b26ad, org.springframework.security.web.context.SecurityContextPersistenceFilter@c42f1b0, org.springframework.security.web.authentication.logout.LogoutFilter@66fce771, com.example.refugeeshelter.filter.CustomAuthorizationFilter@2e2fff82, com.example.refugeeshelter.filter.CustomAuthenticationFilter@719fa386, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2c076498, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@73f08a87, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66f61ee1, org.springframework.security.web.session.SessionManagementFilter@4f144e8, org.springframework.security.web.access.ExceptionTranslationFilter@6ab6a3dc, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3b1c9e67]
+2022-10-20 00:05:04.940  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:05:04.959  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:05:04.966  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.289 seconds (JVM running for 55.254)
+2022-10-20 00:05:04.975  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:06:12.182  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:06:12.207  INFO 5680 --- [Thread-8] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:06:12.254  INFO 5680 --- [Thread-8] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:06:12.257  INFO 5680 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-10-20 00:06:12.264  INFO 5680 --- [Thread-8] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+2022-10-20 00:06:12.637  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:06:12.639 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:06:12.640  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:06:12.899  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:06:12.930  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:06:13.086  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:06:13.087  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:06:13.088  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:06:13.102  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:06:13.102  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 452 ms
+2022-10-20 00:06:13.135  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2022-10-20 00:06:13.183  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2022-10-20 00:06:13.188  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:06:13.192  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:06:13.323  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:06:13.326  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:06:13.534  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:06:13.566  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@85e338b, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@57190bd3, org.springframework.security.web.context.SecurityContextPersistenceFilter@7a306298, org.springframework.security.web.authentication.logout.LogoutFilter@4caff446, com.example.refugeeshelter.filter.CustomAuthorizationFilter@388a2973, com.example.refugeeshelter.filter.CustomAuthenticationFilter@364f3633, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1f0c8022, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5566fe77, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4f74991a, org.springframework.security.web.session.SessionManagementFilter@78931cfd, org.springframework.security.web.access.ExceptionTranslationFilter@360f85f9, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@10d3d312]
+2022-10-20 00:06:13.807  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:06:13.828  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:06:13.836  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.305 seconds (JVM running for 124.125)
+2022-10-20 00:06:13.838  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:08:48.085  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:08:48.121  INFO 5680 --- [Thread-12] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:08:48.152  INFO 5680 --- [Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:08:48.155  INFO 5680 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2022-10-20 00:08:48.165  INFO 5680 --- [Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2022-10-20 00:08:48.553  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:08:48.554 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:08:48.555  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:08:48.740  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:08:48.764  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 22 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:08:48.870  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:08:48.872  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:08:48.872  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:08:48.883  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:08:48.892  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 330 ms
+2022-10-20 00:08:48.913  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2022-10-20 00:08:48.965  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2022-10-20 00:08:48.969  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:08:48.973  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:08:49.110  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:08:49.110  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:08:49.290  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:08:49.314  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4f15d14d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6aea2a19, org.springframework.security.web.context.SecurityContextPersistenceFilter@1000b6c2, org.springframework.security.web.authentication.logout.LogoutFilter@1f7cab24, com.example.refugeeshelter.filter.CustomAuthorizationFilter@53e0d0b3, com.example.refugeeshelter.filter.CustomAuthenticationFilter@41483e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@765f9874, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@71b6d48d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@656aa596, org.springframework.security.web.session.SessionManagementFilter@7c80e242, org.springframework.security.web.access.ExceptionTranslationFilter@518acc8e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5d314245]
+2022-10-20 00:08:49.494  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:08:49.511  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:08:49.517  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.062 seconds (JVM running for 279.81)
+2022-10-20 00:08:49.518  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:09:06.093  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:09:06.111  INFO 5680 --- [Thread-16] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:09:06.147  INFO 5680 --- [Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:06.149  INFO 5680 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2022-10-20 00:09:06.158  INFO 5680 --- [Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+2022-10-20 00:09:06.494  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:09:06.497 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:09:06.497  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:09:06.689  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:09:06.715  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 23 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:09:06.816  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:09:06.820  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:09:06.820  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:09:06.831  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:09:06.832  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 324 ms
+2022-10-20 00:09:06.853  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2022-10-20 00:09:06.893  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2022-10-20 00:09:06.896  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:09:06.902  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:09:07.014  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:09:07.015  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:07.231  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:09:07.261  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@252e5a14, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@73e1a97d, org.springframework.security.web.context.SecurityContextPersistenceFilter@698100da, org.springframework.security.web.authentication.logout.LogoutFilter@3b996f5b, com.example.refugeeshelter.filter.CustomAuthorizationFilter@32fa75dc, com.example.refugeeshelter.filter.CustomAuthenticationFilter@3b08f08b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16da94dd, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d6d491c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ca1f304, org.springframework.security.web.session.SessionManagementFilter@4e712483, org.springframework.security.web.access.ExceptionTranslationFilter@32673b69, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e38f870]
+2022-10-20 00:09:07.397  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:09:07.410  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:09:07.418  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.005 seconds (JVM running for 297.712)
+2022-10-20 00:09:07.419  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:09:40.146  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:09:40.162  INFO 5680 --- [Thread-20] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:09:40.179  INFO 5680 --- [Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:40.182  INFO 5680 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2022-10-20 00:09:40.186  INFO 5680 --- [Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+2022-10-20 00:09:40.552  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:09:40.554 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:09:40.556  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:09:40.736  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:09:40.754  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:09:40.870  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:09:40.871  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:09:40.871  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:09:40.879  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:09:40.879  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 315 ms
+2022-10-20 00:09:40.902  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2022-10-20 00:09:40.949  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2022-10-20 00:09:40.952  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:09:40.957  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:09:41.063  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:09:41.064  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:41.246  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:09:41.274  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a747f9d, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4b81ee08, org.springframework.security.web.context.SecurityContextPersistenceFilter@1895bc62, org.springframework.security.web.authentication.logout.LogoutFilter@4e1ce82d, com.example.refugeeshelter.filter.CustomAuthorizationFilter@71e7e8d, com.example.refugeeshelter.filter.CustomAuthenticationFilter@38973336, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1b93bdf9, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@ddbc199, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@21862b2e, org.springframework.security.web.session.SessionManagementFilter@2fcb3735, org.springframework.security.web.access.ExceptionTranslationFilter@f1339b3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@60abe3a3]
+2022-10-20 00:09:41.360  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:09:41.368  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:09:41.372  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.91 seconds (JVM running for 331.667)
+2022-10-20 00:09:41.373  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:09:49.873  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:09:49.886  INFO 5680 --- [Thread-24] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:09:49.922  INFO 5680 --- [Thread-24] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:49.925  INFO 5680 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2022-10-20 00:09:49.936  INFO 5680 --- [Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+2022-10-20 00:09:50.279  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:09:50.281 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:09:50.281  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:09:50.414  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:09:50.430  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:09:50.518  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:09:50.520  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:09:50.520  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:09:50.526  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:09:50.526  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 238 ms
+2022-10-20 00:09:50.544  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2022-10-20 00:09:50.586  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2022-10-20 00:09:50.589  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:09:50.593  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:09:50.684  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:09:50.684  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:50.830  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:09:50.852  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3d3e8ef5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d505e19, org.springframework.security.web.context.SecurityContextPersistenceFilter@42d597d1, org.springframework.security.web.authentication.logout.LogoutFilter@641afbf3, com.example.refugeeshelter.filter.CustomAuthorizationFilter@6ad7e37f, com.example.refugeeshelter.filter.CustomAuthenticationFilter@7efd4238, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@9ddc56a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@64f56042, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@377d3234, org.springframework.security.web.session.SessionManagementFilter@7c3256c4, org.springframework.security.web.access.ExceptionTranslationFilter@3a4ae1e2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@67ee6a0f]
+2022-10-20 00:09:50.913  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:09:50.921  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:09:50.926  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.735 seconds (JVM running for 341.221)
+2022-10-20 00:09:50.926  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:09:56.395  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:09:56.414  INFO 5680 --- [Thread-28] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:09:56.447  INFO 5680 --- [Thread-28] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:56.450  INFO 5680 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2022-10-20 00:09:56.459  INFO 5680 --- [Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+2022-10-20 00:09:56.785  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:09:56.787 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:09:56.788  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:09:56.948  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:09:56.976  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:09:57.069  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:09:57.070  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:09:57.070  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:09:57.077  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:09:57.077  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 283 ms
+2022-10-20 00:09:57.096  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2022-10-20 00:09:57.139  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2022-10-20 00:09:57.141  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:09:57.145  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:09:57.238  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:09:57.238  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:09:57.412  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:09:57.433  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2ccd9c04, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60e56b44, org.springframework.security.web.context.SecurityContextPersistenceFilter@4cfdbf17, org.springframework.security.web.authentication.logout.LogoutFilter@334683d3, com.example.refugeeshelter.filter.CustomAuthorizationFilter@16eb6661, com.example.refugeeshelter.filter.CustomAuthenticationFilter@613ebfc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17630797, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@9f01536, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@21d32259, org.springframework.security.web.session.SessionManagementFilter@5539c609, org.springframework.security.web.access.ExceptionTranslationFilter@6631dd0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@24aa6103]
+2022-10-20 00:09:57.501  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:09:57.510  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:09:57.515  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.831 seconds (JVM running for 347.81)
+2022-10-20 00:09:57.515  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:10:09.524  INFO 5680 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-20 00:10:09.527  INFO 5680 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-20 00:10:09.532  INFO 5680 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-10-20 00:10:09.542  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:10:09.543  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:10:09.544  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthenticationFilter  : Username is : newuser, kek
+2022-10-20 00:10:09.544  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=newuser, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:10:09.766 ERROR 5680 --- [http-nio-8081-exec-1] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:10:19.141  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/register method = POST
+2022-10-20 00:10:19.142  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:10:19.272  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.service.UserServiceImpl            : Saving user null to the database
+2022-10-20 00:10:19.423  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.service.UserServiceImpl            : Patch user 5
+2022-10-20 00:10:19.435  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.service.UserServiceImpl            : Role =ROLE_USER
+2022-10-20 00:10:23.537  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:10:23.541  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:10:23.542  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthenticationFilter  : Username is : newuser, kek
+2022-10-20 00:10:23.542  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=newuser, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:10:23.584  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.service.UserServiceImpl            : User found in the database newuser $2a$10$Fd7p6/F68bvLey9dYz4K5OQu2t8TkJRoKv5CGee6Lh4rpptN0iJfO
+2022-10-20 00:10:33.641  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:10:33.684  WARN 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:10:37.331  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:10:37.332  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:10:40.059  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:10:40.063  WARN 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:10:52.536  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/ method = POST
+2022-10-20 00:10:52.539  WARN 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/
+2022-10-20 00:10:57.272  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/roles/ method = POST
+2022-10-20 00:10:57.277  WARN 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/roles/
+2022-10-20 00:11:07.493  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/5 method = PUT
+2022-10-20 00:11:07.497  WARN 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/5
+2022-10-20 00:11:14.895  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/7 method = DELETE
+2022-10-20 00:11:14.898  WARN 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/7
+2022-10-20 00:11:15.850  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/7 method = DELETE
+2022-10-20 00:11:15.852  WARN 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/7
+2022-10-20 00:11:21.195  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/9 method = PATCH
+2022-10-20 00:11:21.199  WARN 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/9
+2022-10-20 00:11:26.659  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/ method = GET
+2022-10-20 00:11:26.659  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:11:31.828  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/ method = GET
+2022-10-20 00:11:31.833  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:11:40.349  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/3 method = GET
+2022-10-20 00:11:40.353  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:11:46.290  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:11:46.303  WARN 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/1/reservations
+2022-10-20 00:11:49.832  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:11:49.838  WARN 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/1/reservations
+2022-10-20 00:11:50.379  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:11:50.383  WARN 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/1/reservations
+2022-10-20 00:12:39.805  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/3/reservations/rooms/1 method = POST
+2022-10-20 00:12:39.812  WARN 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/3/reservations/rooms/1
+2022-10-20 00:13:00.394  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/ method = POST
+2022-10-20 00:13:07.258  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/4 method = PUT
+2022-10-20 00:13:13.254  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/6 method = PATCH
+2022-10-20 00:13:18.427  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/3 method = DELETE
+2022-10-20 00:13:18.510  WARN 5680 --- [http-nio-8081-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2022-10-20 00:13:18.511 ERROR 5680 --- [http-nio-8081-exec-10] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "rooms" violates foreign key constraint "reservations_room_id_fkey" on table "reservations"
+  Подробности: Key (id)=(3) is still referenced from table "reservations".
+2022-10-20 00:13:18.514  INFO 5680 --- [http-nio-8081-exec-10] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2022-10-20 00:13:18.527 ERROR 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : Error logging in: Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [reservations_room_id_fkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-10-20 00:13:27.712  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/3 method = DELETE
+2022-10-20 00:13:27.757  WARN 5680 --- [http-nio-8081-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Error: 0, SQLState: 23503
+2022-10-20 00:13:27.758 ERROR 5680 --- [http-nio-8081-exec-5] o.h.engine.jdbc.spi.SqlExceptionHelper   : ERROR: update or delete on table "rooms" violates foreign key constraint "reservations_room_id_fkey" on table "reservations"
+  Подробности: Key (id)=(3) is still referenced from table "reservations".
+2022-10-20 00:13:27.759  INFO 5680 --- [http-nio-8081-exec-5] o.h.e.j.b.internal.AbstractBatchImpl     : HHH000010: On release of batch it still contained JDBC statements
+2022-10-20 00:13:27.764 ERROR 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Error logging in: Request processing failed; nested exception is org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; constraint [reservations_room_id_fkey]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+2022-10-20 00:15:08.518  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:15:08.554  INFO 5680 --- [Thread-32] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:15:08.556  INFO 5680 --- [Thread-32] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-20 00:15:08.586  INFO 5680 --- [Thread-32] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:15:08.590  INFO 5680 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2022-10-20 00:15:08.607  INFO 5680 --- [Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+2022-10-20 00:15:09.067  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:15:09.071 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:15:09.073  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:15:09.284  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:15:09.301  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:15:09.413  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:15:09.415  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:15:09.415  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:15:09.425  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:15:09.425  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 343 ms
+2022-10-20 00:15:09.448  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2022-10-20 00:15:09.501  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2022-10-20 00:15:09.503  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:15:09.508  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:15:09.597  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:15:09.597  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:15:09.775  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:15:09.804  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@43ae9479, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@72863529, org.springframework.security.web.context.SecurityContextPersistenceFilter@3046a93a, org.springframework.security.web.authentication.logout.LogoutFilter@191c2b93, com.example.refugeeshelter.filter.CustomAuthorizationFilter@77ff8be9, com.example.refugeeshelter.filter.CustomAuthenticationFilter@25852ae, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6aa3100a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@72e21848, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@356203c0, org.springframework.security.web.session.SessionManagementFilter@1d8e6294, org.springframework.security.web.access.ExceptionTranslationFilter@64bf8cca, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@abfedbd]
+2022-10-20 00:15:09.868  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:15:09.876  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:15:09.881  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.903 seconds (JVM running for 660.185)
+2022-10-20 00:15:09.881  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:16:46.468  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:16:46.494  INFO 5680 --- [Thread-36] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:16:46.526  INFO 5680 --- [Thread-36] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:16:46.530  INFO 5680 --- [Thread-36] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown initiated...
+2022-10-20 00:16:46.541  INFO 5680 --- [Thread-36] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Shutdown completed.
+2022-10-20 00:16:47.138  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:16:47.142 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:16:47.143  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:16:47.319  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:16:47.338  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 18 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:16:47.471  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:16:47.474  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:16:47.474  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:16:47.486  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:16:47.486  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 336 ms
+2022-10-20 00:16:47.509  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Starting...
+2022-10-20 00:16:47.571  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Start completed.
+2022-10-20 00:16:47.574  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:16:47.580  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:16:47.686  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:16:47.686  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:16:47.847  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:16:47.875  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7f7e2554, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6afd5e54, org.springframework.security.web.context.SecurityContextPersistenceFilter@7b197cd, org.springframework.security.web.authentication.logout.LogoutFilter@3207cd62, com.example.refugeeshelter.filter.CustomAuthorizationFilter@601cd680, com.example.refugeeshelter.filter.CustomAuthenticationFilter@32625f1b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@408545e3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@104b4ec4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3cb88886, org.springframework.security.web.session.SessionManagementFilter@4b5c47aa, org.springframework.security.web.access.ExceptionTranslationFilter@4ef3cdaa, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7b252131]
+2022-10-20 00:16:47.938  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:16:47.950  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:16:47.955  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.038 seconds (JVM running for 758.221)
+2022-10-20 00:16:47.962  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:16:54.184  INFO 5680 --- [http-nio-8081-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-20 00:16:54.194  INFO 5680 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-20 00:16:54.199  INFO 5680 --- [http-nio-8081-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2022-10-20 00:16:54.202  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/ method = GET
+2022-10-20 00:16:54.202  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:16:56.168  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/3 method = GET
+2022-10-20 00:16:56.173  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:16:58.047  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:16:59.083  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:16:59.688  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:17:00.307  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:17:00.755  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:17:01.193  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:17:02.914  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/3/reservations/rooms/1 method = POST
+2022-10-20 00:17:02.925  WARN 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/3/reservations/rooms/1
+2022-10-20 00:17:03.659  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/3/reservations/rooms/1 method = POST
+2022-10-20 00:17:03.662  WARN 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/3/reservations/rooms/1
+2022-10-20 00:17:04.209  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/3/reservations/rooms/1 method = POST
+2022-10-20 00:17:04.211  WARN 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/3/reservations/rooms/1
+2022-10-20 00:17:13.697  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:17:13.701  WARN 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:17:14.319  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:17:14.322  WARN 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:17:14.695  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:17:14.698  WARN 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:17:36.929  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:17:36.943  INFO 5680 --- [Thread-40] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:17:36.945  INFO 5680 --- [Thread-40] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-20 00:17:36.978  INFO 5680 --- [Thread-40] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:17:36.981  INFO 5680 --- [Thread-40] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown initiated...
+2022-10-20 00:17:37.026  INFO 5680 --- [Thread-40] com.zaxxer.hikari.HikariDataSource       : HikariPool-10 - Shutdown completed.
+2022-10-20 00:17:37.591  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:17:37.594 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:17:37.595  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:17:37.803  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:17:37.820  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:17:37.945  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:17:37.950  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:17:37.950  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:17:37.961  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:17:37.961  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 358 ms
+2022-10-20 00:17:37.984  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Starting...
+2022-10-20 00:17:38.041  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Start completed.
+2022-10-20 00:17:38.044  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:17:38.050  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:17:38.181  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:17:38.182  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:17:38.387  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:17:38.422  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3a6720d4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6bf3eea3, org.springframework.security.web.context.SecurityContextPersistenceFilter@45065fb5, org.springframework.security.web.authentication.logout.LogoutFilter@62928af7, com.example.refugeeshelter.filter.CustomAuthorizationFilter@66381a22, com.example.refugeeshelter.filter.CustomAuthenticationFilter@5d391f6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@76cf7490, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@678f9510, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6b16018, org.springframework.security.web.session.SessionManagementFilter@4fd7b699, org.springframework.security.web.access.ExceptionTranslationFilter@21e616f7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@60707f0c]
+2022-10-20 00:17:38.483  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:17:38.493  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:17:38.498  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.005 seconds (JVM running for 808.763)
+2022-10-20 00:17:38.499  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:17:42.487  INFO 5680 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-20 00:17:42.497  INFO 5680 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-20 00:17:42.499  INFO 5680 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-20 00:17:42.501  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/ method = GET
+2022-10-20 00:17:42.501  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:17:44.369  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/3 method = GET
+2022-10-20 00:17:44.376  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:17:46.277  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/reservations method = GET
+2022-10-20 00:17:51.379  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/3/reservations/rooms/1 method = POST
+2022-10-20 00:18:03.655  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/2 method = PUT
+2022-10-20 00:18:03.674 ERROR 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : Error logging in: The Token has expired on 2022-09-27T20:09:34Z.
+2022-10-20 00:18:22.313  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/2 method = PUT
+2022-10-20 00:18:29.222  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/reservations/1 method = DELETE
+2022-10-20 00:18:37.952  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:18:37.958  WARN 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:18:43.331  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/ method = POST
+2022-10-20 00:18:43.333  WARN 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/
+2022-10-20 00:18:47.480  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/roles/ method = POST
+2022-10-20 00:18:47.482  WARN 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/roles/
+2022-10-20 00:18:51.791  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/5 method = PUT
+2022-10-20 00:18:51.796  WARN 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/5
+2022-10-20 00:18:59.478  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/7 method = DELETE
+2022-10-20 00:18:59.488  WARN 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users/7
+2022-10-20 00:19:09.833  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/7 method = DELETE
+2022-10-20 00:19:14.118  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/5 method = PUT
+2022-10-20 00:19:43.652  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:19:43.652  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:19:44.576  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:19:44.576  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:19:45.118  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:19:45.118  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:19:52.767  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:19:52.771  WARN 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:19:57.543  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:19:57.544  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:19:57.545  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthenticationFilter  : Username is : newuser, kek
+2022-10-20 00:19:57.545  INFO 5680 --- [http-nio-8081-exec-1] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=newuser, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:19:57.673 ERROR 5680 --- [http-nio-8081-exec-1] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:20:03.534  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:20:03.535  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:20:03.536  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthenticationFilter  : Username is : newuser, kek
+2022-10-20 00:20:03.537  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=newuser, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:20:03.549 ERROR 5680 --- [http-nio-8081-exec-3] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:20:03.960  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:20:03.961  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:20:03.964  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthenticationFilter  : Username is : newuser, kek
+2022-10-20 00:20:03.965  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=newuser, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:20:03.974 ERROR 5680 --- [http-nio-8081-exec-2] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:20:28.312  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/register method = POST
+2022-10-20 00:20:28.318  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:20:28.342  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.service.UserServiceImpl            : Saving user null to the database
+2022-10-20 00:20:28.478  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.service.UserServiceImpl            : Patch user 6
+2022-10-20 00:20:28.484  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.service.UserServiceImpl            : Role =ROLE_USER
+2022-10-20 00:21:26.227  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/register method = POST
+2022-10-20 00:21:26.228  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:21:26.236  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.service.UserServiceImpl            : Saving user null to the database
+2022-10-20 00:21:26.344  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.service.UserServiceImpl            : Patch user 7
+2022-10-20 00:21:26.345  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.service.UserServiceImpl            : Role =ROLE_USER
+2022-10-20 00:21:51.482  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:21:51.482  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:21:51.483  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthenticationFilter  : Username is : user1, kek
+2022-10-20 00:21:51.483  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=user1, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:21:51.530  INFO 5680 --- [http-nio-8081-exec-6] c.e.r.service.UserServiceImpl            : User found in the database user1 $2a$10$SbWDbzfa2jl/ekph2iNdXONL.8/pEyNTEmjTUG3Syh5t8wuJ7.fWy
+2022-10-20 00:22:06.622  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:22:06.623  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:22:10.539  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:22:10.549  WARN 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomForbiddenHandler      : User: user1 attempted to access the protected URL: /api/v1/users/1/rooms
+2022-10-20 00:22:17.063  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:22:17.080  INFO 5680 --- [Thread-44] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:22:17.084  INFO 5680 --- [Thread-44] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-20 00:22:17.118  INFO 5680 --- [Thread-44] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:22:17.122  INFO 5680 --- [Thread-44] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown initiated...
+2022-10-20 00:22:17.138  INFO 5680 --- [Thread-44] com.zaxxer.hikari.HikariDataSource       : HikariPool-11 - Shutdown completed.
+2022-10-20 00:22:17.581  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:22:17.584 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:22:17.585  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:22:17.754  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:22:17.775  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:22:17.887  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:22:17.890  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:22:17.890  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:22:17.900  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:22:17.900  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 308 ms
+2022-10-20 00:22:17.921  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Starting...
+2022-10-20 00:22:17.964  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Start completed.
+2022-10-20 00:22:17.968  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:22:17.974  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:22:18.086  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:22:18.087  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:22:18.261  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:22:18.285  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7ae84cc4, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@36d0b420, org.springframework.security.web.context.SecurityContextPersistenceFilter@192f30ad, org.springframework.security.web.authentication.logout.LogoutFilter@bc2c25b, com.example.refugeeshelter.filter.CustomAuthorizationFilter@28351347, com.example.refugeeshelter.filter.CustomAuthenticationFilter@5ee7ddbc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6ce08e3f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6bb81a46, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66d124c8, org.springframework.security.web.session.SessionManagementFilter@1de3aa64, org.springframework.security.web.access.ExceptionTranslationFilter@552a5ea3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@35d86f82]
+2022-10-20 00:22:18.344  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:22:18.354  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:22:18.358  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.865 seconds (JVM running for 1088.627)
+2022-10-20 00:22:18.358  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:22:27.867  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2022-10-20 00:22:27.890  INFO 5680 --- [Thread-48] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:22:27.912  INFO 5680 --- [Thread-48] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:22:27.914  INFO 5680 --- [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown initiated...
+2022-10-20 00:22:27.930  INFO 5680 --- [Thread-48] com.zaxxer.hikari.HikariDataSource       : HikariPool-12 - Shutdown completed.
+2022-10-20 00:22:28.314  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:22:28.317 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:22:28.318  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:22:28.462  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:22:28.477  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:22:28.570  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:22:28.573  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:22:28.573  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:22:28.581  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:22:28.581  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 256 ms
+2022-10-20 00:22:28.602  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Starting...
+2022-10-20 00:22:28.652  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Start completed.
+2022-10-20 00:22:28.654  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:22:28.659  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:22:28.747  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:22:28.748  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:22:28.890  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:22:28.920  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ee2ff96, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7091f7a1, org.springframework.security.web.context.SecurityContextPersistenceFilter@20e8ce7d, org.springframework.security.web.authentication.logout.LogoutFilter@6369f8ec, com.example.refugeeshelter.filter.CustomAuthorizationFilter@6fd70b55, com.example.refugeeshelter.filter.CustomAuthenticationFilter@40cfdd1e, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2fd0549c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4e21e64c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49d894de, org.springframework.security.web.session.SessionManagementFilter@f189cd9, org.springframework.security.web.access.ExceptionTranslationFilter@76ccf8d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@239184dd]
+2022-10-20 00:22:28.984  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:22:28.993  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:22:28.997  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.772 seconds (JVM running for 1099.267)
+2022-10-20 00:22:28.998  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:22:33.245  INFO 5680 --- [http-nio-8081-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-10-20 00:22:33.252  INFO 5680 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-10-20 00:22:33.254  INFO 5680 --- [http-nio-8081-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-10-20 00:22:33.257  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:22:34.360  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users/1/rooms method = GET
+2022-10-20 00:26:46.520  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:26:46.523  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:26:46.524  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthenticationFilter  : Username is : user12, kek
+2022-10-20 00:26:46.525  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=user12, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:26:46.667 ERROR 5680 --- [http-nio-8081-exec-5] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:26:51.840  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:26:51.842  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:26:51.843  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthenticationFilter  : Username is : user1, kek
+2022-10-20 00:26:51.844  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=user1, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:26:51.896  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.service.UserServiceImpl            : User found in the database user1 $2a$10$SbWDbzfa2jl/ekph2iNdXONL.8/pEyNTEmjTUG3Syh5t8wuJ7.fWy
+2022-10-20 00:34:38.707  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:34:38.712  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:36:20.933  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/users method = GET
+2022-10-20 00:36:20.955  WARN 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomForbiddenHandler      : User: newuser attempted to access the protected URL: /api/v1/users
+2022-10-20 00:47:34.402  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:47:34.414  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:47:34.416  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthenticationFilter  : Username is : akrik, akrik1234
+2022-10-20 00:47:34.416  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=akrik, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:47:34.478  INFO 5680 --- [http-nio-8081-exec-5] c.e.r.service.UserServiceImpl            : User found in the database akrik $2a$10$NoRqTHgJnBCQa9njTunq9eux7nbJrD4.OacHv9n1QZ5EXNuM.5Hqm
+2022-10-20 00:47:36.890  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:47:36.893  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:47:36.893  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthenticationFilter  : Username is : user1, kek
+2022-10-20 00:47:36.893  INFO 5680 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=user1, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:47:36.910 ERROR 5680 --- [http-nio-8081-exec-7] c.e.r.service.UserServiceImpl            : User not found in the database
+2022-10-20 00:47:46.148  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/register method = POST
+2022-10-20 00:47:46.148  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:47:46.195  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.service.UserServiceImpl            : Saving user null to the database
+2022-10-20 00:47:46.320  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.service.UserServiceImpl            : Patch user 5
+2022-10-20 00:47:46.327  INFO 5680 --- [http-nio-8081-exec-8] c.e.r.service.UserServiceImpl            : Role =ROLE_USER
+2022-10-20 00:47:54.818  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/login method = POST
+2022-10-20 00:47:54.819  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:47:54.819  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthenticationFilter  : Username is : user, user
+2022-10-20 00:47:54.819  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.filter.CustomAuthenticationFilter  : UsernamePasswordAuthenticationToken [Principal=user, Credentials=[PROTECTED], Authenticated=false, Details=null, Granted Authorities=[]]
+2022-10-20 00:47:54.853  INFO 5680 --- [http-nio-8081-exec-9] c.e.r.service.UserServiceImpl            : User found in the database user $2a$10$8lski37mlhLInsqkb0vZE.rgaDX.LkDoJ9MmejvEGqqTtlK/31UoW
+2022-10-20 00:48:08.223  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms method = GET
+2022-10-20 00:48:08.224  INFO 5680 --- [http-nio-8081-exec-10] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:48:10.622  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/4 method = GET
+2022-10-20 00:48:10.622  INFO 5680 --- [http-nio-8081-exec-2] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
+2022-10-20 00:48:15.948  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/ method = POST
+2022-10-20 00:48:15.949  INFO 5680 --- [http-nio-8081-exec-3] c.e.r.filter.CustomAuthorizationFilter   : Access error 401
+2022-10-20 00:48:21.886  INFO 5680 --- [http-nio-8081-exec-4] c.e.r.filter.CustomAuthorizationFilter   : servlet path = /api/v1/rooms/ method = POST
+2022-10-20 00:50:06.954  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 28 class path changes (0 additions, 24 deletions, 4 modifications)
+2022-10-20 00:50:06.987  INFO 5680 --- [Thread-52] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:50:06.990  INFO 5680 --- [Thread-52] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-20 00:50:07.035  INFO 5680 --- [Thread-52] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:07.039  INFO 5680 --- [Thread-52] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown initiated...
+2022-10-20 00:50:07.051  INFO 5680 --- [Thread-52] com.zaxxer.hikari.HikariDataSource       : HikariPool-13 - Shutdown completed.
+2022-10-20 00:50:07.696  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:50:07.700 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:50:07.701  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:50:07.987  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:50:08.009  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 20 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:50:08.131  INFO 10489 --- [main] c.e.r.RefugeeShelterApplicationTests     : Starting RefugeeShelterApplicationTests using Java 17 on MacBook-Air-Anton.local with PID 10489 (started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:50:08.132 DEBUG 10489 --- [main] c.e.r.RefugeeShelterApplicationTests     : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:50:08.132  INFO 10489 --- [main] c.e.r.RefugeeShelterApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:50:08.205  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:50:08.211  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:50:08.212  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:50:08.235  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:50:08.235  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 525 ms
+2022-10-20 00:50:08.276  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Starting...
+2022-10-20 00:50:08.332  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Start completed.
+2022-10-20 00:50:08.337  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:50:08.343  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:50:08.473  INFO 10489 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:50:08.489  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:50:08.490  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:08.510  INFO 10489 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:50:08.725  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:50:08.759  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@154b666e, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@717886ca, org.springframework.security.web.context.SecurityContextPersistenceFilter@2caf22e, org.springframework.security.web.authentication.logout.LogoutFilter@1add15f, com.example.refugeeshelter.filter.CustomAuthorizationFilter@4e6ae995, com.example.refugeeshelter.filter.CustomAuthenticationFilter@36e5c741, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4fc8b97b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@16ff98b7, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7853afe5, org.springframework.security.web.session.SessionManagementFilter@146ace89, org.springframework.security.web.access.ExceptionTranslationFilter@331d4e63, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@54358859]
+2022-10-20 00:50:08.794  INFO 10489 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:50:08.839  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:50:08.850  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:50:08.855  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.313 seconds (JVM running for 2759.157)
+2022-10-20 00:50:08.856  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:50:08.906  INFO 10489 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:50:08.937  INFO 10489 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:50:08.956  INFO 10489 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:50:09.038  INFO 10489 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:50:09.091  INFO 10489 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:50:09.349  INFO 10489 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:50:09.353  INFO 10489 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:09.597  WARN 10489 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:50:09.709  INFO 10489 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5dc120ab, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@49c4118b, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c47b0f8, org.springframework.security.web.authentication.logout.LogoutFilter@5ff29e8b, com.example.refugeeshelter.filter.CustomAuthorizationFilter@7ef7f414, com.example.refugeeshelter.filter.CustomAuthenticationFilter@182dcd2b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3afaa39f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6963b0bd, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4c3d72fd, org.springframework.security.web.session.SessionManagementFilter@434b2e0c, org.springframework.security.web.access.ExceptionTranslationFilter@1eee9b78, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@42e4431]
+2022-10-20 00:50:09.962  INFO 10489 --- [main] c.e.r.RefugeeShelterApplicationTests     : Started RefugeeShelterApplicationTests in 1.989 seconds (JVM running for 2.466)
+2022-10-20 00:50:10.061  INFO 10489 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:10.062  INFO 10489 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:50:10.064  INFO 10489 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-20 00:50:10.272  INFO 5680 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 24 class path changes (24 additions, 0 deletions, 0 modifications)
+2022-10-20 00:50:10.294  INFO 5680 --- [Thread-56] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-20 00:50:10.333  INFO 5680 --- [Thread-56] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:10.336  INFO 5680 --- [Thread-56] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown initiated...
+2022-10-20 00:50:10.351  INFO 5680 --- [Thread-56] com.zaxxer.hikari.HikariDataSource       : HikariPool-14 - Shutdown completed.
+2022-10-20 00:50:10.749  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 5680 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:50:10.752 DEBUG 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:50:10.753  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:50:10.917  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:50:10.933  INFO 5680 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:50:11.018  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-20 00:50:11.023  INFO 5680 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-20 00:50:11.023  INFO 5680 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-20 00:50:11.028  INFO 5680 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-20 00:50:11.028  INFO 5680 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 267 ms
+2022-10-20 00:50:11.047  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Starting...
+2022-10-20 00:50:11.098  INFO 5680 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Start completed.
+2022-10-20 00:50:11.101  INFO 5680 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:50:11.105  INFO 5680 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:50:11.204  INFO 5680 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:50:11.205  INFO 5680 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:11.359  WARN 5680 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:50:11.381  INFO 5680 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6f917d8, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7bc06cae, org.springframework.security.web.context.SecurityContextPersistenceFilter@5ec0e514, org.springframework.security.web.authentication.logout.LogoutFilter@4484b74e, com.example.refugeeshelter.filter.CustomAuthorizationFilter@11030d33, com.example.refugeeshelter.filter.CustomAuthenticationFilter@6a5fbcc0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f351c65, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@4234ef3b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24d63184, org.springframework.security.web.session.SessionManagementFilter@33dd9064, org.springframework.security.web.access.ExceptionTranslationFilter@153d0830, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@52c53c57]
+2022-10-20 00:50:11.436  INFO 5680 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-20 00:50:11.444  INFO 5680 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-20 00:50:11.448  INFO 5680 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 0.825 seconds (JVM running for 2761.751)
+2022-10-20 00:50:11.449  INFO 5680 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-20 00:50:33.450  INFO 5680 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:33.456  INFO 5680 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown initiated...
+2022-10-20 00:50:33.465  INFO 5680 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-15 - Shutdown completed.
+2022-10-20 00:50:40.544  INFO 10630 --- [main] c.e.r.RefugeeShelterApplicationTests     : Starting RefugeeShelterApplicationTests using Java 17 on MacBook-Air-Anton.local with PID 10630 (started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:50:40.545 DEBUG 10630 --- [main] c.e.r.RefugeeShelterApplicationTests     : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:50:40.545  INFO 10630 --- [main] c.e.r.RefugeeShelterApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:50:40.867  INFO 10630 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:50:40.901  INFO 10630 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:50:41.170  INFO 10630 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:50:41.309  INFO 10630 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:50:41.352  INFO 10630 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:50:41.379  INFO 10630 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:50:41.461  INFO 10630 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:50:41.530  INFO 10630 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:50:41.849  INFO 10630 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:50:41.855  INFO 10630 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:42.143  WARN 10630 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:50:42.275  INFO 10630 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@374ba492, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@581d5b33, org.springframework.security.web.context.SecurityContextPersistenceFilter@1b6e4761, org.springframework.security.web.authentication.logout.LogoutFilter@1abbc1d4, com.example.refugeeshelter.filter.CustomAuthorizationFilter@1f365a26, com.example.refugeeshelter.filter.CustomAuthenticationFilter@44a9971f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@656302c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@61d150af, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2e2cd42c, org.springframework.security.web.session.SessionManagementFilter@3e5b2630, org.springframework.security.web.access.ExceptionTranslationFilter@75345e47, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@68de8522]
+2022-10-20 00:50:42.594  INFO 10630 --- [main] c.e.r.RefugeeShelterApplicationTests     : Started RefugeeShelterApplicationTests in 2.199 seconds (JVM running for 2.711)
+2022-10-20 00:50:42.709  INFO 10630 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:50:42.710  INFO 10630 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:50:42.714  INFO 10630 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-20 00:54:29.393  INFO 11104 --- [main] c.e.r.RefugeeShelterApplicationTests     : Starting RefugeeShelterApplicationTests using Java 17 on MacBook-Air-Anton.local with PID 11104 (started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:54:29.394 DEBUG 11104 --- [main] c.e.r.RefugeeShelterApplicationTests     : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:54:29.394  INFO 11104 --- [main] c.e.r.RefugeeShelterApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:54:29.678  INFO 11104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:54:29.714  INFO 11104 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:54:29.944  INFO 11104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:54:30.082  INFO 11104 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:54:30.118  INFO 11104 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:54:30.138  INFO 11104 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:54:30.204  INFO 11104 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:54:30.265  INFO 11104 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:54:30.533  INFO 11104 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:54:30.537  INFO 11104 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:54:30.794  WARN 11104 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:54:30.905  INFO 11104 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@446dacf9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13018f00, org.springframework.security.web.context.SecurityContextPersistenceFilter@68a94e58, org.springframework.security.web.authentication.logout.LogoutFilter@38856d6e, com.example.refugeeshelter.filter.CustomAuthorizationFilter@abf1816, com.example.refugeeshelter.filter.CustomAuthenticationFilter@2e1e7bc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3e5b2630, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1b6e4761, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7bd1098, org.springframework.security.web.session.SessionManagementFilter@7b7b1448, org.springframework.security.web.access.ExceptionTranslationFilter@3fa57aa8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@280c3dc0]
+2022-10-20 00:54:31.177  INFO 11104 --- [main] c.e.r.RefugeeShelterApplicationTests     : Started RefugeeShelterApplicationTests in 1.921 seconds (JVM running for 2.348)
+2022-10-20 00:54:31.287  INFO 11104 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:54:31.288  INFO 11104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:54:31.290  INFO 11104 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-20 00:55:32.305  INFO 11286 --- [main] c.e.r.RefugeeShelterApplicationTests     : Starting RefugeeShelterApplicationTests using Java 17 on MacBook-Air-Anton.local with PID 11286 (started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-20 00:55:32.306 DEBUG 11286 --- [main] c.e.r.RefugeeShelterApplicationTests     : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-20 00:55:32.308  INFO 11286 --- [main] c.e.r.RefugeeShelterApplicationTests     : No active profile set, falling back to 1 default profile: "default"
+2022-10-20 00:55:32.675  INFO 11286 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-20 00:55:32.712  INFO 11286 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 4 JPA repository interfaces.
+2022-10-20 00:55:32.964  INFO 11286 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-10-20 00:55:33.103  INFO 11286 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-10-20 00:55:33.132  INFO 11286 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-20 00:55:33.151  INFO 11286 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-10-20 00:55:33.221  INFO 11286 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-10-20 00:55:33.284  INFO 11286 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-20 00:55:33.577  INFO 11286 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-20 00:55:33.581  INFO 11286 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:55:33.811  WARN 11286 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-20 00:55:33.922  INFO 11286 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@446dacf9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@13018f00, org.springframework.security.web.context.SecurityContextPersistenceFilter@49741274, org.springframework.security.web.authentication.logout.LogoutFilter@299ea986, com.example.refugeeshelter.filter.CustomAuthorizationFilter@abf1816, com.example.refugeeshelter.filter.CustomAuthenticationFilter@2e1e7bc6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1c22642d, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@f453129, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7bd1098, org.springframework.security.web.session.SessionManagementFilter@60cc20e1, org.springframework.security.web.access.ExceptionTranslationFilter@7d4bdbd8, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@280c3dc0]
+2022-10-20 00:55:34.220  INFO 11286 --- [main] c.e.r.RefugeeShelterApplicationTests     : Started RefugeeShelterApplicationTests in 2.1 seconds (JVM running for 2.515)
+2022-10-20 00:55:34.360  INFO 11286 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-20 00:55:34.361  INFO 11286 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-20 00:55:34.364  INFO 11286 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

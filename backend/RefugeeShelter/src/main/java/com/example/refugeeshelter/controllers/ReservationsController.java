@@ -27,7 +27,7 @@ public class ReservationsController {
         return ResponseEntity.ok().body(reservationsList);
     }
 
-    @GetMapping("/reservations/users/{ownerId}")
+    @GetMapping("/users/{ownerId}/reservations")
     public ResponseEntity<?> getReservationsByOwnerId(@PathVariable Long ownerId) {
         List<Reservations> reservations;
         try {
@@ -50,7 +50,7 @@ public class ReservationsController {
         return ResponseEntity.ok().body(reservations);
     }
 
-    @PostMapping("/reservations/users/{userId}/rooms/{roomId}")
+    @PostMapping("/users/{userId}/reservations/rooms/{roomId}")
     public ResponseEntity<?> saveReservation(@PathVariable Long userId, @PathVariable Long roomId, @RequestBody Reservations newReservation) {
         Reservations reservation;
         try {

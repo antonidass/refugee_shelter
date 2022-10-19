@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS Rooms
     has_kitchen  bool,
     has_bathroom bool,
     description  varchar,
+    image_url    varchar,
     owner_id     int,
     foreign key (owner_id) references Users (id)
 );
@@ -63,7 +64,6 @@ VALUES ('Ivan Petrov', 'akrik', '$2a$10$NoRqTHgJnBCQa9njTunq9eux7nbJrD4.OacHv9n1
 
 INSERT INTO Role(name)
 VALUES ('ROLE_USER'),
-       ('ROLE_MANAGER'),
        ('ROLE_ADMIN');
 
 
@@ -71,18 +71,18 @@ INSERT INTO user_roles(user_id, roles_id)
 VALUES (1, 1),
        (2, 2),
        (3, 2),
-       (4, 3);
+       (4, 1);
 
 INSERT INTO user_roles(user_id, roles_id)
-VALUES (1, 3);
+VALUES (1, 2);
 
 
-INSERT INTO Rooms( address, latitude, longitude, price, has_kitchen, has_bathroom, description, owner_id)
-VALUES ( 'Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good rooms for refugees....', 1),
-       ( 'Moscow, Chertanovo St. 1, 12', 0, 0, 1300, true, true, 'Really good refugees....', 2),
-       ( 'Moscow, Ivanov St. 5, 253', 0, 0, 200, false, false, 'Super offer for gays rooms for refugees....', 3),
-       ( 'Moscow, Lenina St. 1, 4', 0, 0, 700, false, true, 'Only for Ukrainian for refugees....', 4),
-       ( 'Moscow, Pesina St. 2, 425', 0, 0, 900, false, false, 'Easy  rooms for refugees....', 4);
+INSERT INTO Rooms( address, latitude, longitude, price, has_kitchen, has_bathroom, description, image_url, owner_id)
+VALUES ( 'Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good rooms for refugees....', 'https://testimages.com/32', 1),
+       ( 'Moscow, Chertanovo St. 1, 12', 0, 0, 1300, true, true, 'Really good refugees....', 'https://testimages.com/12', 2),
+       ( 'Moscow, Ivanov St. 5, 253', 0, 0, 200, false, false, 'Super offer for gays rooms for refugees....', 'https://testimages.com/54', 3),
+       ( 'Moscow, Lenina St. 1, 4', 0, 0, 700, false, true, 'Only for Ukrainian for refugees....', 'https://testimages.com/1', 4),
+       ( 'Moscow, Pesina St. 2, 425', 0, 0, 900, false, false, 'Easy  rooms for refugees....', 'https://testimages.com/5', 4);
 
 
 INSERT INTO Reservations( start_date, end_date, room_id, user_id)

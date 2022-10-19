@@ -32,6 +32,9 @@ public class Rooms {
     @Column
     private Long price;
 
+    @Column(name = "image_url")
+    private String imageUrl;
+
     @Column(name = "has_kitchen")
     private Boolean hasKitchen;
 
@@ -50,6 +53,7 @@ public class Rooms {
         latitude = newRooms.getLatitude();
         longitude = newRooms.getLongitude();
         price = newRooms.getPrice();
+        imageUrl = newRooms.getImageUrl();
         hasKitchen = newRooms.getHasKitchen();
         hasBathroom = newRooms.getHasBathroom();
         description = newRooms.getDescription();

@@ -27,7 +27,7 @@ public class RoomsController {
         return ResponseEntity.ok().body(roomsList);
     }
 
-    @GetMapping("/rooms/user/{ownerId}")
+    @GetMapping("/users/{ownerId}/rooms")
     public ResponseEntity<?> getUserRooms(@PathVariable Long ownerId) {
         List<Rooms> rooms;
         try {

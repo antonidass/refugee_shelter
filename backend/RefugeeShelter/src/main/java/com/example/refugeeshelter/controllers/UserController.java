@@ -7,8 +7,8 @@ import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.FileStorageException;
-import com.example.refugeeshelter.payload.RoleToUserRequest;
-import com.example.refugeeshelter.service.UserService;
+import com.example.refugeeshelter.payload.UserPatchForm;
+import com.example.refugeeshelter.service.UserServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -31,7 +31,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequestMapping("/api/v1")
 @Slf4j
 public class UserController {
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
     @GetMapping("/users")
     public ResponseEntity<List<User>> getUsers() {
@@ -42,6 +42,17 @@ public class UserController {
     public ResponseEntity<User> saveUser(@RequestBody User user) {
         URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/save").toUriString());
         return ResponseEntity.created(uri).body(userService.saveUser(user));
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<User> registerUser(@RequestBody User user) {
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/register").toUriString());
+        User savedUser = userService.saveUser(user);
+        // Добавляем роль юзеру
+        UserPatchForm userPatchForm = new UserPatchForm();
+        userPatchForm.setRole("ROLE_USER");
+        userService.addRoleToUser(savedUser.getId(), userPatchForm);
+        return ResponseEntity.created(uri).body(savedUser);
     }
 
     @PutMapping("/users/{id}")
@@ -73,10 +84,9 @@ public class UserController {
         return ResponseEntity.created(uri).body(userService.saveRole(role));
     }
 
-    @PostMapping("/users/save/role")
-    public ResponseEntity<?> saveRoleToUser(@RequestBody RoleToUserRequest form) {
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/api/users/save/role").toUriString());
-        return ResponseEntity.created(uri).body(userService.addRoleToUser(form.getUserName(), form.getRoleName()));
+    @PatchMapping("/users/{id}")
+    public ResponseEntity<?> addRoleToUser(@PathVariable Long id, @RequestBody UserPatchForm newUser) {
+        return ResponseEntity.ok().body(userService.addRoleToUser(id, newUser));
     }
 
     @GetMapping("/token/refresh")
@@ -105,7 +115,6 @@ public class UserController {
                 response.setContentType(APPLICATION_JSON_VALUE);
                 new ObjectMapper().writeValue(response.getOutputStream(), token);
             } catch (Exception e) {
-//                response.setHeader("error", "ahahah");
                 response.setStatus(FORBIDDEN.value());
                 Map<String, String> error = new HashMap<>();
                 error.put("error_message", e.getMessage());

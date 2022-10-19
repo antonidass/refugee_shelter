@@ -9,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @SpringBootApplication
 public class RefugeeShelterApplication {
 
-
     public static void main(String[] args) {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String result = bCryptPasswordEncoder.encode("akrik1234");
