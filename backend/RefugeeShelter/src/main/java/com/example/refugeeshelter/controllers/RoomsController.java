@@ -1,8 +1,11 @@
 package com.example.refugeeshelter.controllers;
 
 
+import com.example.refugeeshelter.dto.ApiResponse;
+import com.example.refugeeshelter.dto.response.RoomsResponse;
 import com.example.refugeeshelter.entities.Rooms;
 import com.example.refugeeshelter.exceptions.FileStorageException;
+import com.example.refugeeshelter.exceptions.ResourceNotFoundException;
 import com.example.refugeeshelter.filter.FilteredReservationsObjectMapper;
 import com.example.refugeeshelter.service.RoomsService;
 import lombok.RequiredArgsConstructor;
@@ -21,9 +24,10 @@ import java.util.List;
 public class RoomsController {
     private final RoomsService roomsService;
 
+
     @GetMapping(value = "/rooms")
     public ResponseEntity<?> getRooms() {
-        List<Rooms> roomsList = roomsService.getRooms();
+        List<RoomsResponse> roomsList = roomsService.getRooms();
         return ResponseEntity.ok().body(roomsList);
     }
 
@@ -42,16 +46,10 @@ public class RoomsController {
 
     @GetMapping("/rooms/{id}")
     public ResponseEntity<?> getRoomById(@PathVariable Long id) {
-        Rooms room;
-        try {
-            room = roomsService.getRoomById(id);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
-        }
-        return ResponseEntity.ok().body(room);
+        return roomsService.getRoomById(id);
     }
 
-    @PostMapping(value = "/rooms", consumes = "application/json")
+    @PostMapping(value = "/rooms", consumes = "application/json", produces = "application/json")
     public ResponseEntity<?> saveRoom(@RequestParam Long ownerId, @RequestBody Rooms newRoom) {
         Rooms room;
         try {

@@ -20,39 +20,39 @@ services:
       - SPRING_DATASOURCE_PASSWORD=akrik
       - SERVER_PORT=8081
 
-  # backend_2:
-  #   depends_on:
-  #     - ref_shel_db
-  #   container_name: backend_2
-  #   image: springboot-app
-  #   ports:
-  #     - "8082:8082"
-  #   build:
-  #     context: ../backend/RefugeeShelter
-  #     dockerfile: Dockerfile
+  backend_2:
+    depends_on:
+      - ref_shel_db
+    container_name: backend_2
+    image: springboot-app
+    ports:
+      - "8082:8082"
+    build:
+      context: ../backend/RefugeeShelter
+      dockerfile: Dockerfile
 
-  #   environment:
-  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://ref_shel_db:5432/ref_shel
-  #     - SPRING_DATASOURCE_USERNAME=akrik
-  #     - SPRING_DATASOURCE_PASSWORD=akrik
-  #     - SERVER_PORT=8082
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ref_shel_db:5432/ref_shel
+      - SPRING_DATASOURCE_USERNAME=akrik
+      - SPRING_DATASOURCE_PASSWORD=akrik
+      - SERVER_PORT=8082
 
-  # backend_3:
-  #   depends_on:
-  #     - ref_shel_db
-  #   container_name: backend_3
-  #   image: springboot-app
-  #   ports:
-  #     - "8083:8083"
-  #   build:
-  #     context: ../backend/RefugeeShelter
-  #     dockerfile: Dockerfile
+  backend_3:
+    depends_on:
+      - ref_shel_db
+    container_name: backend_3
+    image: springboot-app
+    ports:
+      - "8083:8083"
+    build:
+      context: ../backend/RefugeeShelter
+      dockerfile: Dockerfile
 
-  # environment:
-  #   - SPRING_DATASOURCE_URL=jdbc:postgresql://ref_shel_db:5432/ref_shel
-  #   - SPRING_DATASOURCE_USERNAME=akrik
-  #   - SPRING_DATASOURCE_PASSWORD=akrik
-  #   - SERVER_PORT=8083
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://ref_shel_db:5432/ref_shel
+      - SPRING_DATASOURCE_USERNAME=akrik
+      - SPRING_DATASOURCE_PASSWORD=akrik
+      - SERVER_PORT=8083
 
   # backend_4:
   #   depends_on:

@@ -29,7 +29,7 @@ public class ReservationsService {
     }
 
     public Reservations getReservationsById(Long id) {
-        return reservationsRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find reservation with id = " + id));
+        return reservationsRepo.findById(id).orElseThrow(() -> new FileStorageException("Cannot find reservation with" + id));
     }
 
     public List<Reservations> getReservationsByOwnerId(Long ownerId) {
