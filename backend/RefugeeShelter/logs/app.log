@@ -8612,3 +8612,34 @@ org.springframework.security.web.firewall.RequestRejectedException: The request 
 2022-10-28 18:16:39.992  INFO 25557 --- [http-nio-8081-exec-7] c.e.r.filter.CustomAuthorizationFilter   : Handle without parsing token...
 2022-10-28 18:16:40.029 ERROR 25557 --- [http-nio-8081-exec-7] c.e.r.e.RestControllerExceptionHandler   : Error with message = Cannot find room with id: '3333'
 2022-10-28 18:16:40.035  WARN 25557 --- [http-nio-8081-exec-7] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [com.example.refugeeshelter.exceptions.ResourceNotFoundException]
+2022-10-28 18:48:15.004  INFO 25557 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 49 class path changes (0 additions, 0 deletions, 49 modifications)
+2022-10-28 18:48:15.024  INFO 25557 --- [Thread-6] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-10-28 18:48:15.026  INFO 25557 --- [Thread-6] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2022-10-28 18:48:15.048  INFO 25557 --- [Thread-6] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-28 18:48:15.064  INFO 25557 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-10-28 18:48:15.085  INFO 25557 --- [Thread-6] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-10-28 18:48:15.506  INFO 25557 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Starting RefugeeShelterApplication using Java 1.8.0_311 on MacBook-Air-Anton.local with PID 25557 (/Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter/target/classes started by akrik in /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter)
+2022-10-28 18:48:15.509 DEBUG 25557 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Running with Spring Boot v2.7.4, Spring v5.3.23
+2022-10-28 18:48:15.510  INFO 25557 --- [restartedMain] c.e.r.RefugeeShelterApplication          : No active profile set, falling back to 1 default profile: "default"
+2022-10-28 18:48:15.819  INFO 25557 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-10-28 18:48:15.843  INFO 25557 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 21 ms. Found 4 JPA repository interfaces.
+2022-10-28 18:48:16.019  INFO 25557 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2022-10-28 18:48:16.021  INFO 25557 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-10-28 18:48:16.021  INFO 25557 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-10-28 18:48:16.033  INFO 25557 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-10-28 18:48:16.033  INFO 25557 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 513 ms
+2022-10-28 18:48:16.086  INFO 25557 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2022-10-28 18:48:16.141  INFO 25557 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2022-10-28 18:48:16.148  INFO 25557 --- [restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-10-28 18:48:16.154  INFO 25557 --- [restartedMain] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL10Dialect
+2022-10-28 18:48:16.390  INFO 25557 --- [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-10-28 18:48:16.390  INFO 25557 --- [restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-10-28 18:48:16.592  WARN 25557 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-10-28 18:48:16.646  INFO 25557 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3c1201dc, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ea3bf77, org.springframework.security.web.context.SecurityContextPersistenceFilter@f091a7a, org.springframework.security.web.authentication.logout.LogoutFilter@3eb4e085, com.example.refugeeshelter.filter.CustomAuthorizationFilter@338b3600, com.example.refugeeshelter.filter.CustomAuthenticationFilter@59b716d4, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3ba4b731, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@786a7aa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7587e0df, org.springframework.security.web.session.SessionManagementFilter@2df81c3, org.springframework.security.web.access.ExceptionTranslationFilter@35d139e6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4c94c845]
+2022-10-28 18:48:16.793  INFO 25557 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-10-28 18:48:16.811  INFO 25557 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2022-10-28 18:48:16.818  INFO 25557 --- [restartedMain] c.e.r.RefugeeShelterApplication          : Started RefugeeShelterApplication in 1.449 seconds (JVM running for 4807.175)
+2022-10-28 18:48:16.828  INFO 25557 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2022-10-28 18:48:51.245  INFO 25557 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-10-28 18:48:51.254  INFO 25557 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2022-10-28 18:48:51.272  INFO 25557 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
