@@ -77,19 +77,24 @@ INSERT INTO user_roles(user_id, roles_id)
 VALUES (1, 2);
 
 
-INSERT INTO Rooms( address, latitude, longitude, price, has_kitchen, has_bathroom, description, image_url, owner_id)
-VALUES ( 'Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good rooms for refugees....', 'https://testimages.com/32', 1),
-       ( 'Moscow, Chertanovo St. 1, 12', 0, 0, 1300, true, true, 'Really good refugees....', 'https://testimages.com/12', 2),
-       ( 'Moscow, Ivanov St. 5, 253', 0, 0, 200, false, false, 'Super offer for gays rooms for refugees....', 'https://testimages.com/54', 3),
-       ( 'Moscow, Lenina St. 1, 4', 0, 0, 700, false, true, 'Only for Ukrainian for refugees....', 'https://testimages.com/1', 4),
-       ( 'Moscow, Pesina St. 2, 425', 0, 0, 900, false, false, 'Easy  rooms for refugees....', 'https://testimages.com/5', 4);
+INSERT INTO Rooms(address, latitude, longitude, price, has_kitchen, has_bathroom, description, image_url, owner_id)
+VALUES ('Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good rooms for refugees....',
+        'https://testimages.com/32', 1),
+       ('Moscow, Chertanovo St. 1, 12', 0, 0, 1300, true, true, 'Really good refugees....', 'https://testimages.com/12',
+        2),
+       ('Moscow, Ivanov St. 5, 253', 0, 0, 200, false, false, 'Super offer for gays rooms for refugees....',
+        'https://testimages.com/54', 3),
+       ('Moscow, Lenina St. 1, 4', 0, 0, 700, false, true, 'Only for Ukrainian for refugees....',
+        'https://testimages.com/1', 4),
+       ('Moscow, Pesina St. 2, 425', 0, 0, 900, false, false, 'Easy  rooms for refugees....',
+        'https://testimages.com/5', 4);
 
 
-INSERT INTO Reservations( start_date, end_date, room_id, user_id)
-VALUES ( '2022-04-23', '2022-05-23', 5, 3),
-       ( '2022-05-13', '2022-08-10', 5, 2),
-       ( '2022-03-13', '2022-07-05', 4, 3),
-       ( '2022-02-22', '2022-05-10', 3, 1);
+INSERT INTO Reservations(start_date, end_date, room_id, user_id)
+VALUES ('2022-04-23', '2022-05-23', 5, 3),
+       ('2022-05-13', '2022-08-10', 5, 2),
+       ('2022-03-13', '2022-07-05', 4, 3),
+       ('2022-02-22', '2022-05-10', 3, 1);
 
 DROP TABLE IF EXISTS user_roles;
 drop table if exists role;

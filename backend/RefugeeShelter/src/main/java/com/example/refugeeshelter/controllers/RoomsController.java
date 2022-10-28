@@ -1,96 +1,53 @@
 package com.example.refugeeshelter.controllers;
 
-
-import com.example.refugeeshelter.dto.ApiResponse;
 import com.example.refugeeshelter.dto.response.RoomsResponse;
-import com.example.refugeeshelter.entities.Rooms;
-import com.example.refugeeshelter.exceptions.FileStorageException;
-import com.example.refugeeshelter.exceptions.ResourceNotFoundException;
-import com.example.refugeeshelter.filter.FilteredReservationsObjectMapper;
 import com.example.refugeeshelter.service.RoomsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1")
 @Slf4j
 public class RoomsController {
-    private final RoomsService roomsService;
+  private final RoomsService roomsService;
 
+  @GetMapping(value = "/rooms")
+  public ResponseEntity<?> getRooms() {
+    return roomsService.getRooms();
+  }
 
-    @GetMapping(value = "/rooms")
-    public ResponseEntity<?> getRooms() {
-        List<RoomsResponse> roomsList = roomsService.getRooms();
-        return ResponseEntity.ok().body(roomsList);
-    }
+  @GetMapping("/users/{ownerId}/rooms")
+  public ResponseEntity<?> getUserRooms(@PathVariable Long ownerId) {
+    return roomsService.getRoomsByOwnerId(ownerId);
+  }
 
-    @GetMapping("/users/{ownerId}/rooms")
-    public ResponseEntity<?> getUserRooms(@PathVariable Long ownerId) {
-        List<Rooms> rooms;
-        try {
-            rooms = roomsService.getRoomsByOwnerId(ownerId);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Room with owner id = " + ownerId + " not founded!");
-        }
+  @GetMapping("/rooms/{id}")
+  public ResponseEntity<?> getRoomById(@PathVariable Long id) {
+    return roomsService.getRoomById(id);
+  }
 
-        MappingJacksonValue filteredRooms = FilteredReservationsObjectMapper.getInstance().getMappingJacksonValue(rooms);
-        return ResponseEntity.ok().body(filteredRooms);
-    }
+  @PostMapping(value = "/rooms", consumes = "application/json", produces = "application/json")
+  public ResponseEntity<?> saveRoom(@RequestBody RoomsResponse newRoom) {
+    return roomsService.saveRoom(newRoom);
+  }
 
-    @GetMapping("/rooms/{id}")
-    public ResponseEntity<?> getRoomById(@PathVariable Long id) {
-        return roomsService.getRoomById(id);
-    }
+  @PutMapping("/rooms/{id}")
+  public ResponseEntity<?> updateRoomById(
+      @PathVariable Long id, @RequestBody RoomsResponse newRoom) {
+    return roomsService.updateRoom(id, newRoom);
+  }
 
-    @PostMapping(value = "/rooms", consumes = "application/json", produces = "application/json")
-    public ResponseEntity<?> saveRoom(@RequestParam Long ownerId, @RequestBody Rooms newRoom) {
-        Rooms room;
-        try {
-            room = roomsService.saveRoom(ownerId, newRoom);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Owner with id = " + ownerId + " not founded!");
-        }
-        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/rooms/{ownerId}").toUriString());
-        return ResponseEntity.created(uri).body(room);
-    }
+  @PatchMapping("/rooms/{id}")
+  public ResponseEntity<?> patchRoomById(
+      @PathVariable Long id, @RequestBody RoomsResponse newRoom) {
+    return roomsService.patchRoom(id, newRoom);
+  }
 
-    @PutMapping("/rooms/{id}")
-    public ResponseEntity<?> updateRoomById(@PathVariable Long id, @RequestBody Rooms newRoom) {
-        Rooms room;
-        try {
-            room = roomsService.updateRoom(id, newRoom);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
-        }
-        return ResponseEntity.ok().body(room);
-    }
-
-    @PatchMapping("/rooms/{id}")
-    public ResponseEntity<?> patchRoomById(@PathVariable Long id, @RequestBody Rooms newRoom) {
-        Rooms room;
-        try {
-            room = roomsService.patchRoom(id, newRoom);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
-        }
-        return ResponseEntity.ok().body(room);
-    }
-
-    @DeleteMapping("/rooms/{id}")
-    public ResponseEntity<?> deleteRoomById(@PathVariable Long id) {
-        Rooms room;
-        try {
-            room = roomsService.deleteRoom(id);
-        } catch (FileStorageException e) {
-            return ResponseEntity.badRequest().body("Room with id = " + id + " not founded!");
-        }
-        return ResponseEntity.ok().body(room);
-    }
+  @DeleteMapping("/rooms/{id}")
+  public ResponseEntity<?> deleteRoomById(@PathVariable Long id) {
+    return roomsService.deleteRoom(id);
+  }
 }

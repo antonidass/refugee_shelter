@@ -15,6 +15,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.http.HttpMethod.*;
@@ -45,14 +46,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Неавторизованные пользователи могут просматривать информацию о жилье
         http.authorizeRequests().antMatchers(GET, "/api/v1/reservations/**", "/api/v1/rooms/**").permitAll();
-
+            // TODO fix
         // Авторизованные могут размещать жилье и бронировать...
         http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PUT, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
         http.authorizeRequests().antMatchers(PATCH, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
         http.authorizeRequests().antMatchers(DELETE, "/api/v1/reservations/**", "/api/v1/rooms/**").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
         http.authorizeRequests().antMatchers(GET, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
-        http.authorizeRequests().antMatchers(POST, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(POST, "/api/v1/reservations/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(PUT, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(DELETE, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().antMatchers(PATCH, "/api/v1/users/*/reservations/**").hasAnyAuthority("ROLE_USER");
@@ -85,5 +86,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public AccessDeniedHandler accessDeniedHandler(){
         return new CustomForbiddenHandler();
+    }
+
+    @Bean
+    public AuthenticationFailureHandler authenticationFailureHandler() {
+        return new CustomAuthenticationFailureHandler();
     }
 }

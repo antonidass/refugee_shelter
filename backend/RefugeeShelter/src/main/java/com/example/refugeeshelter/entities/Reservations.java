@@ -3,6 +3,7 @@ package com.example.refugeeshelter.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +12,7 @@ import java.util.Date;
 @Table(name = "reservations")
 @Data
 @NoArgsConstructor
+@ToString
 @AllArgsConstructor
 public class Reservations {
     @Id
@@ -34,5 +36,16 @@ public class Reservations {
     public void setFields(Reservations newReservation) {
         startDate = newReservation.getStartDate();
         endDate = newReservation.getEndDate();
+    }
+
+    public Reservations(Date startDate, Date endDate) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public Reservations(Long id, Date startDate, Date endDate) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 }

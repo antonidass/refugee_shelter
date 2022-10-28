@@ -17,6 +17,13 @@ import java.util.List;
 @Table(name = "users")
 @Entity
 public class User {
+    public User(Long id, String name, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
