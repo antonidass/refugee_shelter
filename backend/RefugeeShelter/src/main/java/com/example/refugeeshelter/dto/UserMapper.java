@@ -1,15 +1,13 @@
 package com.example.refugeeshelter.dto;
 
-import com.example.refugeeshelter.dto.response.RoomsResponse;
-import com.example.refugeeshelter.dto.response.UserResponse;
-import com.example.refugeeshelter.entities.Rooms;
+import com.example.refugeeshelter.dto.response.UserDTO;
 import com.example.refugeeshelter.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserMapper {
-    public UserResponse toDto(User user) {
-        return new UserResponse(
+    public UserDTO toDto(User user) {
+        return new UserDTO(
                 user.getId(),
                 user.getName(),
                 user.getEmail(),
@@ -17,7 +15,7 @@ public class UserMapper {
     }
 
     // todo kek
-    public User toUser(UserResponse userResponse) {
+    public User toUser(UserDTO userResponse) {
         return new User(
                 userResponse.getId(),
                 userResponse.getName(),

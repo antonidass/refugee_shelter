@@ -1,15 +1,10 @@
 package com.example.refugeeshelter.dto;
 
 import com.example.refugeeshelter.dto.response.ReservationResponse;
-import com.example.refugeeshelter.dto.response.RoomsResponse;
-import com.example.refugeeshelter.dto.response.UserResponse;
+import com.example.refugeeshelter.dto.response.RoomsDTO;
+import com.example.refugeeshelter.dto.response.UserDTO;
 import com.example.refugeeshelter.entities.Reservations;
-import com.example.refugeeshelter.filter.FilterRoomsObject;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 
 @Component
 public class ReservationMapper {
@@ -21,10 +16,10 @@ public class ReservationMapper {
   }
 
   public ReservationResponse toDto(Reservations reservations) {
-    RoomsResponse roomsResponse = roomMapper.toDto(reservations.getRoom());
+    RoomsDTO roomsResponse = roomMapper.toDto(reservations.getRoom());
 
-    UserResponse userResponse =
-        new UserResponse(
+    UserDTO userResponse =
+        new UserDTO(
             reservations.getUser().getId(),
             reservations.getUser().getName(),
             reservations.getUser().getEmail(),
@@ -40,10 +35,10 @@ public class ReservationMapper {
 
   // TODO fix fix fix
   public ReservationResponse toDto(Reservations reservations, Boolean deleteUserField) {
-    RoomsResponse roomsResponse = roomMapper.toDto(reservations.getRoom());
+    RoomsDTO roomsResponse = roomMapper.toDto(reservations.getRoom());
 
-    UserResponse userResponse =
-            new UserResponse(
+    UserDTO userResponse =
+            new UserDTO(
                     reservations.getUser().getId(),
                     reservations.getUser().getName(),
                     reservations.getUser().getEmail(),

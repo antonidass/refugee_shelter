@@ -1,6 +1,6 @@
 package com.example.refugeeshelter.controllers;
 
-import com.example.refugeeshelter.dto.response.RoomsResponse;
+import com.example.refugeeshelter.dto.response.RoomsDTO;
 import com.example.refugeeshelter.service.RoomsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,19 +30,19 @@ public class RoomsController {
   }
 
   @PostMapping(value = "/rooms", consumes = "application/json", produces = "application/json")
-  public ResponseEntity<?> saveRoom(@RequestBody RoomsResponse newRoom) {
+  public ResponseEntity<?> saveRoom(@RequestBody RoomsDTO newRoom) {
     return roomsService.saveRoom(newRoom);
   }
 
   @PutMapping("/rooms/{id}")
   public ResponseEntity<?> updateRoomById(
-      @PathVariable Long id, @RequestBody RoomsResponse newRoom) {
+      @PathVariable Long id, @RequestBody RoomsDTO newRoom) {
     return roomsService.updateRoom(id, newRoom);
   }
 
   @PatchMapping("/rooms/{id}")
   public ResponseEntity<?> patchRoomById(
-      @PathVariable Long id, @RequestBody RoomsResponse newRoom) {
+      @PathVariable Long id, @RequestBody RoomsDTO newRoom) {
     return roomsService.patchRoom(id, newRoom);
   }
 

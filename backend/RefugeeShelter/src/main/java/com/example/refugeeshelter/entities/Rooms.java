@@ -1,10 +1,7 @@
 package com.example.refugeeshelter.entities;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -15,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@Builder
 @JsonFilter("reservationsFilter")
 public class Rooms {
     @Id

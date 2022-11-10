@@ -87,11 +87,7 @@ public class ReservationsService {
                     new ResourceNotFoundException(
                         "Cannot find room with", "id", reservationRequest.getRoomId()));
 
-    URI uri =
-        URI.create(
-            ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/reservations/{ownerId}")
-                .toUriString());
+    URI uri = URI.create("");
 
     // Check dates for correct  TODO to validation layer
     if (reservationRequest.getStartDate().after(reservationRequest.getEndDate())) {
@@ -139,19 +135,20 @@ public class ReservationsService {
     }
     // Check if dates not available
     List<Reservations> reservationsCheckList =
-            reservationsRepo.findByRoomId(newReservation.getRoomId()).get();
+        reservationsRepo.findByRoomId(newReservation.getRoomId()).get();
     reservationsCheckList.forEach(
-            res -> {
-              if ((newReservation.getStartDate().before(res.getStartDate())
-                      && newReservation.getEndDate().before(res.getStartDate()))
-                      || (newReservation.getStartDate().after(res.getEndDate()))) {
-              } else {
-                // TODO check exceptions all refactor
-                throw new LogicException();
-              }
-            });
+        res -> {
+          if ((newReservation.getStartDate().before(res.getStartDate())
+                  && newReservation.getEndDate().before(res.getStartDate()))
+              || (newReservation.getStartDate().after(res.getEndDate()))) {
+          } else {
+            // TODO check exceptions all refactor
+            throw new LogicException();
+          }
+        });
 
-    reservations.setFields(new Reservations(newReservation.getStartDate(), newReservation.getEndDate()));
+    reservations.setFields(
+        new Reservations(newReservation.getStartDate(), newReservation.getEndDate()));
     return ResponseEntity.ok().body(reservationMapper.toDto(reservationsRepo.save(reservations)));
   }
 

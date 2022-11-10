@@ -2,7 +2,7 @@ package com.example.refugeeshelter.service;
 
 import com.example.refugeeshelter.dto.ApiResponse;
 import com.example.refugeeshelter.dto.RoomMapper;
-import com.example.refugeeshelter.dto.response.RoomsResponse;
+import com.example.refugeeshelter.dto.response.RoomsDTO;
 import com.example.refugeeshelter.entities.Rooms;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.ForbiddenException;
@@ -37,7 +37,7 @@ public class RoomsService {
 
   public ResponseEntity<?> getRooms() {
     List<Rooms> roomsList = roomsRepo.findAll();
-    List<RoomsResponse> roomsResponse = new ArrayList<>(roomsList.size());
+    List<RoomsDTO> roomsResponse = new ArrayList<>(roomsList.size());
 
     roomsList.forEach(room -> roomsResponse.add(roomMapper.toDto(room)));
     return ResponseEntity.ok().body(roomsResponse);
@@ -58,7 +58,7 @@ public class RoomsService {
             () -> new ResourceNotFoundException("Cannot find user with id", "id", ownerId));
 
     List<Rooms> rooms = roomsRepo.findByUserId(ownerId).orElse(new ArrayList<>());
-    List<RoomsResponse> roomsResponse = new ArrayList<>(rooms.size());
+    List<RoomsDTO> roomsResponse = new ArrayList<>(rooms.size());
     rooms.forEach(room -> roomsResponse.add(roomMapper.toDto(room)));
 
     // Remove user field from response
@@ -68,21 +68,16 @@ public class RoomsService {
     return ResponseEntity.ok().body(filteredRooms);
   }
 
-  public ResponseEntity<?> saveRoom(RoomsResponse roomsResponse) {
+  public ResponseEntity<?> saveRoom(RoomsDTO roomsResponse) {
     // Get owner id through token TODO refactor this
     Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-
     User user =
         userRepo
             .findById(ownerId)
             .orElseThrow(
                 () -> new ResourceNotFoundException("Cannot find user with id", "id", ownerId));
 
-    URI uri =
-        URI.create(
-            ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/rooms/{ownerId}")
-                .toUriString());
+    URI uri = URI.create("");
 
     Rooms rooms = roomMapper.toRooms(roomsResponse);
     rooms.setUser(user);
@@ -90,7 +85,7 @@ public class RoomsService {
     return ResponseEntity.created(uri).body(roomMapper.toDto(roomsRepo.save(rooms)));
   }
 
-  public ResponseEntity<?> updateRoom(Long id, RoomsResponse newRoom) {
+  public ResponseEntity<?> updateRoom(Long id, RoomsDTO newRoom) {
     Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 
     Rooms room =
@@ -107,7 +102,7 @@ public class RoomsService {
     return ResponseEntity.ok().body(roomMapper.toDto(roomsRepo.save(room)));
   }
 
-  public ResponseEntity<?> patchRoom(Long id, RoomsResponse newRoom) {
+  public ResponseEntity<?> patchRoom(Long id, RoomsDTO newRoom) {
     Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 
     Rooms room =

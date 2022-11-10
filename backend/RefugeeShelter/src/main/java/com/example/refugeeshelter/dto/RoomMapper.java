@@ -1,20 +1,21 @@
 package com.example.refugeeshelter.dto;
 
-import com.example.refugeeshelter.dto.response.RoomsResponse;
-import com.example.refugeeshelter.dto.response.UserResponse;
+import com.example.refugeeshelter.dto.response.RoomsDTO;
+import com.example.refugeeshelter.dto.response.UserDTO;
 import com.example.refugeeshelter.entities.Rooms;
+import lombok.Builder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RoomMapper {
-  public RoomsResponse toDto(Rooms room) {
-    UserResponse userResponse = new UserResponse(
+  public RoomsDTO toDto(Rooms room) {
+    UserDTO userResponse = new UserDTO(
             room.getUser().getId(),
             room.getUser().getName(),
             room.getUser().getEmail(),
             room.getUser().getPhone());
 
-    return new RoomsResponse(
+    return new RoomsDTO(
         room.getId(),
         room.getAddress(),
         room.getLatitude(),
@@ -27,7 +28,7 @@ public class RoomMapper {
         userResponse);
   }
 
-  public Rooms toRooms(RoomsResponse roomsResponse) {
+  public Rooms toRooms(RoomsDTO roomsResponse) {
     return new Rooms(
         roomsResponse.getId(),
         roomsResponse.getAddress(),

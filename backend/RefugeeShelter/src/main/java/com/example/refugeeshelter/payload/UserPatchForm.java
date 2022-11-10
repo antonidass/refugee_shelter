@@ -1,7 +1,8 @@
 package com.example.refugeeshelter.payload;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
-
 
 @Data
 public class UserPatchForm {

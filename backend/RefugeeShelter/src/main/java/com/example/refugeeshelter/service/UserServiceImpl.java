@@ -2,10 +2,8 @@ package com.example.refugeeshelter.service;
 
 import com.example.refugeeshelter.dto.ApiResponse;
 import com.example.refugeeshelter.dto.UserMapper;
-import com.example.refugeeshelter.dto.response.RoomsResponse;
-import com.example.refugeeshelter.dto.response.UserResponse;
+import com.example.refugeeshelter.dto.response.UserDTO;
 import com.example.refugeeshelter.entities.Role;
-import com.example.refugeeshelter.entities.Rooms;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.*;
 import com.example.refugeeshelter.payload.UserPatchForm;
@@ -16,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -44,7 +41,7 @@ public class UserServiceImpl implements UserDetailsService {
     log.info("Fetching all users from database");
 
     List<User> userList = userRepo.findAll();
-    List<UserResponse> userResponses = new ArrayList<>(userList.size());
+    List<UserDTO> userResponses = new ArrayList<>(userList.size());
 
     userList.forEach(user -> userResponses.add(userMapper.toDto(user)));
     return ResponseEntity.ok().body(userResponses);
@@ -57,33 +54,21 @@ public class UserServiceImpl implements UserDetailsService {
 
   public ResponseEntity<?> getUserById(Long id) {
     User user =
-            userRepo
-                    .findById(id)
-                    .orElseThrow(() -> new ResourceNotFoundException("Cannot find user with", "id", id));
+        userRepo
+            .findById(id)
+            .orElseThrow(() -> new ResourceNotFoundException("Cannot find user with", "id", id));
     return ResponseEntity.ok().body(userMapper.toDto(user));
   }
 
   public ResponseEntity<?> saveUser(User user) {
     log.info("Saving user {} to the database", user.getEmail());
-
-    URI uri =
-        URI.create(
-            ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/users/save")
-                .toUriString());
-
+    URI uri = URI.create("");
     user.setPassword(passwordEncoder.encode(user.getPassword()));
-
     return ResponseEntity.created(uri).body(userMapper.toDto(userRepo.save(user)));
   }
 
   public ResponseEntity<?> registerUser(User user) {
-    URI uri =
-        URI.create(
-            ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/api/register")
-                .toUriString());
-
+    URI uri = URI.create("");
 
     if (userRepo.findByUsername(user.getUsername()) != null) {
       throw new LogicException();
@@ -95,7 +80,6 @@ public class UserServiceImpl implements UserDetailsService {
     UserPatchForm userPatchForm = new UserPatchForm();
     userPatchForm.setRole("ROLE_USER");
     addRoleToUser(savedUser.getId(), userPatchForm);
-
 
     return ResponseEntity.created(uri).body(userMapper.toDto(savedUser));
   }
