@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("Build") {
+            steps {
+                git "https://github.com/antonidass/refugee_shelter/tree/main/backend/RefugeeShelter"
+                sh "./mvnw clean compile"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "./mvnw test"
+            }
+
+            post {
+                always {
+                    junit '**/target/surefile-reports/TEST-*.xml'
+                }
+            }
+        }
+    }
+}
