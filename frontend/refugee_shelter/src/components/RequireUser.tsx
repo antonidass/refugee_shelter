@@ -1,6 +1,6 @@
 import { useCookies } from "react-cookie";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
-import { userApi } from "../redux/api/userApi";
+// import { userApi } from "../redux/api/userApi";
 // import FullScreenLoader from './FullScreenLoader';
 
 const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {

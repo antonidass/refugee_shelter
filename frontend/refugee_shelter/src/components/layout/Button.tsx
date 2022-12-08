@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <button
-      className={`btn btn-${color} w-${width} h-${height} border-${border}`}
+      className={`bg-primary text-textColor w-${width} border-${border} rounded-md text-xl py-2 hover:opacity-100 duration-200 opacity-90`}
       onClick={onClick}
     >
       {children}

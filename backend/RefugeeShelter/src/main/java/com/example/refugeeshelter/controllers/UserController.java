@@ -76,7 +76,7 @@ public class UserController {
   @PatchMapping("/users/{id}")
   public ResponseEntity<?> addRoleToUser(
       @PathVariable Long id, @RequestBody UserPatchForm newUser) {
-    return ResponseEntity.ok().body(new ApiResponse(true, "Success!"));
+    return ResponseEntity.ok().body(userService.addRoleToUser(id, newUser));
   }
 
   @GetMapping("/token/refresh")

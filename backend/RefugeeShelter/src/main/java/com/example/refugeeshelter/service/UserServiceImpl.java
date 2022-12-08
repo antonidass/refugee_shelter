@@ -69,9 +69,9 @@ public class UserServiceImpl implements UserDetailsService {
 
   public ResponseEntity<?> registerUser(User user) {
     URI uri = URI.create("");
-
+    log.info("Try to register...");
     if (userRepo.findByUsername(user.getUsername()) != null) {
-      throw new LogicException();
+      throw new LogicException("User with " + user.getUsername() + " is already exists...");
     }
 
     user.setPassword(passwordEncoder.encode(user.getPassword()));

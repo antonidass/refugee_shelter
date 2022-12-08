@@ -1,11 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 // import { LoginInput } from "../../pages/Login.page";
 // import { RegisterInput } from "../../pages/Register.page";
-import { IGenericResponse } from "./types";
-import { userApi } from "./userApi";
 import jwt_decode from "jwt-decode";
-
 // const BASE_URL = process.env.REACT_APP_SERVER_ENDPOINT as string;
+import { login } from "../features/authSlice";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -14,13 +12,12 @@ export const authApi = createApi({
   }),
   endpoints: (builder) => ({
     registerUser: builder.mutation<
-      IGenericResponse,
+      {},
       {
         name: string;
         password: string;
         email: string;
         username: string;
-        phone: string;
       }
     >({
       query(data) {
@@ -55,16 +52,12 @@ export const authApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          console.log("data response = ", data);
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("refresh_token", data.refresh_token);
-          const decodedJWT: any = jwt_decode(data.access_token);
-          localStorage.setItem("roles", decodedJWT["roles"]);
-          console.log(jwt_decode(data.access_token));
-          await dispatch(userApi.endpoints.getMe.initiate(null));
-        } catch (error) {
-          console.log("Invalid login please try again...");
-        }
+          dispatch(login());
+          // const decodedJWT: any = jwt_decode(data.access_token);
+          // localStorage.setItem("roles", decodedJWT["roles"]);
+        } catch (error) {}
       },
     }),
   }),

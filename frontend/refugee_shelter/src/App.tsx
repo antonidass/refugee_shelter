@@ -1,13 +1,13 @@
-import ProfilePage from "./pages/Profile.page";
-import LoginPage from "./pages/Login";
 import { Route, Routes } from "react-router-dom";
-import RegisterPage from "./pages/Register.page";
 import RequireUser from "./components/RequireUser";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Button from "./components/layout/Button";
 import Input from "./components/layout/Input";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
+import Register from "./pages/Register";
+import Login from "./pages/Login";
 
 function App() {
   const onChangeHandler = (text: string) => {
@@ -17,21 +17,16 @@ function App() {
   return (
     <div className="h-screen flex flex-col bg-neutral">
       <Navbar />
-      {/* <FiltersBar /> */}
 
       {/* <Route element={<RequireUser allowedRoles={["user", "admin"]} />}> */}
       <ToastContainer />
       <Routes>
-        <Route path="home" element={<Home />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route
-          element={<RequireUser allowedRoles={["ROLE_USER", "ROLE_ADMIN"]} />}
-        >
-          <Route path="profile" element={<ProfilePage />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+
         <Route element={<RequireUser allowedRoles={["ROLE_ADMIN"]} />}>
-          <Route path="admin" element={<LoginPage />} />
+          <Route path="admin" element={<Login />} />
         </Route>
       </Routes>
     </div>

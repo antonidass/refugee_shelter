@@ -1,11 +1,11 @@
-export interface IIUser {
+export interface IUser {
   id: number;
   name: string;
   email: string;
   phone: string;
 }
 
-export interface IUser {
+export interface IRoom {
   id: number;
   address: string;
   latitude: number;
@@ -15,10 +15,5 @@ export interface IUser {
   hasKitchen: boolean;
   hasBathroom: boolean;
   description: string;
-  user: IIUser;
-}
-
-export interface IGenericResponse {
-  status: string;
-  message: string;
+  user: IUser;
 }
