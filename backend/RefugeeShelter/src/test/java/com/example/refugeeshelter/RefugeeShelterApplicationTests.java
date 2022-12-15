@@ -12,3 +12,4 @@ class RefugeeShelterApplicationTests {
 
 
 }
+//    $ allure serve target/allure-results --host localhost --port 9999
