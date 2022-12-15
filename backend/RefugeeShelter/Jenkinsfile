@@ -12,7 +12,17 @@ pipeline {
                 dir('backend/RefugeeShelter') {
                     sh "./mvnw clean compile"
                 }
+            }
+        }
+        stage("Unit Tests") {
+            steps {
+                sh "./mvnw test"
+            }
 
+            post {
+                always {
+                    junit "**/target/surefire-reports/TEST-*.xml"
+                }
             }
         }
     }
