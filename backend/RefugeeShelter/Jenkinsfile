@@ -20,14 +20,6 @@ pipeline {
                    sh "./mvnw test"
                 }
             }
-
-            post {
-                always {
-                    dir("backend/RefugeeShelter") {
-                         junit "**/target/surefire-reports/TEST-*.xml"
-                    }
-                }
-            }
         }
     }
 }
