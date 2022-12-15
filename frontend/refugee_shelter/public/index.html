@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="mytheme">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+
+    <!-- <script
+      src="https://api-maps.yandex.ru/2.1/?apikey=0e623120-3b58-4143-8257-005fee3d097a&lang=ru_RU"
+      type="text/javascript"
+    ></script>
+    <script type="text/javascript">
+      // Функция ymaps.ready() будет вызвана, когда
+      // загрузятся все компоненты API, а также когда будет готово DOM-дерево.
+      ymaps.ready(init);
+      function init() {
+        // Создание карты.
+        var myMap = new ymaps.Map("map", {
+          // Координаты центра карты.
+          // Порядок по умолчанию: «широта, долгота».
+          // Чтобы не определять координаты центра карты вручную,
+          // воспользуйтесь инструментом Определение координат.
+          center: [55.76, 37.64],
+          // Уровень масштабирования. Допустимые значения:
+          // от 0 (весь мир) до 19.
+          zoom: 7,
+        });
+
+        var glyphIcon1 = new ymaps.Placemark(
+          [55.684, 37.738],
+          {},
+          {
+            preset: "islands#redGlyphIcon",
+            iconGlyph: "music",
+            iconGlyphColor: "red",
+          }
+        );
+
+        var glyphIcon2 = new ymaps.Placemark(
+          [55.684, 37.7383],
+          {},
+          {
+            preset: "islands#glyphIcon",
+            iconGlyph: "home",
+            iconGlyphColor: "blue",
+          }
+        );
+
+        var glyphIcon3 = new ymaps.Placemark(
+          [55.684, 37.7383],
+          {},
+          {
+            preset: "islands#yellowGlyphCircleIcon",
+            iconGlyph: "glass",
+          }
+        );
+
+        myMap.geoObjects.add(glyphIcon1).add(glyphIcon2).add(glyphIcon3);
+
+        myMap.events.add("click", function (e) {
+          // Получение координат щелчка
+          var coords = e.get("coords");
+          alert(coords.join(", "));
+        });
+      }
+    </script> -->
+    <title>Refugee Shelter</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  </body>
+</html>

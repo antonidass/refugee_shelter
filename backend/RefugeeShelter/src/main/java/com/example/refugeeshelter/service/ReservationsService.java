@@ -91,7 +91,7 @@ public class ReservationsService {
 
     // Check dates for correct  TODO to validation layer
     if (reservationRequest.getStartDate().after(reservationRequest.getEndDate())) {
-      throw new LogicException();
+      throw new LogicException("Date start cannot be bigger then date end!");
     }
 
     // Check if dates not available
@@ -104,7 +104,7 @@ public class ReservationsService {
               || (reservationRequest.getStartDate().after(reservations.getEndDate()))) {
           } else {
             // TODO check exceptions all refactor
-            throw new LogicException();
+            throw new LogicException("Error in date logic, please check...");
           }
         });
 
@@ -131,7 +131,7 @@ public class ReservationsService {
 
     // Check dates for correct  TODO to validation layer
     if (newReservation.getStartDate().after(newReservation.getEndDate())) {
-      throw new LogicException();
+      throw new LogicException("Date cannot be bigger then date end");
     }
     // Check if dates not available
     List<Reservations> reservationsCheckList =
@@ -143,7 +143,7 @@ public class ReservationsService {
               || (newReservation.getStartDate().after(res.getEndDate()))) {
           } else {
             // TODO check exceptions all refactor
-            throw new LogicException();
+            throw new LogicException("date cannot be bigger then date end");
           }
         });
 

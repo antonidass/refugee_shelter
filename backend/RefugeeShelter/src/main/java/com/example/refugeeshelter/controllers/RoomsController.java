@@ -24,6 +24,7 @@ public class RoomsController {
     return roomsService.getRoomsByOwnerId(ownerId);
   }
 
+
   @GetMapping("/rooms/{id}")
   public ResponseEntity<?> getRoomById(@PathVariable Long id) {
     return roomsService.getRoomById(id);

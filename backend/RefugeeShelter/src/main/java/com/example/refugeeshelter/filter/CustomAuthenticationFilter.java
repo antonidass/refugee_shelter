@@ -6,6 +6,7 @@ import com.example.refugeeshelter.exceptions.UserNotFoundException;
 import com.example.refugeeshelter.security.UserPrincipal;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.patterns.IToken;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -68,5 +69,15 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         token.put("refresh_token", refreshToken);
         response.setContentType(APPLICATION_JSON_VALUE);
         new ObjectMapper().writeValue(response.getOutputStream(), token);
+    }
+
+    @Override
+    protected void unsuccessfulAuthentication(HttpServletRequest request, HttpServletResponse response, AuthenticationException failed) throws IOException, ServletException {
+        response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        response.setContentType(APPLICATION_JSON_VALUE);
+
+        Map<String, String> respBody = new HashMap<>();
+        respBody.put("message", "Incorrect login or password!");
+        new ObjectMapper().writeValue(response.getOutputStream(), respBody);
     }
 }

@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS Reservations
 
 
 INSERT INTO Users (name, username, password, email, phone)
-VALUES ('Ivan Petrov', 'akrik', '$2a$10$NoRqTHgJnBCQa9njTunq9eux7nbJrD4.OacHv9n1QZ5EXNuM.5Hqm', 'akr@gmail.com',
+VALUES ('Ivan Petrov', 'login', '$2y$10$6nUrTeU.wQ9Qe6md7bzUaOYcQ9nh1xRBmeNjlQ8SId5.JjH9yOnNi', 'akr@gmail.com',
         '89067132145'),
        ('Maria Phil', 'maria', 'qwertuyop', 'mari@gmail.com', '89053411190'),
        ('Admin adminov', 'ivan', '5234123', 'regian123@gmail.com', '89032123562'),
@@ -68,7 +68,7 @@ VALUES ('ROLE_USER'),
 
 
 INSERT INTO user_roles(user_id, roles_id)
-VALUES (1, 1),
+VALUES (10, 2),
        (2, 2),
        (3, 2),
        (4, 1);
