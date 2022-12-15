@@ -16,12 +16,16 @@ pipeline {
         }
         stage("Unit Tests") {
             steps {
-                sh "./mvnw test"
+                dir("backend/RefugeeShelter") {
+                   sh "./mvnw test"
+                }
             }
 
             post {
                 always {
-                    junit "**/target/surefire-reports/TEST-*.xml"
+                    dir("backend/RefugeeShelter") {
+                         junit "**/target/surefire-reports/TEST-*.xml"
+                    }
                 }
             }
         }
