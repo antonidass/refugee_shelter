@@ -3,6 +3,7 @@ import { BiLogOut } from "react-icons/bi";
 import { useAppSelector, useAppDispatch } from "../redux/store";
 import { Link } from "react-router-dom";
 import { logout } from "../redux/features/authSlice";
+import { CgProfile } from "react-icons/cg";
 
 const Navbar: React.FC<{}> = (type) => {
   const isLoggedIn = useAppSelector((state) => state.authState.isLoggedIn);
@@ -24,9 +25,14 @@ const Navbar: React.FC<{}> = (type) => {
       </Link>
 
       {isLoggedIn ? (
-        <Link to={"/"} onClick={onLogoutHandler}>
-          <BiLogOut size={50} className="text-[#FEFFFF]" />
-        </Link>
+        <div className="flex items-center space-x-4">
+          <Link to={"/profile"}>
+            <CgProfile size={44} className="text-[#FEFFFF]" />
+          </Link>
+          <Link to={"/"} onClick={onLogoutHandler}>
+            <BiLogOut size={50} className="text-[#FEFFFF]" />
+          </Link>
+        </div>
       ) : (
         <Link to={"/login"}>
           <BiLogIn size={50} className="text-[#FEFFFF]" />
