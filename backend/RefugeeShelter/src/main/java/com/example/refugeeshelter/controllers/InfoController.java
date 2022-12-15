@@ -25,7 +25,7 @@ public class InfoController {
             byte[]out=org.apache.commons.io.IOUtils.toByteArray(inputStream);
             respEntity = new ResponseEntity(out, HttpStatus.OK);
         }else{
-            respEntity = new ResponseEntity ("File Not Found", HttpStatus.NOT_FOUND);
+            respEntity = new ResponseEntity ("File Not Foundd", HttpStatus.NOT_FOUND);
         }
         return respEntity;
     }
