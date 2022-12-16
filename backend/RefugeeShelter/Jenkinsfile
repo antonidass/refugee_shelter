@@ -12,6 +12,8 @@ pipeline {
                     }
                     catch (Exception exc) {
                         skipRemainingStages = true
+                        currentBuild.result = "FAILED"
+                        throw exc
                     }
                 }
             }
@@ -31,6 +33,8 @@ pipeline {
                     }
                     catch (Exception exc) {
                         skipRemainingStages = true
+                        currentBuild.result = "FAILED"
+                        throw exc
                     }
                 }
             }
@@ -51,6 +55,8 @@ pipeline {
                     }
                     catch (Exception exc) {
                         skipRemainingStages = true
+                        currentBuild.result = "FAILED"
+                        throw exc
                     }
                 }
             }
