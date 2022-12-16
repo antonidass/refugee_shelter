@@ -13,7 +13,7 @@ public class RefugeeShelterApplication {
         BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
         String result = bCryptPasswordEncoder.encode("akrik1234");
         System.out.println(result);
-        a
+
         SpringApplication.run(RefugeeShelterApplication.class, args);
     }
 
