@@ -6,11 +6,13 @@ pipeline {
     stages {
         stage('Git') {
             steps {
-                try {
-                    git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
-                }
-                catch (Exception exc) {
-                    skipRemainingStages = true
+                script {
+                    try {
+                        git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
+                    }
+                    catch (Exception exc) {
+                        skipRemainingStages = true
+                    }
                 }
             }
         }
@@ -20,15 +22,16 @@ pipeline {
                     !skipRemainingStages
                 }
             }
-
             steps {
-                try {
-                      dir('backend/RefugeeShelter') {
-                        sh "./mvnw clean compile"
-                      }
-                }
-                catch (Exception exc) {
-                    skipRemainingStages = true
+                script {
+                    try {
+                        dir("backend/RefugeeShelter") {
+                            sh "./mvnw clean compile"
+                        }
+                    }
+                    catch (Exception exc) {
+                        skipRemainingStages = true
+                    }
                 }
             }
         }
@@ -38,14 +41,17 @@ pipeline {
                     !skipRemainingStages
                 }
             }
+
             steps {
-                try {
-                    dir("backend/RefugeeShelter") {
-                        sh "./mvnw test"
+                script {
+                    try {
+                        dir("backend/RefugeeShelter") {
+                            sh "./mvnw test"
+                        }
                     }
-                }
-                catch (Exception exc) {
-                    skipRemainingStages = true
+                    catch (Exception exc) {
+                        skipRemainingStages = true
+                    }
                 }
             }
 
