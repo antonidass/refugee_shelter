@@ -50,7 +50,7 @@ pipeline {
                 script {
                     try {
                         dir("backend/RefugeeShelter") {
-                            sh "./mvnw test"
+                            sh "./mvnw clean test"
                         }
                     }
                     catch (Exception exc) {
