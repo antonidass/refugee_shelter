@@ -40,42 +40,27 @@ pipeline {
             }
         }
         stage("Unit Tests") {
-            when {
-                expression {
-                    !skipRemainingStages
-                }
-            }
+               steps {
+                   dir("backend/RefugeeShelter") {
+                      sh "./mvnw test"
+                   }
+               }
 
-            steps {
-                script {
-                    try {
-                        dir("backend/RefugeeShelter") {
-                            sh "./mvnw clean test"
-                        }
-                    }
-                    catch (Exception exc) {
-                        skipRemainingStages = true
-                        currentBuild.result = "FAILED"
-                        throw exc
-                    }
-                }
-            }
-
-            post {
-                always {
-                    dir("backend/RefugeeShelter") {
-                        script {
-                          allure([
-                            includeProperties: false,
-                            jdk: '',
-                            properties: [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'target/allure-results']]
-                          ])
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
+               post {
+                   always {
+                       dir("backend/RefugeeShelter") {
+                           script {
+                             allure([
+                               includeProperties: false,
+                               jdk: '',
+                               properties: [],
+                               reportBuildPolicy: 'ALWAYS',
+                               results: [[path: 'target/allure-results']]
+                             ])
+                           }
+                       }
+                   }
+               }
+           }
+       }
+   }
