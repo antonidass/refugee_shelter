@@ -23,7 +23,6 @@ pipeline {
 
             post {
                 always {
-                    dir("backend/RefugeeShelter") {
                                         script {
                                           allure([
                                             includeProperties: false,
@@ -32,7 +31,7 @@ pipeline {
                                             reportBuildPolicy: 'ALWAYS',
                                             results: [[path: 'target/allure-results']]
                                           ])
-                                        }
+
                     }
                 }
             }
