@@ -1,38 +1,66 @@
+def skipRemainingStages = false
+
 pipeline {
     agent any
 
     stages {
         stage('Git') {
             steps {
-                git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
+                try {
+                    git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
+                }
+                catch (Exception exc) {
+                    skipRemainingStages = true
+                }
             }
         }
         stage("Build") {
+            when {
+                expression {
+                    !skipRemainingStages
+                }
+            }
+
             steps {
-                dir('backend/RefugeeShelter') {
-                    sh "./mvnw clean compile"
+                try {
+                      dir('backend/RefugeeShelter') {
+                        sh "./mvnw clean compile"
+                      }
+                }
+                catch (Exception exc) {
+                    skipRemainingStages = true
                 }
             }
         }
         stage("Unit Tests") {
+            when {
+                expression {
+                    !skipRemainingStages
+                }
+            }
             steps {
-                dir("backend/RefugeeShelter") {
-                   sh "./mvnw test"
+                try {
+                    dir("backend/RefugeeShelter") {
+                        sh "./mvnw test"
+                    }
+                }
+                catch (Exception exc) {
+                    skipRemainingStages = true
                 }
             }
 
             post {
                 always {
                     dir("backend/RefugeeShelter") {
-                                        script {
-                                          allure([
-                                            includeProperties: false,
-                                            jdk: '',
-                                            properties: [],
-                                            reportBuildPolicy: 'ALWAYS',
-                                            results: [[path: 'target/allure-results']]
-                                          ])
-                                        }
+                        script {
+                          allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                          ])
+                        }
                     }
                 }
             }
