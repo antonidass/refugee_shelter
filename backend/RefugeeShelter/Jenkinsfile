@@ -61,9 +61,8 @@ pipeline {
                        }
                    }
                }
-           }
-       }
-       stage("Integration Tests") {
+        }
+        stage("Integration Tests") {
                       steps {
                           dir("backend/RefugeeShelter") {
                              sh "./mvnw test -Dtest=IntegrationUsersTests,IntegrationRoomsTests,IntegrationReservationTests"
@@ -85,7 +84,6 @@ pipeline {
                               }
                           }
                       }
-                  }
        }
        stage("E2E Tests") {
                              steps {
@@ -109,4 +107,6 @@ pipeline {
                                  }
                              }
                          }
-   }
+       }
+    }
+}
