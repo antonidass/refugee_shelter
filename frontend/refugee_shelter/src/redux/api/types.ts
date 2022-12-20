@@ -12,8 +12,8 @@ export interface IRoom {
   longitude: number;
   price: number;
   imageUrl: string;
-  hasKitchen: boolean;
-  hasBathroom: boolean;
+  beds: number;
+  people: number;
   description: string;
   user: IUser;
 }

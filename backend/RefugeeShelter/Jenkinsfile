@@ -93,7 +93,6 @@ pipeline {
                                     sh "./mvnw test -Dtest=E2E"
                                  }
                              }
-
                              post {
                                  always {
                                      dir("backend/RefugeeShelter") {

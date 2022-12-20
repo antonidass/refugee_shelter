@@ -100,6 +100,19 @@ services:
     volumes:
       - ref_shel_db:/var/lib/postgresql/data
 
+  ref_shel_db_test:
+    image: "postgres:13.0"
+    restart: always
+    environment:
+      POSTGRES_DB: "ref_shel"
+      POSTGRES_USER: "akrik"
+      POSTGRES_PASSWORD: "akrik"
+    ports:
+      - "5433:5433"
+    volumes:
+      - ref_shel_db_test:/var/lib/postgresql/data_test
+    command: -p 5433 # фактически меняем порт на 5433
+
   pgadmin:
     container_name: pgadmin4_container
     image: dpage/pgadmin4
@@ -145,6 +158,8 @@ services:
 
 volumes:
   ref_shel_db:
+    driver: local
+  ref_shel_db_test:
     driver: local
 # up all
 # docker compose up -d && cd /Users/akrik/Desktop/refugee_shelter/backend/RefugeeShelter &&  mvn clean package && cd /Users/akrik/Desktop/refugee_shelter/docker && docker-compose up -d --build --pull springboot-app

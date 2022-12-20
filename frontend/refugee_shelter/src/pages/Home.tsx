@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomMap from "../components/layout/CustomMap";
 import MainList from "../components/MainList";
 import { useGetRoomsQuery } from "../redux/api/roomApi";
@@ -6,12 +6,18 @@ import FilterMain from "../components/layout/FilterMain";
 import { BsMap } from "react-icons/bs";
 import { VscListFlat } from "react-icons/vsc";
 import FilterModal from "../components/FilterModal";
+import { useAppSelector } from "../redux/store";
+import { IRoom } from "../redux/api/types";
 
 const Home: React.FC<{}> = () => {
   const [isShowedMap, setIsShowedMap] = useState(true);
   const { data = [], isLoading } = useGetRoomsQuery({});
+  const { beds, people, priceFrom, priceTo } = useAppSelector(
+    (state) => state.filterState
+  );
 
   const [showModal, setShowModal] = useState(false);
+  const [filteredData, setFilteredData] = useState([]);
 
   const onClickShowModal = () => {
     setShowModal((prevState: boolean) => !prevState);
@@ -22,18 +28,33 @@ const Home: React.FC<{}> = () => {
     setIsShowedMap((prevState: boolean) => !prevState);
   };
 
+  // Фильтруем данные по фильтрам
+  useEffect(() => {
+    console.log(data);
+    setFilteredData(
+      data.filter((item: IRoom) => {
+        return (
+          item.price >= priceFrom &&
+          item.price <= priceTo &&
+          item.people >= people &&
+          item.beds >= beds
+        );
+      })
+    );
+  }, [isLoading, beds, people, priceFrom, priceTo]);
+
   return (
     <div className={`w-full h-full relative`}>
       {/* Модальное окно */}
       <FilterModal showModal={showModal} setShowModal={onClickShowModal} />
 
       {/* Карта или Список  */}
-      <div
-        className={`w-full h-full ${isShowedMap ? "" : "mt-10"} ${
-          showModal ? "blur-sm" : ""
-        }`}
-      >
-        {isShowedMap ? <CustomMap data={data} /> : <MainList data={data} />}
+      <div className={`w-full h-full ${showModal ? "blur-sm" : ""}`}>
+        {isShowedMap ? (
+          <CustomMap data={filteredData} />
+        ) : (
+          <MainList data={filteredData} />
+        )}
       </div>
 
       {/* Кнопка Фильтры  */}

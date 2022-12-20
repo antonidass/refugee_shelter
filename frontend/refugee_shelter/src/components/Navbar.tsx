@@ -16,7 +16,7 @@ const Navbar: React.FC<{}> = (type) => {
   };
 
   return (
-    <div className="flex justify-between items-center bg-neutral px-8 py-8 shadow-xl">
+    <div className="flex justify-between items-center bg-neutral px-8 py-8 shadow-xl z-50">
       <Link to={"/"} className="flex items-center space-x-8">
         <h1 className="text-[#FEFFFF] text-left w-32 font-bold text-3xl">
           Refugee Shelter
