@@ -50,6 +50,7 @@ pipeline {
         stage("Integration Tests") {
               steps {
                   dir("backend/RefugeeShelter") {
+                     sh "docker-compose up"
                      sh "./mvnw test -Dtest=IntegrationUsersTests,IntegrationRoomsTests,IntegrationReservationTests"
                   }
               }
