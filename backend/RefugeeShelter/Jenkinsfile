@@ -42,7 +42,8 @@ pipeline {
         stage("Unit Tests") {
                steps {
                    dir("backend/RefugeeShelter") {
-                      sh "./mvnw test -Dtest=test.java.com.example.refugeeshelter.repositories.**,test.java.com.example.refugeeshelter.service.**"
+                      sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
+                      sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
                    }
                }
         }
