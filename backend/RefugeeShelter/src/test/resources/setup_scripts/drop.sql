@@ -1,0 +1,9 @@
+DROP TABLE IF EXISTS user_roles;
+drop table if exists role;
+drop table if exists reservations;
+drop table if exists rooms;
+drop table if exists users;
+DROP sequence if exists rolesSerial;
+DROP sequence if exists reservationsSerial;
+DROP sequence if exists roomsSerial;
+DROP sequence if exists usersSerial;

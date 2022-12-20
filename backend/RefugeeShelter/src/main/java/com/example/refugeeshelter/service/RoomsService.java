@@ -115,12 +115,12 @@ public class RoomsService {
     }
 
     // TODO need something
-    if (newRoom.getHasBathroom() != null) {
-      room.setHasBathroom(newRoom.getHasBathroom());
+    if (newRoom.getBeds() != null) {
+      room.setBeds(newRoom.getBeds());
     }
 
-    if (newRoom.getHasKitchen() != null) {
-      room.setHasKitchen(newRoom.getHasKitchen());
+    if (newRoom.getPeople() != null) {
+      room.setPeople(newRoom.getPeople());
     }
 
     if (newRoom.getAddress() != null) {

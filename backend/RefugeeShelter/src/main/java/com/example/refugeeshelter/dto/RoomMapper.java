@@ -22,8 +22,8 @@ public class RoomMapper {
         room.getLongitude(),
         room.getPrice(),
         room.getImageUrl(),
-        room.getHasKitchen(),
-        room.getHasBathroom(),
+        room.getBeds(),
+        room.getPeople(),
         room.getDescription(),
         userResponse);
   }
@@ -36,8 +36,8 @@ public class RoomMapper {
         roomsResponse.getLongitude(),
         roomsResponse.getPrice(),
         roomsResponse.getImageUrl(),
-        roomsResponse.getHasKitchen(),
-        roomsResponse.getHasBathroom(),
+        roomsResponse.getBeds(),
+        roomsResponse.getPeople(),
         roomsResponse.getDescription());
   }
 }

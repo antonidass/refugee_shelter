@@ -18,8 +18,8 @@ public class RoomsDTO {
   private Double longitude;
   private Long price;
   private String imageUrl;
-  private Boolean hasKitchen;
-  private Boolean hasBathroom;
+  private Long beds;
+  private Long people;
   private String description;
   private UserDTO user;
 }

@@ -37,24 +37,24 @@ public class Rooms {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(name = "has_kitchen")
-    private Boolean hasKitchen;
+    @Column(name = "beds")
+    private Long beds;
 
-    @Column(name = "has_bathroom")
-    private Boolean hasBathroom;
+    @Column(name = "people")
+    private Long people;
 
     @Column
     private String description;
 
-    public Rooms(Long id, String address, Double latitude, Double longitude, Long price, String imageUrl, Boolean hasKitchen, Boolean hasBathroom, String description) {
+    public Rooms(Long id, String address, Double latitude, Double longitude, Long price, String imageUrl, Long beds, Long people, String description) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
         this.price = price;
         this.imageUrl = imageUrl;
-        this.hasKitchen = hasKitchen;
-        this.hasBathroom = hasBathroom;
+        this.beds = beds;
+        this.people = people;
         this.description = description;
     }
 
@@ -68,8 +68,8 @@ public class Rooms {
         longitude = newRooms.getLongitude();
         price = newRooms.getPrice();
         imageUrl = newRooms.getImageUrl();
-        hasKitchen = newRooms.getHasKitchen();
-        hasBathroom = newRooms.getHasBathroom();
+        beds = newRooms.getBeds();
+        people = newRooms.getPeople();
         description = newRooms.getDescription();
     }
 

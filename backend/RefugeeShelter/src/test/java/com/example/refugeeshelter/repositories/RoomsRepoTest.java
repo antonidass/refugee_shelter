@@ -28,7 +28,7 @@ class RoomsRepoTest {
         Rooms.builder()
             .address("Address Test")
             .price(1234L)
-            .hasBathroom(Boolean.TRUE)
+            .beds(1L)
             .latitude(123D)
             .longitude(123D)
             .build();
@@ -43,7 +43,7 @@ class RoomsRepoTest {
         Rooms.builder()
             .address("Address Test")
             .price(1234L)
-            .hasBathroom(Boolean.TRUE)
+            .beds(1L)
             .latitude(123D)
             .longitude(123D)
             .build();
@@ -92,7 +92,7 @@ class RoomsRepoTest {
         Rooms.builder()
             .address("Address Test 2")
             .price(53412L)
-            .hasBathroom(Boolean.TRUE)
+            .beds(1L)
             .latitude(321D)
             .longitude(321D)
             .user(user)

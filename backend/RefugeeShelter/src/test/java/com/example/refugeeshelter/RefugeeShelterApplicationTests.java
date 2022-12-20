@@ -7,3 +7,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 class RefugeeShelterApplicationTests {
 }
 //    $ allure serve target/allure-results --host localhost --port 9999
+
+//mvn test -Dtest=TestCircle#xyz test

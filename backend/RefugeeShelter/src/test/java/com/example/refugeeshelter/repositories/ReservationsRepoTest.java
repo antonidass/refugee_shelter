@@ -39,7 +39,7 @@ class ReservationsRepoTest {
         Rooms.builder()
             .address("Address Test 1")
             .price(53412L)
-            .hasBathroom(Boolean.TRUE)
+            .beds(1L)
             .latitude(321D)
             .longitude(321D)
             .user(userOwner)

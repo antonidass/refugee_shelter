@@ -30,7 +30,7 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
       HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
     // TODO Норм ?
-    log.info("servlet path = {} method = {}", request.getServletPath(), request.getMethod());
+    log.info("servlet path = {} method = {} uri = {}", request.getServletPath(), request.getMethod(), request.getRequestURI());
     String origin = request.getHeader("origin");
     log.info("Origin = ", origin);
     response.addHeader("Access-Control-Allow-Origin", origin);

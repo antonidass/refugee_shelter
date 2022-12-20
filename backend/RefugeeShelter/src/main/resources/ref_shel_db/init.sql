@@ -34,8 +34,8 @@ CREATE TABLE IF NOT EXISTS Rooms
     latitude     float   not null,
     longitude    float   not null,
     price        int,
-    has_kitchen  bool,
-    has_bathroom bool,
+    beds  int,
+    people int,
     description  varchar,
     image_url    varchar,
     owner_id     int,
@@ -68,7 +68,7 @@ VALUES ('ROLE_USER'),
 
 
 INSERT INTO user_roles(user_id, roles_id)
-VALUES (10, 2),
+VALUES (1, 2),
        (2, 2),
        (3, 2),
        (4, 1);
@@ -77,16 +77,16 @@ INSERT INTO user_roles(user_id, roles_id)
 VALUES (1, 2);
 
 
-INSERT INTO Rooms(address, latitude, longitude, price, has_kitchen, has_bathroom, description, image_url, owner_id)
-VALUES ('Moscow, Borovay St. 8, 123', 0, 0, 1200, true, false, 'This is good rooms for refugees....',
+INSERT INTO Rooms(address, latitude, longitude, price, beds, people, description, image_url, owner_id)
+VALUES ('Moscow, Borovay St. 8, 123', 0, 0, 1200, 1, 4, 'This is good rooms for refugees....',
         'https://testimages.com/32', 1),
-       ('Moscow, Chertanovo St. 1, 12', 0, 0, 1300, true, true, 'Really good refugees....', 'https://testimages.com/12',
+       ('Moscow, Chertanovo St. 1, 12', 0, 0, 1300, 2, 1, 'Really good refugees....', 'https://testimages.com/12',
         2),
-       ('Moscow, Ivanov St. 5, 253', 0, 0, 200, false, false, 'Super offer for gays rooms for refugees....',
+       ('Moscow, Ivanov St. 5, 253', 0, 0, 200, 3, 5, 'Super offer for gays rooms for refugees....',
         'https://testimages.com/54', 3),
-       ('Moscow, Lenina St. 1, 4', 0, 0, 700, false, true, 'Only for Ukrainian for refugees....',
+       ('Moscow, Lenina St. 1, 4', 0, 0, 700, 4, 2, 'Only for Ukrainian for refugees....',
         'https://testimages.com/1', 4),
-       ('Moscow, Pesina St. 2, 425', 0, 0, 900, false, false, 'Easy  rooms for refugees....',
+       ('Moscow, Pesina St. 2, 425', 0, 0, 900, 6, 3, 'Easy  rooms for refugees....',
         'https://testimages.com/5', 4);
 
 

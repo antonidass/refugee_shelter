@@ -42,7 +42,7 @@ pipeline {
         stage("Unit Tests") {
                steps {
                    dir("backend/RefugeeShelter") {
-                      sh "./mvnw test"
+                      sh "./mvnw test -Dtest=test.java.com.example.refugeeshelter.repositories.**,test.java.com.example.refugeeshelter.service.**"
                    }
                }
 
@@ -63,4 +63,52 @@ pipeline {
                }
            }
        }
+       stage("Integration Tests") {
+                      steps {
+                          dir("backend/RefugeeShelter") {
+                             sh "./mvnw test -Dtest=IntegrationUsersTests,IntegrationRoomsTests,IntegrationReservationTests"
+                          }
+                      }
+
+                      post {
+                          always {
+                              dir("backend/RefugeeShelter") {
+                                  script {
+                                    allure([
+                                      includeProperties: false,
+                                      jdk: '',
+                                      properties: [],
+                                      reportBuildPolicy: 'ALWAYS',
+                                      results: [[path: 'target/allure-results']]
+                                    ])
+                                  }
+                              }
+                          }
+                      }
+                  }
+       }
+       stage("E2E Tests") {
+                             steps {
+                                 dir("backend/RefugeeShelter") {
+                                    sh "./mvnw test -Dtest=E2E"
+                                 }
+                             }
+
+                             post {
+                                 always {
+                                     dir("backend/RefugeeShelter") {
+                                         script {
+                                           allure([
+                                             includeProperties: false,
+                                             jdk: '',
+                                             properties: [],
+                                             reportBuildPolicy: 'ALWAYS',
+                                             results: [[path: 'target/allure-results']]
+                                           ])
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+              }
    }

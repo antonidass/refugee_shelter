@@ -5,11 +5,12 @@ import com.example.refugeeshelter.service.RoomsService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping(value = "/api/v1", produces = MimeTypeUtils.APPLICATION_JSON_VALUE)
 @Slf4j
 public class RoomsController {
   private final RoomsService roomsService;

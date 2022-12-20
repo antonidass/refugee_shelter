@@ -4,16 +4,11 @@ import com.example.refugeeshelter.dto.ReservationMapper;
 import com.example.refugeeshelter.dto.UserMapper;
 import com.example.refugeeshelter.dto.request.ReservationRequest;
 import com.example.refugeeshelter.dto.response.ReservationResponse;
-import com.example.refugeeshelter.dto.response.RoomsDTO;
-import com.example.refugeeshelter.dto.response.UserDTO;
 import com.example.refugeeshelter.entities.Reservations;
-import com.example.refugeeshelter.entities.Role;
 import com.example.refugeeshelter.entities.Rooms;
 import com.example.refugeeshelter.entities.User;
 import com.example.refugeeshelter.exceptions.LogicException;
-import com.example.refugeeshelter.payload.UserPatchForm;
 import com.example.refugeeshelter.repositories.ReservationsRepo;
-import com.example.refugeeshelter.repositories.RoleRepo;
 import com.example.refugeeshelter.repositories.RoomsRepo;
 import com.example.refugeeshelter.repositories.UserRepo;
 import io.qameta.allure.Description;
@@ -32,8 +27,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -41,7 +34,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @Epic("Service Test")
