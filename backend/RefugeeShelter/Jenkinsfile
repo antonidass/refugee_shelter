@@ -21,26 +21,12 @@ pipeline {
             }
         }
         stage("Unit Tests") {
-           try {
                steps {
                    dir("backend/RefugeeShelter") {
                       sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
                       sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
                    }
                }
-           }
-           catch (err) {
-               script {
-                     allure([
-                       includeProperties: false,
-                       jdk: '',
-                       properties: [],
-                       reportBuildPolicy: 'ALWAYS',
-                       results: [[path: 'target/allure-results']]
-                     ])
-               }
-               throw err
-           }
         }
         stage("Integration Tests") {
               steps {
