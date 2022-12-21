@@ -20,20 +20,13 @@ pipeline {
                 }
             }
         }
-        stage("E2E Tests") {
-             steps {
-                 dir("backend/RefugeeShelter") {
-                    sh "./mvnw test -Dtest=E2E"
-                 }
-             }
-        }
         stage("Unit Tests") {
-               steps {
-                   dir("backend/RefugeeShelter") {
-                      sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
-                      sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
+                   steps {
+                       dir("backend/RefugeeShelter") {
+                          sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
+                          sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
+                       }
                    }
-               }
         }
         stage("Integration Tests") {
               steps {
@@ -42,6 +35,12 @@ pipeline {
                   }
               }
         }
-
+        stage("E2E Tests") {
+             steps {
+                 dir("backend/RefugeeShelter") {
+                    sh "./mvnw test -Dtest=E2E"
+                 }
+             }
+        }
     }
 }
