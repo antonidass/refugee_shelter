@@ -30,7 +30,6 @@ pipeline {
                }
            }
            catch (err) {
-               step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
                script {
                      allure([
                        includeProperties: false,
@@ -39,7 +38,7 @@ pipeline {
                        reportBuildPolicy: 'ALWAYS',
                        results: [[path: 'target/allure-results']]
                      ])
-                   }
+               }
                throw err
            }
         }
