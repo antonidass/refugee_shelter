@@ -21,12 +21,27 @@ pipeline {
             }
         }
         stage("Unit Tests") {
-                   steps {
-                       dir("backend/RefugeeShelter") {
-                          sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
-                          sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
-                       }
+           try {
+               steps {
+                   dir("backend/RefugeeShelter") {
+                      sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
+                      sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
                    }
+               }
+           }
+           catch (err) {
+               step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+               script {
+                     allure([
+                       includeProperties: false,
+                       jdk: '',
+                       properties: [],
+                       reportBuildPolicy: 'ALWAYS',
+                       results: [[path: 'target/allure-results']]
+                     ])
+                   }
+               throw err
+           }
         }
         stage("Integration Tests") {
               steps {
