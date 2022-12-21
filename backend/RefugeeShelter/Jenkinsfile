@@ -7,37 +7,25 @@ pipeline {
         stage('Git') {
             steps {
                 script {
-                    try {
-                        git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
-                    }
-                    catch (Exception exc) {
-                        skipRemainingStages = true
-                        currentBuild.result = "FAILED"
-                        throw exc
-                    }
+                    git branch: 'main', credentialsId: '94c0674c-e4ae-4504-9047-c826491b79fe', url: 'git@github.com:antonidass/refugee_shelter.git'
                 }
             }
         }
         stage("Build") {
-            when {
-                expression {
-                    !skipRemainingStages
-                }
-            }
             steps {
                 script {
-                    try {
-                        dir("backend/RefugeeShelter") {
-                            sh "./mvnw clean compile"
-                        }
-                    }
-                    catch (Exception exc) {
-                        skipRemainingStages = true
-                        currentBuild.result = "FAILED"
-                        throw exc
+                    dir("backend/RefugeeShelter") {
+                        sh "./mvnw clean compile"
                     }
                 }
             }
+        }
+        stage("E2E Tests") {
+             steps {
+                 dir("backend/RefugeeShelter") {
+                    sh "./mvnw test -Dtest=E2E"
+                 }
+             }
         }
         stage("Unit Tests") {
                steps {
@@ -46,14 +34,6 @@ pipeline {
                       sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
                    }
                }
-        }
-        stage("E2E Tests") {
-                 steps {
-                     dir("backend/RefugeeShelter") {
-                        sh "docker-compose up"
-                        sh "./mvnw test -Dtest=E2E"
-                     }
-                 }
         }
         stage("Integration Tests") {
               steps {

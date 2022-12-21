@@ -17,6 +17,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.postgresql.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,8 @@ import java.sql.*;
 public class IntegrationReservationTests {
   @Autowired private ReservationsService reservationsService;
 
-  private String sqlUrl = "jdbc:postgresql://localhost:5433/ref_shel";
+  @Value("${spring.datasource.url}")
+  private String sqlUrl;
 
   @SneakyThrows
   @BeforeEach

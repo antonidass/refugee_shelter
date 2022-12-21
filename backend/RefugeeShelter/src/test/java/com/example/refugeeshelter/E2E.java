@@ -14,8 +14,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.postgresql.Driver;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
@@ -38,7 +40,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc()
 @SpringBootTest
 public class E2E {
-  private String sqlUrl = "jdbc:postgresql://localhost:5433/ref_shel";
+  @Value("${spring.datasource.url}")
+  private String sqlUrl;
   @Autowired private MockMvc mvc;
 
   @SneakyThrows
@@ -72,7 +75,6 @@ public class E2E {
     Gson gson = new Gson();
     User user = User.builder().password("test").username("test").build();
     String body = gson.toJson(user, user.getClass());
-
     // Act
     mvc.perform(
             post("/api/v1/register")
