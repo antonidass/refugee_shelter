@@ -32,7 +32,7 @@ class RoleRepoTest {
 
     roleRepo.save(role);
 
-    Assertions.assertThat(role.getId()).isGreaterThan(1000);
+    Assertions.assertThat(role.getId()).isGreaterThan(0);
   }
 
   @Test
