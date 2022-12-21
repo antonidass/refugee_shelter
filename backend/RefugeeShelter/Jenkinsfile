@@ -41,6 +41,22 @@ pipeline {
                     sh "./mvnw test -Dtest=E2E"
                  }
              }
+
+             post {
+                always {
+                    dir("backend/RefugeeShelter") {
+                        script {
+                          allure([
+                            includeProperties: false,
+                            jdk: '',
+                            properties: [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results: [[path: 'target/allure-results']]
+                          ])
+                        }
+                    }
+                }
+             }
         }
     }
 }
