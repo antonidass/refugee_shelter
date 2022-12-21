@@ -40,7 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class E2E {
   private String sqlUrl = "jdbc:postgresql://localhost:5433/ref_shel";
   @Autowired private MockMvc mvc;
-  @Autowired private ObjectMapper objectMapper;
 
   @SneakyThrows
   @BeforeEach

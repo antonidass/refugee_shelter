@@ -47,6 +47,14 @@ pipeline {
                    }
                }
         }
+        stage("E2E Tests") {
+                 steps {
+                     dir("backend/RefugeeShelter") {
+                        sh "docker-compose up"
+                        sh "./mvnw test -Dtest=E2E"
+                     }
+                 }
+        }
         stage("Integration Tests") {
               steps {
                   dir("backend/RefugeeShelter") {
@@ -54,12 +62,6 @@ pipeline {
                   }
               }
         }
-        stage("E2E Tests") {
-             steps {
-                 dir("backend/RefugeeShelter") {
-                    sh "./mvnw test -Dtest=E2E"
-                 }
-             }
-        }
+
     }
 }
