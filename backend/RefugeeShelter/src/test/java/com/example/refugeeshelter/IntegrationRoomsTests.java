@@ -89,7 +89,7 @@ class IntegrationRoomsTests {
     ResponseEntity<?> room = roomsService.saveRoom(roomForSave);
     HttpStatus code = room.getStatusCode();
     // Assert
-    Assertions.assertThat( ((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice());
+    Assertions.assertThat( ((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice() + 1);
     Assertions.assertThat(code).isEqualTo(expectedCode);
   }
 
