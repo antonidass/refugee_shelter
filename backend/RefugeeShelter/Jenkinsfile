@@ -21,12 +21,17 @@ pipeline {
             }
         }
         stage("Unit Tests") {
+            try {
                    steps {
                        dir("backend/RefugeeShelter") {
                           sh "./mvnw test -Dtest='com.example.refugeeshelter.repositories.**'"
                           sh "./mvnw test -Dtest='com.example.refugeeshelter.service.**'"
                        }
                    }
+            }
+            catch (err) {
+                throw err
+            }
         }
         stage("Integration Tests") {
               steps {
