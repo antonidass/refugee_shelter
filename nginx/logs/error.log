@@ -18447,3 +18447,7 @@
 2022/12/22 13:21:58 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
 2022/12/22 13:22:58 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
 2022/12/22 13:23:58 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
+2022/12/22 13:24:58 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
+2022/12/22 13:25:59 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
+2022/12/22 13:26:59 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
+2022/12/22 13:27:59 [emerg] 1#1: host not found in upstream "backend_1:8081" in /etc/nginx/nginx.conf:8
