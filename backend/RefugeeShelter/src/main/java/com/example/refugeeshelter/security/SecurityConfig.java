@@ -17,8 +17,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
 
 import static org.springframework.http.HttpMethod.*;
 
@@ -41,9 +46,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/api/v1/login");
 
-        http.csrf().disable();
-        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.headers().disable();
+        http.cors().and().csrf().disable();
+//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+//        http.headers().disable();
 
 
         // Неавторизованные пользователи могут просматривать информацию о жилье
@@ -62,11 +67,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
         http.authorizeRequests().antMatchers(GET, "/api/v1/users/*/rooms/**").hasAnyAuthority("ROLE_USER");
 
         // Админ может модифицировать пользователей
-        http.authorizeRequests().antMatchers(POST,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeRequests().antMatchers(PUT,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeRequests().antMatchers(PATCH,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(POST,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
+        http.authorizeRequests().antMatchers(PUT,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
+        http.authorizeRequests().antMatchers(PATCH,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
         http.authorizeRequests().antMatchers(DELETE,  "/api/v1/users/**", "/api/v1/roles/**").hasAnyAuthority("ROLE_ADMIN");
-        http.authorizeRequests().antMatchers(GET, "/api/v1/users/**").hasAnyAuthority("ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(GET, "/api/v1/users/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER");
 
 
         // Неавторизованные пользователи могут логин, регистр, ифно о беке, обновить токен
@@ -83,6 +88,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); //or add * to allow all origins
+        configuration.setAllowCredentials(true);
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")); //to set allowed http methods
+        configuration.setAllowedHeaders(Arrays.asList("Authorization", "Cache-Control", "Content-Type"));
+        configuration.setExposedHeaders(Arrays.asList("custom-header1", "custom-header2"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
     }
 
     @Bean

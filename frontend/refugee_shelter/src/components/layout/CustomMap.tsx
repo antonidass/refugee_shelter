@@ -8,6 +8,7 @@ import {
 
 import FilterMain from "./FilterMain";
 import { IRoom } from "../../redux/api/types";
+import { useNavigate } from "react-router-dom";
 
 interface CustomMapProps {
   data: Array<IRoom>;
@@ -18,6 +19,8 @@ const CustomMap: React.FC<CustomMapProps> = ({ data }) => {
     center: [55.751574, 37.573856],
     zoom: 12,
   };
+
+  let navigate = useNavigate();
 
   //   placemark.options.set('iconImageHref', 'http:www.example.com/images/1.png');
   //   placemark.options.set('iconImageOffset', [-1, -30]);
@@ -32,6 +35,9 @@ const CustomMap: React.FC<CustomMapProps> = ({ data }) => {
         <Map defaultState={defaultState} width="full" height="100%">
           {data.map((item: IRoom) => (
             <Placemark
+              onClick={() => {
+                navigate(`/items/${item.id}`);
+              }}
               geometry={[item.latitude, item.longitude]}
               options={{
                 iconLayout: "default#image",

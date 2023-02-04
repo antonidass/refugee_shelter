@@ -1,7 +1,5 @@
-import { useGetRoomsQuery } from "../redux/api/roomApi";
 import { IRoom } from "../redux/api/types";
 import RoomsListItem from "./RoomsListItem";
-import { useAppSelector, useAppDispatch } from "../redux/store";
 
 interface MainListProps {
   data: Array<IRoom>;

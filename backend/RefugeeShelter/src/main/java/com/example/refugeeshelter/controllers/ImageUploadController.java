@@ -41,6 +41,20 @@ public class ImageUploadController {
     }
 
     @SneakyThrows
+    @DeleteMapping(value = "/image/{id}")
+    public ResponseEntity<?> deleteImage(@PathVariable("id") Long id) {
+        for (int i = 0; i < 5; i++) {
+            File file = new File(imageDirectory + id + "_" + (i + 1)  + ".png");
+            Files.deleteIfExists(file.toPath());
+            File file2 = new File(imageDirectory + id + "_" + (i + 1)  + ".jpeg");
+            Files.deleteIfExists(file2.toPath());
+            File file3 = new File(imageDirectory + id + "_" + (i + 1)  + ".jpg");
+            Files.deleteIfExists(file3.toPath());
+        }
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @SneakyThrows
     @GetMapping("/image/{name}")
     @ResponseBody
     public ResponseEntity<?> getImageDynamicType(@PathVariable("name") String name) {

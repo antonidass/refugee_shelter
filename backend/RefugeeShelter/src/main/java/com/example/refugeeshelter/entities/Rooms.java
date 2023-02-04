@@ -20,6 +20,10 @@ public class Rooms {
     private Long id;
 
     @Column
+    @NotNull(message = "Name should not be a null")
+    private String name;
+
+    @Column
     @NotNull(message = "Address should not be a null")
     private String address;
 
@@ -46,7 +50,7 @@ public class Rooms {
     @Column
     private String description;
 
-    public Rooms(Long id, String address, Double latitude, Double longitude, Long price, String imageUrl, Long beds, Long people, String description) {
+    public Rooms(Long id, String address, Double latitude, Double longitude, Long price, String imageUrl, Long beds, Long people, String description, String name) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
@@ -56,6 +60,7 @@ public class Rooms {
         this.beds = beds;
         this.people = people;
         this.description = description;
+        this.name = name;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -71,6 +76,7 @@ public class Rooms {
         beds = newRooms.getBeds();
         people = newRooms.getPeople();
         description = newRooms.getDescription();
+        name = newRooms.getName();
     }
 
 }

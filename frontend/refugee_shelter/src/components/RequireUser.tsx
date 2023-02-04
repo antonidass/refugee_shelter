@@ -24,7 +24,7 @@ const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
   }
 
   if (userRole.includes(allowedRoles[0])) {
-    return <h1>Allowed</h1>;
+    return <Outlet />;
   }
 
   return allowedRoles.includes(userRole) ? <Outlet /> : <h1>Not allowed!</h1>;

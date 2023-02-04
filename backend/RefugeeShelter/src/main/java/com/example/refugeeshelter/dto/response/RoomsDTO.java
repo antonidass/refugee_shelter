@@ -22,4 +22,5 @@ public class RoomsDTO {
   private Long people;
   private String description;
   private UserDTO user;
+  private String name;
 }

@@ -50,6 +50,19 @@ public class ReservationsService {
     return ResponseEntity.ok().body(reservationMapper.toDto(reservations));
   }
 
+  public ResponseEntity<?> getReservationsByRoomId(Long id) {
+    List<Reservations> reservations =
+            reservationsRepo
+                    .findByRoomId(id)
+                    .orElseThrow(
+                            () -> new ResourceNotFoundException("Cannot find reservation with room ", "id", id));
+
+    List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
+    reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
+
+    return ResponseEntity.ok().body(reservationResponses);
+  }
+
   public ResponseEntity<?> getReservationsByOwnerId(Long ownerId) {
     userRepo
         .findById(ownerId)
@@ -108,6 +121,7 @@ public class ReservationsService {
           }
         });
 
+    log.info("DATE = {} {}", reservationRequest.getStartDate(), reservationRequest.getEndDate());
     Reservations reservations =
         new Reservations(reservationRequest.getStartDate(), reservationRequest.getEndDate());
     reservations.setUser(user);

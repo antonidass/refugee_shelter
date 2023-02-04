@@ -34,94 +34,95 @@ import java.sql.DriverManager;
 @ActiveProfiles("test")
 @SpringBootTest
 class IntegrationRoomsTests {
-  @Autowired private RoomsService roomsService;
+    @Autowired
+    private RoomsService roomsService;
 
-  @Value("${spring.datasource.url}")
-  private String sqlUrl;
+    @Value("${spring.datasource.url}")
+    private String sqlUrl;
 
-  @SneakyThrows
-  @BeforeEach
-  public void setup() {
-    DriverManager.registerDriver(new Driver());
-    Connection connection = DriverManager.getConnection(sqlUrl, "akrik", "akrik");
-    ScriptRunner sr = new ScriptRunner(connection);
-    Reader reader =
-        new BufferedReader(new FileReader("src/test/resources/setup_scripts/create.sql"));
-    sr.runScript(reader);
-    reader = new BufferedReader(new FileReader("src/test/resources/setup_scripts/insert.sql"));
-    sr.runScript(reader);
-  }
+    @SneakyThrows
+    @BeforeEach
+    public void setup() {
+        DriverManager.registerDriver(new Driver());
+        Connection connection = DriverManager.getConnection(sqlUrl, "akrik", "akrik");
+        ScriptRunner sr = new ScriptRunner(connection);
+        Reader reader =
+                new BufferedReader(new FileReader("src/test/resources/setup_scripts/create.sql"));
+        sr.runScript(reader);
+        reader = new BufferedReader(new FileReader("src/test/resources/setup_scripts/insert.sql"));
+        sr.runScript(reader);
+    }
 
-  @AfterEach
-  @SneakyThrows
-  public void clean() {
-    DriverManager.registerDriver(new Driver());
-    Connection connection = DriverManager.getConnection(sqlUrl, "akrik", "akrik");
-    ScriptRunner sr = new ScriptRunner(connection);
-    Reader reader = new BufferedReader(new FileReader("src/test/resources/setup_scripts/drop.sql"));
-    sr.runScript(reader);
-  }
+    @AfterEach
+    @SneakyThrows
+    public void clean() {
+        DriverManager.registerDriver(new Driver());
+        Connection connection = DriverManager.getConnection(sqlUrl, "akrik", "akrik");
+        ScriptRunner sr = new ScriptRunner(connection);
+        Reader reader = new BufferedReader(new FileReader("src/test/resources/setup_scripts/drop.sql"));
+        sr.runScript(reader);
+    }
 
-  @Test
-  @Description("User tries to get Room")
-  public void getRoomByIdShouldReturnRoom() {
-    // Arrange
-    Rooms expectedRoom = new Rooms(1L,"Moscow, Borovay St. 8, 123", 50.1, 0.0, 1200L, "1", 4L, 2L, "This is good rooms for refugees....");
-    HttpStatus expectedCode = HttpStatus.OK;
-    // Act
-    ResponseEntity<?> room = roomsService.getRoomById(1L);
-    HttpStatus code = room.getStatusCode();
-    // Assert
-    Assertions.assertThat( ((RoomsDTO) room.getBody()).getPrice()).isEqualTo(expectedRoom.getPrice());
-    Assertions.assertThat(code).isEqualTo(expectedCode);
-  }
+    @Test
+    @Description("User tries to get Room")
+    public void getRoomByIdShouldReturnRoom() {
+        // Arrange
+        Rooms expectedRoom = new Rooms(1L, "Moscow, Borovay St. 8, 123", 50.1, 0.0, 1200L, "1", 4L, 2L, "This is good rooms for refugees....", "name");
+        HttpStatus expectedCode = HttpStatus.OK;
+        // Act
+        ResponseEntity<?> room = roomsService.getRoomById(1L);
+        HttpStatus code = room.getStatusCode();
+        // Assert
+        Assertions.assertThat(((RoomsDTO) room.getBody()).getPrice()).isEqualTo(expectedRoom.getPrice());
+        Assertions.assertThat(code).isEqualTo(expectedCode);
+    }
 
-  @Test
-  @Description("User tries to save Room")
-  public void saveRoomShouldReturnRoom() {
-    // Arrange
-    RoomsDTO roomForSave = RoomsDTO.builder().price(100L).longitude(10.1).latitude(20.20).address("Moscow, Lenina 15").build();
-    HttpStatus expectedCode = HttpStatus.CREATED;
-    UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken("1", null);
-    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-    // Act
-    ResponseEntity<?> room = roomsService.saveRoom(roomForSave);
-    HttpStatus code = room.getStatusCode();
-    // Assert
-    Assertions.assertThat( ((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice());
-    Assertions.assertThat(code).isEqualTo(expectedCode);
-  }
+    @Test
+    @Description("User tries to save Room")
+    public void saveRoomShouldReturnRoom() {
+        // Arrange
+        RoomsDTO roomForSave = RoomsDTO.builder().price(100L).longitude(10.1).latitude(20.20).address("Moscow, Lenina 15").build();
+        HttpStatus expectedCode = HttpStatus.CREATED;
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken("1", null);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        // Act
+        ResponseEntity<?> room = roomsService.saveRoom(roomForSave);
+        HttpStatus code = room.getStatusCode();
+        // Assert
+        Assertions.assertThat(((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice());
+        Assertions.assertThat(code).isEqualTo(expectedCode);
+    }
 
-  @Test
-  @Description("User tries to update Room")
-  public void updateRoomShouldReturnRoom() {
-    // Arrange
-    RoomsDTO roomForSave = RoomsDTO.builder().price(100L).longitude(10.1).latitude(20.20).address("Moscow, Lenina 15").build();
-    HttpStatus expectedCode = HttpStatus.OK;
-    UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken("1", null);
-    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-    // Act
-    ResponseEntity<?> room = roomsService.updateRoom(1L, roomForSave);
-    HttpStatus code = room.getStatusCode();
-    // Assert
-    Assertions.assertThat( ((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice());
-    Assertions.assertThat(code).isEqualTo(expectedCode);
-  }
+    @Test
+    @Description("User tries to update Room")
+    public void updateRoomShouldReturnRoom() {
+        // Arrange
+        RoomsDTO roomForSave = RoomsDTO.builder().price(100L).longitude(10.1).latitude(20.20).address("Moscow, Lenina 15").build();
+        HttpStatus expectedCode = HttpStatus.OK;
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken("1", null);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        // Act
+        ResponseEntity<?> room = roomsService.updateRoom(1L, roomForSave);
+        HttpStatus code = room.getStatusCode();
+        // Assert
+        Assertions.assertThat(((RoomsDTO) room.getBody()).getPrice()).isEqualTo(roomForSave.getPrice());
+        Assertions.assertThat(code).isEqualTo(expectedCode);
+    }
 
-  @Test
-  @Description("User tries to delete Room")
-  public void deleteRoomShouldReturnRoom() {
-    // Arrange
-    HttpStatus expectedCode = HttpStatus.OK;
-    UsernamePasswordAuthenticationToken authenticationToken =
-            new UsernamePasswordAuthenticationToken("2", null);
-    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
-    // Act
-    ResponseEntity<?> room = roomsService.deleteRoom(2L);
-    HttpStatus code = room.getStatusCode();
-    // Assert
-    Assertions.assertThat(code).isEqualTo(expectedCode);
-  }
+    @Test
+    @Description("User tries to delete Room")
+    public void deleteRoomShouldReturnRoom() {
+        // Arrange
+        HttpStatus expectedCode = HttpStatus.OK;
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken("2", null);
+        SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        // Act
+        ResponseEntity<?> room = roomsService.deleteRoom(2L);
+        HttpStatus code = room.getStatusCode();
+        // Assert
+        Assertions.assertThat(code).isEqualTo(expectedCode);
+    }
 }

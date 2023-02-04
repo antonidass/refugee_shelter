@@ -29,16 +29,17 @@ CREATE TABLE IF NOT EXISTS user_roles
 
 CREATE TABLE IF NOT EXISTS Rooms
 (
-    id           int default nextval('roomsSerial') primary key,
-    address      varchar not null,
-    latitude     float   not null,
-    longitude    float   not null,
-    price        int,
-    beds  int,
-    people int,
-    description  varchar,
-    image_url    varchar,
-    owner_id     int,
+    id          int default nextval('roomsSerial') primary key,
+    name        varchar not null,
+    address     varchar not null,
+    latitude    float   not null,
+    longitude   float   not null,
+    price       int,
+    beds        int,
+    people      int,
+    description varchar,
+    image_url   varchar,
+    owner_id    int,
     foreign key (owner_id) references Users (id)
 );
 
@@ -77,17 +78,42 @@ INSERT INTO user_roles(user_id, roles_id)
 VALUES (1, 2);
 
 
-INSERT INTO Rooms(address, latitude, longitude, price, beds, people, description, image_url, owner_id)
-VALUES ('Moscow, Borovay St. 8, 123', 0, 0, 1200, 1, 4, 'This is good rooms for refugees....',
+INSERT INTO Rooms(name, address, latitude, longitude, price, beds, people, description, image_url, owner_id)
+VALUES ('Best option on for you!', 'Moscow, Borovay St. 8, 123', 55.749, 37.636, 1200, 1, 4,
+        'This is good rooms for refugees.... and jdkal cjdka lekdjf ladksf j fksdj lkajds lfjld jfkj klfjds alkjlfk jdslkj fls',
         'https://testimages.com/32', 1),
-       ('Moscow, Chertanovo St. 1, 12', 0, 0, 1300, 2, 1, 'Really good refugees....', 'https://testimages.com/12',
+       ('Good Room on Chertanovo!', 'Moscow, Chertanovo St. 1, 12', 55.5, 37.4, 1300, 2, 1,
+        'Really good refugees.... fsdk fsda fkas dkfkd ak kasld kcaksdcj dsac sklnc klj klajsd kjsakl kcna sk',
+        'https://testimages.com/12',
         2),
-       ('Moscow, Ivanov St. 5, 253', 0, 0, 200, 3, 5, 'Super offer for gays rooms for refugees....',
+       ('Very very very for u', 'Moscow, Ivanov St. 5, 253', 54.9, 36.9, 200, 3, 5,
+        'Super offer for  sdfkjsadjf ksaj kjs fdkl jfklsaj fklj ksdlj flksja flkjsaklfdj klsjd fkjs lkjs dljflsdk jlks djlkf jsldkjf lksadgays rooms for refugees....',
         'https://testimages.com/54', 3),
-       ('Moscow, Lenina St. 1, 4', 0, 0, 700, 4, 2, 'Only for Ukrainian for refugees....',
+       ('I think you can afford it!', 'Moscow, Lenina St. 1, 4', 56.6, 37.8, 700, 4, 2,
+        'Only for Ukrainian  sfd fa dfaf s fd af aa f fasd ffor refugees....',
         'https://testimages.com/1', 4),
-       ('Moscow, Pesina St. 2, 425', 0, 0, 900, 6, 3, 'Easy  rooms for refugees....',
+       ('Really good room!', 'Moscow, Pesina St. 2, 425', 56.3, 38.1, 900, 6, 3,
+        'Easy  rooa da dsfas asd fas f sadf asd fasdf asdf d a fdf a f adfms for refugees....',
         'https://testimages.com/5', 4);
+
+INSERT INTO Rooms(name, address, latitude, longitude, price, beds, people, description, image_url, owner_id)
+VALUES ('Good room On Borovaya street...', 'Moscow, Borovay St. 8, 123', 55.749, 40.636, 1200, 1, 4,
+        'This is good rooms for refugees.... and jdkal cjdka lekdjf ladksf j fksdj lkajds lfjld jfkj klfjds alkjlfk jdslkj fls',
+        'https://testimages.com/32', 5),
+       ('This is for u!', 'Moscow, Chertanovo St. 1, 12', 55.5, 40.4, 1300, 2, 1,
+        'Really good refugees.... fsdk fsda fkas dkfkd ak kasld kcaksdcj dsac sklnc klj klajsd kjsakl kcna sk',
+        'https://testimages.com/12',
+        5),
+       ('The Best!', 'Moscow, Ivanov St. 5, 253', 54.9, 40.9, 200, 3, 5,
+        'Super offer for  sdfkjsadjf ksaj kjs fdkl jfklsaj fklj ksdlj flksja flkjsaklfdj klsjd fkjs lkjs dljflsdk jlks djlkf jsldkjf lksadgays rooms for refugees....',
+        'https://testimages.com/54', 5),
+       ('I know you can afford it!', 'Moscow, Lenina St. 1, 4', 56.6, 36.8, 700, 4, 2,
+        'Only for Ukrainian  sfd fa dfaf s fd af aa f fasd ffor refugees....',
+        'https://testimages.com/1', 5),
+       ('Thanks for watching!', 'Moscow, Pesina St. 2, 425', 56.3, 39.1, 900, 6, 3,
+        'Easy  rooa da dsfas asd fas f sadf asd fasdf asdf d a fdf a f adfms for refugees....',
+        'https://testimages.com/5', 5);
+
 
 
 INSERT INTO Reservations(start_date, end_date, room_id, user_id)

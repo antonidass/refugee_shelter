@@ -25,6 +25,11 @@ public class ReservationsController {
     return reservationsService.getReservationsById(id);
   }
 
+  @GetMapping("/rooms/{id}/reservations")
+  public ResponseEntity<?> getReservationsByRoomId(@PathVariable Long id) {
+    return reservationsService.getReservationsByRoomId(id);
+  }
+
   @GetMapping("/users/{ownerId}/reservations")
   public ResponseEntity<?> getReservationsByOwnerId(@PathVariable Long ownerId) {
     return reservationsService.getReservationsByOwnerId(ownerId);

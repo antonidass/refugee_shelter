@@ -2,7 +2,7 @@ import React from "react";
 
 interface InputProps {
   placeholder: string;
-  value: string;
+  value: string | number;
   color: string;
   size: string;
   type: string;

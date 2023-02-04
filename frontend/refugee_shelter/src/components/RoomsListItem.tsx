@@ -1,5 +1,6 @@
 import { IRoom } from "../redux/api/types";
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 interface RoomsListItemProps {
   roomItem: IRoom;
@@ -12,6 +13,7 @@ const RoomsListItem: React.FC<RoomsListItemProps> = ({ roomItem }) => {
     const res = await fetch(
       "http://localhost:8081/api/v1/image/" + roomItem.id + "_1"
     );
+    console.log("http://localhost:8081/api/v1/image/" + roomItem.id + "_1");
     if (res.status === 400) {
       setImg("assets/noImage.jpeg");
     } else {
@@ -25,8 +27,18 @@ const RoomsListItem: React.FC<RoomsListItemProps> = ({ roomItem }) => {
     fetchImage();
   }, []);
 
+  // Смотрим комнаты через профиль или просто
+  const location = useLocation();
+
   return (
-    <div className="flex flex-col">
+    <Link
+      className="flex flex-col cursor-pointer"
+      to={
+        location.pathname === "/profile/rooms"
+          ? `${roomItem.id}`
+          : `items/${roomItem.id}`
+      }
+    >
       <img src={img} alt="icons" className="w-96 h-80 rounded-xl" />
       <h1 className="text-xl text-textColor font-bold mt-2">
         {roomItem.address}
@@ -35,8 +47,7 @@ const RoomsListItem: React.FC<RoomsListItemProps> = ({ roomItem }) => {
         {roomItem.description}
       </h1>
       <h1 className="text-textColor font-normal text-lg">{roomItem.price}$</h1>
-    </div>
+    </Link>
   );
 };
-
 export default RoomsListItem;

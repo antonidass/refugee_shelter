@@ -8,36 +8,40 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class RoomMapper {
-  public RoomsDTO toDto(Rooms room) {
-    UserDTO userResponse = new UserDTO(
-            room.getUser().getId(),
-            room.getUser().getName(),
-            room.getUser().getEmail(),
-            room.getUser().getPhone());
+    public RoomsDTO toDto(Rooms room) {
+        UserDTO userResponse = new UserDTO(
+                room.getUser().getId(),
+                room.getUser().getName(),
+                room.getUser().getEmail(),
+                room.getUser().getPhone());
 
-    return new RoomsDTO(
-        room.getId(),
-        room.getAddress(),
-        room.getLatitude(),
-        room.getLongitude(),
-        room.getPrice(),
-        room.getImageUrl(),
-        room.getBeds(),
-        room.getPeople(),
-        room.getDescription(),
-        userResponse);
-  }
+        return new RoomsDTO(
+                room.getId(),
+                room.getAddress(),
+                room.getLatitude(),
+                room.getLongitude(),
+                room.getPrice(),
+                room.getImageUrl(),
+                room.getBeds(),
+                room.getPeople(),
+                room.getDescription(),
+                userResponse,
+                room.getName()
+                );
+    }
 
-  public Rooms toRooms(RoomsDTO roomsResponse) {
-    return new Rooms(
-        roomsResponse.getId(),
-        roomsResponse.getAddress(),
-        roomsResponse.getLatitude(),
-        roomsResponse.getLongitude(),
-        roomsResponse.getPrice(),
-        roomsResponse.getImageUrl(),
-        roomsResponse.getBeds(),
-        roomsResponse.getPeople(),
-        roomsResponse.getDescription());
-  }
+    public Rooms toRooms(RoomsDTO roomsResponse) {
+        return new Rooms(
+                roomsResponse.getId(),
+                roomsResponse.getAddress(),
+                roomsResponse.getLatitude(),
+                roomsResponse.getLongitude(),
+                roomsResponse.getPrice(),
+                roomsResponse.getImageUrl(),
+                roomsResponse.getBeds(),
+                roomsResponse.getPeople(),
+                roomsResponse.getDescription(),
+                roomsResponse.getName()
+        );
+    }
 }

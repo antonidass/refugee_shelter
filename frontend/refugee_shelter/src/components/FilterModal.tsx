@@ -16,13 +16,19 @@ const FilterModal: React.FC<FilterModalProps> = ({
 }) => {
   // <!--modal content-->
 
-  // const { beds, people, priceFrom, priceTo } = useAppSelector(
-  //   (state) => state.filterState
-  // );
-  const [beds, setBeds] = useState(1);
-  const [people, setPeople] = useState(1);
-  const [priceFrom, setPriceFrom] = useState(0);
-  const [priceTo, setPriceTo] = useState(1000);
+  const {
+    beds,
+    people,
+    priceFrom,
+    priceTo,
+    holderBeds,
+    holderPeople,
+    holderPriceFrom,
+    holderPriceTo,
+    isHiddenBeds,
+    isHiddenPerson,
+  } = useAppSelector((state) => state.filterState);
+
 
   const dispatch = useAppDispatch();
 
@@ -36,7 +42,21 @@ const FilterModal: React.FC<FilterModalProps> = ({
     if (isNaN(fromValue)) {
       return;
     }
-    setPriceFrom(fromValue);
+
+    dispatch(
+      addFilter({
+        beds,
+        people,
+        priceFrom,
+        priceTo,
+        isHiddenBeds,
+        isHiddenPerson,
+        holderPriceFrom: fromValue,
+        holderPeople,
+        holderBeds,
+        holderPriceTo,
+      })
+    );
   };
 
   const onChangeTo = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -50,25 +70,71 @@ const FilterModal: React.FC<FilterModalProps> = ({
       return;
     }
 
-    setPriceTo(toValue);
-  };
-
-  const onChangeBeds = (bedsCount: number) => {
-    setBeds(bedsCount);
-  };
-  const onChangePeople = (peopleCount: number) => {
-    setPeople(peopleCount);
-  };
-
-  const onShowVariants = () => {
     dispatch(
       addFilter({
         beds,
         people,
         priceFrom,
         priceTo,
+        isHiddenBeds,
+        isHiddenPerson,
+        holderPriceFrom,
+        holderPeople,
+        holderBeds,
+        holderPriceTo: toValue,
       })
     );
+  };
+
+  const onChangeBeds = (bedsCount: number) => {
+    dispatch(
+      addFilter({
+        beds,
+        people,
+        priceFrom,
+        priceTo,
+        isHiddenBeds,
+        isHiddenPerson,
+        holderPriceFrom,
+        holderPeople,
+        holderBeds: bedsCount,
+        holderPriceTo,
+      })
+    );
+  };
+  const onChangePeople = (peopleCount: number) => {
+    dispatch(
+      addFilter({
+        beds,
+        people,
+        priceFrom,
+        priceTo,
+        isHiddenBeds,
+        isHiddenPerson,
+        holderPriceFrom,
+        holderPeople: peopleCount,
+        holderBeds,
+        holderPriceTo,
+      })
+    );
+  };
+
+  const onShowVariants = () => {
+    dispatch(
+      addFilter({
+        beds: holderBeds,
+        people: holderPeople,
+        priceFrom: holderPriceFrom,
+        priceTo: holderPriceTo,
+        isHiddenBeds: holderBeds === 0 ? true : false,
+        isHiddenPerson: holderPeople === 0 ? true : false,
+        holderPriceFrom,
+        holderPeople,
+        holderBeds,
+        holderPriceTo,
+      })
+    );
+
     setShowModal();
   };
 
@@ -99,14 +165,14 @@ const FilterModal: React.FC<FilterModalProps> = ({
                 <div className=" flex justify-between items-center space-x-4">
                   <input
                     placeholder="From..."
-                    value={priceFrom}
+                    value={holderPriceFrom}
                     onChange={onChangeFrom}
                     className="w-52 text-lg rounded-md px-2 py-2 text-textColor placeholder:font-thin text-md placeholder-borderColor focus:outline-4 outline-textColor  border-textColor border bg-opacity-0 bg-yellow-50"
                     type="text"
                   />
                   <input
                     placeholder="To..."
-                    value={priceTo}
+                    value={holderPriceTo}
                     onChange={onChangeTo}
                     type="text"
                     className="w-52 text-lg rounded-md px-2 py-2 text-textColor placeholder:font-thin text-md placeholder-borderColor focus:outline-4 outline-textColor  border-textColor border bg-opacity-0 bg-yellow-50"
@@ -123,7 +189,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangeBeds(1);
                     }}
                     className={`rounded-lg ${
-                      beds === 1 ? "bg-primary" : "bg-neutral"
+                      holderBeds === 1 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     1
@@ -133,7 +199,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangeBeds(2);
                     }}
                     className={`rounded-lg ${
-                      beds === 2 ? "bg-primary" : "bg-neutral"
+                      holderBeds === 2 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     2
@@ -143,7 +209,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangeBeds(3);
                     }}
                     className={`rounded-lg ${
-                      beds === 3 ? "bg-primary" : "bg-neutral"
+                      holderBeds === 3 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     3
@@ -153,7 +219,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangeBeds(4);
                     }}
                     className={`rounded-lg ${
-                      beds === 4 ? "bg-primary" : "bg-neutral"
+                      holderBeds === 4 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     4
@@ -163,7 +229,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangeBeds(5);
                     }}
                     className={`rounded-lg ${
-                      beds >= 5 ? "bg-primary" : "bg-neutral"
+                      holderBeds >= 5 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     5
@@ -178,7 +244,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangePeople(1);
                     }}
                     className={`rounded-lg ${
-                      people === 1 ? "bg-primary" : "bg-neutral"
+                      holderPeople === 1 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     1
@@ -188,7 +254,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangePeople(2);
                     }}
                     className={`rounded-lg ${
-                      people === 2 ? "bg-primary" : "bg-neutral"
+                      holderPeople === 2 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     2
@@ -198,7 +264,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangePeople(3);
                     }}
                     className={`rounded-lg ${
-                      people === 3 ? "bg-primary" : "bg-neutral"
+                      holderPeople === 3 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     3
@@ -208,7 +274,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangePeople(4);
                     }}
                     className={`rounded-lg ${
-                      people === 4 ? "bg-primary" : "bg-neutral"
+                      holderPeople === 4 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     4
@@ -218,7 +284,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
                       onChangePeople(5);
                     }}
                     className={`rounded-lg ${
-                      people >= 5 ? "bg-primary" : "bg-neutral"
+                      holderPeople >= 5 ? "bg-primary" : "bg-neutral"
                     } px-8 py-1 text-textColor text-lg hover:bg-primary duration-200`}
                   >
                     5

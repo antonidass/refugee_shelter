@@ -33,12 +33,12 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
     log.info("servlet path = {} method = {} uri = {}", request.getServletPath(), request.getMethod(), request.getRequestURI());
     String origin = request.getHeader("origin");
     log.info("Origin = ", origin);
-    response.addHeader("Access-Control-Allow-Origin", origin);
-//    response.addHeader("Access-Control-Allow-Origin", "/**");
-    response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-    response.addHeader("Access-Control-Allow-Credentials", "true");
-    response.addHeader("Access-Control-Allow-Headers",
-            request.getHeader("Access-Control-Request-Headers"));
+//    response.addHeader("Access-Control-Allow-Origin", origin);
+////    response.addHeader("Access-Control-Allow-Origin", "/**");
+//    response.addHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+//    response.addHeader("Access-Control-Allow-Credentials", "true");
+//    response.addHeader("Access-Control-Allow-Headers",
+//            request.getHeader("Access-Control-Request-Headers"));
 
     if (request.getServletPath().equals("/favicon.ico")) {
       return;

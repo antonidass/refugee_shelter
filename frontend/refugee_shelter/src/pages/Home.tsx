@@ -8,6 +8,7 @@ import { VscListFlat } from "react-icons/vsc";
 import FilterModal from "../components/FilterModal";
 import { useAppSelector } from "../redux/store";
 import { IRoom } from "../redux/api/types";
+import FiltersBar from "../components/layout/FiltersBar";
 
 const Home: React.FC<{}> = () => {
   const [isShowedMap, setIsShowedMap] = useState(true);
@@ -26,6 +27,11 @@ const Home: React.FC<{}> = () => {
   // Показывать Карту или Список
   const onChangeShowedItemHandler = () => {
     setIsShowedMap((prevState: boolean) => !prevState);
+  };
+
+  // Кнопка filters
+  const onClickFilterMainHandler = () => {
+    setShowModal(true);
   };
 
   // Фильтруем данные по фильтрам
@@ -59,12 +65,12 @@ const Home: React.FC<{}> = () => {
 
       {/* Кнопка Фильтры  */}
       <div
-        className={`fixed mt-40 left-0 top-0 mx-8 ${
+        className={`flex fixed mt-40 left-0 top-0 mx-8 space-x-2 ${
           showModal ? "blur-sm" : ""
         }`}
-        onClick={() => setShowModal(true)}
       >
-        <FilterMain />
+        <FilterMain onClickHandle={onClickFilterMainHandler} />
+        <FiltersBar />
       </div>
 
       {/* Показывать карту или список кнопка  */}
@@ -78,7 +84,7 @@ const Home: React.FC<{}> = () => {
           Show {isShowedMap ? "List" : "Map"}
         </h1>
 
-        {isShowedMap ? (
+        {!isShowedMap ? (
           <BsMap size={32} color="#FEFFFF" />
         ) : (
           <VscListFlat size={32} color="#FEFFFF" />

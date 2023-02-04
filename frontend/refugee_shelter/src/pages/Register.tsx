@@ -76,9 +76,9 @@ const Register: React.FC<{}> = () => {
   }, [isLoading]);
 
   return (
-    <div className="bg-gradient-to-b from-primary/5 to-neutral/5  shadow-2xl flex flex-col my-auto items-center mx-auto rounded-xl ">
+    <div className="bg-gradient-to-b from-primary/10 to-neutral/5  shadow-2xl my-8 flex flex-col items-center mx-auto rounded-xl ">
       <h1 className="text-2xl text-[#FEFFFF] mt-8 font-bold">Register</h1>
-      <div className="flex flex-col space-y-8 mt-12 max-w-xl px-20 pb-12">
+      <div className="flex flex-col space-y-8 mt-8 max-w-xl px-20 pb-6">
         <div className="flex items-center justify-between space-x-10">
           <h3 className="text-xl text-[#FEFFFF]">Username *</h3>
           <Input
@@ -124,7 +124,7 @@ const Register: React.FC<{}> = () => {
           />
         </div>
 
-        <div className="pt-8">
+        <div className="pt-2">
           <Button
             onClick={onSubmitHandler}
             border="none"
