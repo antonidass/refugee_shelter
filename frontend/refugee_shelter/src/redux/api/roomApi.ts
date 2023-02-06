@@ -12,6 +12,9 @@ export const roomsApi = createApi({
     getRoomById: build.query({
       query: (id) => `rooms/${id}`,
     }),
+    getImages: build.query({
+      query: (image_name: string) => `image/${image_name}`,
+    }),
     getRoomByOwnerId: build.query({
       query: ({ id, token }) => {
         return {
@@ -24,18 +27,13 @@ export const roomsApi = createApi({
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
           const { data } = await queryFulfilled;
-          // localStorage.setItem("access_token", data.access_token);
-          // localStorage.setItem("refresh_token", data.refresh_token);
-          // localStorage.setItem("roles", "ROLE_USER");
           console.log("data after getRoomByOwnerId = ", data);
           dispatch(setRooms(data));
-          // const decodedJWT: any = jwt_decode(data.access_token);
-          // localStorage.setItem("roles", decodedJWT["roles"]);
         } catch (error) {}
       },
     }),
     addRoom: build.mutation<
-      { data: any },
+      IRoom,
       { access_token: string; roomData: IRoomRequest }
     >({
       query({ access_token, roomData }) {
@@ -52,22 +50,13 @@ export const roomsApi = createApi({
       },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data }: any | void = await queryFulfilled;
-          // localStorage.setItem("access_token", data.access_token);
-          // localStorage.setItem("refresh_token", data.refresh_token);
-          // localStorage.setItem("roles", "ROLE_USER");
+          const { data } = await queryFulfilled;
           console.log("data after save room = ", data);
-
           dispatch(pushRoom(data));
-          // const decodedJWT: any = jwt_decode(data.access_token);
-          // localStorage.setItem("roles", decodedJWT["roles"]);
         } catch (error) {}
       },
     }),
-    delRoom: build.mutation<
-      { data: any },
-      { access_token: string; id: number }
-    >({
+    delRoom: build.mutation<{}, { access_token: string; id: number }>({
       query({ access_token, id }) {
         return {
           url: `rooms/${id}`,
@@ -78,17 +67,9 @@ export const roomsApi = createApi({
           credentials: "include",
         };
       },
-      async onQueryStarted(args, { dispatch, queryFulfilled }) {
-        try {
-          const { data }: any | void = await queryFulfilled;
-          console.log("data after delete room = ", data);
-          // const decodedJWT: any = jwt_decode(data.access_token);
-          // localStorage.setItem("roles", decodedJWT["roles"]);
-        } catch (error) {}
-      },
     }),
     changeRoom: build.mutation<
-      { data: any },
+      IRoom,
       { access_token: string; roomData: IRoomRequest; id: number }
     >({
       query({ access_token, roomData, id }) {
@@ -105,7 +86,7 @@ export const roomsApi = createApi({
       },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data }: any | void = await queryFulfilled;
+          const { data } = await queryFulfilled;
           console.log("data after change room = ", data);
           dispatch(updateRoom(data));
         } catch (error) {}
@@ -121,4 +102,5 @@ export const {
   useAddRoomMutation,
   useDelRoomMutation,
   useChangeRoomMutation,
+  useGetImagesQuery,
 } = roomsApi;

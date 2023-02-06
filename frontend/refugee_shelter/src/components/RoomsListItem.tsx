@@ -15,7 +15,7 @@ const RoomsListItem: React.FC<RoomsListItemProps> = ({ roomItem }) => {
     );
     console.log("http://localhost:8081/api/v1/image/" + roomItem.id + "_1");
     if (res.status === 400) {
-      setImg("assets/noImage.jpeg");
+      setImg("noImage");
     } else {
       const imageBlob = await res.blob();
       const imageObjectURL = URL.createObjectURL(imageBlob);
@@ -39,10 +39,17 @@ const RoomsListItem: React.FC<RoomsListItemProps> = ({ roomItem }) => {
           : `items/${roomItem.id}`
       }
     >
-      <img src={img} alt="icons" className="w-96 h-80 rounded-xl" />
-      <h1 className="text-xl text-textColor font-bold mt-2">
-        {roomItem.address}
-      </h1>
+      {img === "noImage" ? (
+        <img
+          src={require("./noImage.jpeg")}
+          alt="icons"
+          className="w-96 h-80 rounded-xl"
+        />
+      ) : (
+        <img src={img} alt="icons" className="w-96 h-80 rounded-xl" />
+      )}
+
+      <h1 className="text-xl text-textColor font-bold mt-2">{roomItem.name}</h1>
       <h1 className="text-lg font-thin text-textColor mt-4">
         {roomItem.description}
       </h1>

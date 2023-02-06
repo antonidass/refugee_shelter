@@ -1,10 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-// import { LoginInput } from "../../pages/Login.page";
-// import { RegisterInput } from "../../pages/Register.page";
-import jwt_decode from "jwt-decode";
-// const BASE_URL = process.env.REACT_APP_SERVER_ENDPOINT as string;
 import { login, setUser } from "../features/authSlice";
-import { IChangeUser, IUser } from "./types";
+import { IUser } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -38,7 +34,7 @@ export const authApi = createApi({
       },
     }),
     updateUser: builder.mutation<
-      {},
+      IUser,
       {
         name: string;
         email: string;
@@ -58,15 +54,15 @@ export const authApi = createApi({
       },
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data }: any = await queryFulfilled;
+          const data = await queryFulfilled;
           console.log("data after change user = ", data);
-          dispatch(setUser(data));
+          dispatch(setUser(data.data));
         } catch (error) {
           console.log("Error while update user...");
         }
       },
     }),
-    getUserInfo: builder.mutation<{}, { id: number; token: string }>({
+    getUserInfo: builder.mutation<IUser, { id: number; token: string }>({
       query: ({ id, token }) => ({
         url: `users/${id}`,
         headers: {
@@ -75,7 +71,7 @@ export const authApi = createApi({
       }),
       async onQueryStarted(args, { dispatch, queryFulfilled }) {
         try {
-          const { data }: any = await queryFulfilled;
+          const { data } = await queryFulfilled;
           console.log("data after get user = ", data);
           dispatch(setUser(data));
         } catch (error) {
@@ -103,8 +99,6 @@ export const authApi = createApi({
           localStorage.setItem("refresh_token", data.refresh_token);
           localStorage.setItem("roles", "ROLE_USER");
           dispatch(login());
-          // const decodedJWT: any = jwt_decode(data.access_token);
-          // localStorage.setItem("roles", decodedJWT["roles"]);
         } catch (error) {}
       },
     }),

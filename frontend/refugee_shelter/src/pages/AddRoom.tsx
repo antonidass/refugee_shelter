@@ -3,8 +3,8 @@ import Input from "../components/layout/Input";
 import { useAddRoomMutation } from "../redux/api/roomApi";
 import { useEffect, useState } from "react";
 import { IRoomRequest } from "../redux/api/types";
-import { toast } from "react-toastify";
-
+import handleServerResponse from "../utils/Utils";
+import { IRoom } from "../redux/api/types";
 import {
   YMaps,
   Map,
@@ -13,6 +13,7 @@ import {
   RulerControl,
 } from "@pbe/react-yandex-maps";
 import { useNavigate } from "react-router-dom";
+import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
 
 const AddRoom: React.FC<{}> = () => {
   const [name, setName] = useState("");
@@ -87,26 +88,10 @@ const AddRoom: React.FC<{}> = () => {
 
   // Обрабатываем ответ сервера
   useEffect(() => {
-    if (result.isSuccess) {
-      toast.success("You successfully added room!", {
-        position: "top-center",
-      });
-
-      navigate("/profile/rooms");
-    }
-    if (result.isError) {
-      if (Array.isArray((result.error as any).data.error)) {
-        (result.error as any).data.error.forEach((el: any) =>
-          toast.error(el.message, {
-            position: "top-center",
-          })
-        );
-      } else {
-        console.log(result.error);
-        toast.error((result.error as any).data.message, {
-          position: "top-center",
-        });
-      }
+    if (handleServerResponse(result, "You successfully added room!") === 0) {
+      setTimeout(() => {
+        navigate("/profile/rooms");
+      }, 3000);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result.isLoading]);

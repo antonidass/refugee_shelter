@@ -4,9 +4,12 @@ import { useGetRoomByOwnerIdQuery } from "../redux/api/roomApi";
 import { Link } from "react-router-dom";
 import { MdSubject } from "react-icons/md";
 import { useAppSelector } from "../redux/store";
+import { UserInfo } from "../redux/api/types";
 
 const MyRooms: React.FC<{}> = () => {
-  const userInfo: any = jwtDecode(localStorage.getItem("access_token") || "");
+  const userInfo: UserInfo = jwtDecode(
+    localStorage.getItem("access_token") || ""
+  );
 
   const { data = [], isLoading } = useGetRoomByOwnerIdQuery({
     id: userInfo.userId,

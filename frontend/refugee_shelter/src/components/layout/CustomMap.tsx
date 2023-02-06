@@ -5,8 +5,6 @@ import {
   ZoomControl,
   RulerControl,
 } from "@pbe/react-yandex-maps";
-
-import FilterMain from "./FilterMain";
 import { IRoom } from "../../redux/api/types";
 import { useNavigate } from "react-router-dom";
 
@@ -22,19 +20,13 @@ const CustomMap: React.FC<CustomMapProps> = ({ data }) => {
 
   let navigate = useNavigate();
 
-  //   placemark.options.set('iconImageHref', 'http:www.example.com/images/1.png');
-  //   placemark.options.set('iconImageOffset', [-1, -30]);
-  //   placemark.options.set('iconImageSize', [28,29]);
-  // placemark.options.set('iconShadowImageHref', 'http:www.example.com/images/2.png');
-  //   placemark.options.set('iconShadowImageOffset', [2, -12]);
-  //   placemark.options.set('iconShadowImageSize', [29, 7]);
-
   return (
     <div className="w-full h-full">
       <YMaps>
         <Map defaultState={defaultState} width="full" height="100%">
           {data.map((item: IRoom) => (
             <Placemark
+              key={item.id}
               onClick={() => {
                 navigate(`/items/${item.id}`);
               }}

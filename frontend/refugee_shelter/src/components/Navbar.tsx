@@ -1,6 +1,6 @@
 import { BiLogIn } from "react-icons/bi";
 import { BiLogOut } from "react-icons/bi";
-import { useAppSelector, useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "../redux/store";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../redux/features/authSlice";
 import { CgProfile } from "react-icons/cg";

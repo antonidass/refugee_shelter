@@ -4,14 +4,7 @@ import { useGetUserInfoMutation } from "../redux/api/authApi";
 import Button from "../components/layout/Button";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../redux/store";
-
-interface UserInfo {
-  sub: string;
-  roles: string[];
-  iss: string;
-  exp: number;
-  userId: number;
-}
+import { UserInfo } from "../redux/api/types";
 
 const Profile: React.FC<{}> = () => {
   const userInfo: UserInfo = jwt_decode(
@@ -66,7 +59,7 @@ const Profile: React.FC<{}> = () => {
         </Button>
       </Link>
       {/* Список броней */}
-      <div className="pt-8">
+      <Link to={`/profile/reservations`} className="pt-8">
         <Button
           onClick={() => {}}
           border="none"
@@ -77,7 +70,7 @@ const Profile: React.FC<{}> = () => {
         >
           Show My Reservations
         </Button>
-      </div>
+      </Link>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import com.example.refugeeshelter.repositories.RoomsRepo;
 import com.example.refugeeshelter.repositories.UserRepo;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tika.utils.DateUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,10 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import javax.transaction.Transactional;
 import java.net.URI;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,159 +32,192 @@ import java.util.List;
 @Transactional
 @Slf4j
 public class ReservationsService {
-  private final ReservationsRepo reservationsRepo;
-  private final UserRepo userRepo;
-  private final RoomsRepo roomsRepo;
-  private final ReservationMapper reservationMapper;
+    private final ReservationsRepo reservationsRepo;
+    private final UserRepo userRepo;
+    private final RoomsRepo roomsRepo;
+    private final ReservationMapper reservationMapper;
 
-  public ResponseEntity<?> getReservations() {
-    List<Reservations> reservationsList = reservationsRepo.findAll();
-    List<ReservationResponse> reservationResponses = new ArrayList<>(reservationsList.size());
+    public ResponseEntity<?> getReservations() {
+        List<Reservations> reservationsList = reservationsRepo.findAll();
+        List<ReservationResponse> reservationResponses = new ArrayList<>(reservationsList.size());
 
-    reservationsList.forEach(res -> reservationResponses.add(reservationMapper.toDto(res)));
-    return ResponseEntity.ok().body(reservationResponses);
-  }
-
-  public ResponseEntity<?> getReservationsById(Long id) {
-    Reservations reservations =
-        reservationsRepo
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
-    return ResponseEntity.ok().body(reservationMapper.toDto(reservations));
-  }
-
-  public ResponseEntity<?> getReservationsByRoomId(Long id) {
-    List<Reservations> reservations =
-            reservationsRepo
-                    .findByRoomId(id)
-                    .orElseThrow(
-                            () -> new ResourceNotFoundException("Cannot find reservation with room ", "id", id));
-
-    List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
-    reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
-
-    return ResponseEntity.ok().body(reservationResponses);
-  }
-
-  public ResponseEntity<?> getReservationsByOwnerId(Long ownerId) {
-    userRepo
-        .findById(ownerId)
-        .orElseThrow(
-            () -> new ResourceNotFoundException("Cannot find user with id", "id", ownerId));
-
-    List<Reservations> reservations =
-        reservationsRepo.findByRoomUserId(ownerId).orElse(new ArrayList<>());
-
-    List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
-    reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
-
-    return ResponseEntity.ok().body(reservationResponses);
-  }
-
-  public ResponseEntity<?> saveReservation(ReservationRequest reservationRequest) {
-    if (reservationRequest.getRoomId() == null) {
-      throw new MissedRequestDataException();
+        reservationsList.forEach(res -> reservationResponses.add(reservationMapper.toDto(res)));
+        return ResponseEntity.ok().body(reservationResponses);
     }
 
-    // Get owner id through token TODO refactor this
-    Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+    public ResponseEntity<?> getReservationsById(Long id) {
+        Reservations reservations =
+                reservationsRepo
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
+        return ResponseEntity.ok().body(reservationMapper.toDto(reservations));
+    }
 
-    User user =
+    public ResponseEntity<?> getReservationsByRoomId(Long id) {
+        List<Reservations> reservations =
+                reservationsRepo
+                        .findByRoomId(id)
+                        .orElseThrow(
+                                () -> new ResourceNotFoundException("Cannot find reservation with room ", "id", id));
+
+        List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
+        reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
+
+        return ResponseEntity.ok().body(reservationResponses);
+    }
+
+//    public ResponseEntity<?> getReservationsByOwnerId(Long ownerId) {
+//        userRepo
+//                .findById(ownerId)
+//                .orElseThrow(
+//                        () -> new ResourceNotFoundException("Cannot find user with id", "id", ownerId));
+//
+//        List<Reservations> reservations =
+//                reservationsRepo.findByRoomUserId(ownerId).orElse(new ArrayList<>());
+//
+//        List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
+//        reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
+//
+//        return ResponseEntity.ok().body(reservationResponses);
+//    }
+
+    public ResponseEntity<?> getReservationsByOwnerId(Long ownerId) {
         userRepo
-            .findById(userId)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Cannot find user with id", "id", userId));
+                .findById(ownerId)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException("Cannot find user with id", "id", ownerId));
 
-    Rooms room =
-        roomsRepo
-            .findById(reservationRequest.getRoomId())
-            .orElseThrow(
-                () ->
-                    new ResourceNotFoundException(
-                        "Cannot find room with", "id", reservationRequest.getRoomId()));
+        List<Reservations> reservations =
+                reservationsRepo.findByUserId(ownerId).orElse(new ArrayList<>());
 
-    URI uri = URI.create("");
+        List<ReservationResponse> reservationResponses = new ArrayList<>(reservations.size());
+        reservations.forEach(res -> reservationResponses.add(reservationMapper.toDto(res, true)));
 
-    // Check dates for correct  TODO to validation layer
-    if (reservationRequest.getStartDate().after(reservationRequest.getEndDate())) {
-      throw new LogicException("Date start cannot be bigger then date end!");
+        return ResponseEntity.ok().body(reservationResponses);
     }
 
-    // Check if dates not available
-    List<Reservations> reservationsCheckList =
-        reservationsRepo.findByRoomId(reservationRequest.getRoomId()).get();
-    reservationsCheckList.forEach(
-        reservations -> {
-          if ((reservationRequest.getStartDate().before(reservations.getStartDate())
-                  && reservationRequest.getEndDate().before(reservations.getStartDate()))
-              || (reservationRequest.getStartDate().after(reservations.getEndDate()))) {
-          } else {
-            // TODO check exceptions all refactor
-            throw new LogicException("Error in date logic, please check...");
-          }
-        });
+    public ResponseEntity<?> saveReservation(ReservationRequest reservationRequest) {
+        if (reservationRequest.getRoomId() == null) {
+            throw new MissedRequestDataException();
+        }
 
-    log.info("DATE = {} {}", reservationRequest.getStartDate(), reservationRequest.getEndDate());
-    Reservations reservations =
-        new Reservations(reservationRequest.getStartDate(), reservationRequest.getEndDate());
-    reservations.setUser(user);
-    reservations.setRoom(room);
+        // Get owner id through token TODO refactor this
+        Long userId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 
-    return ResponseEntity.created(uri)
-        .body(reservationMapper.toDto(reservationsRepo.save(reservations)));
-  }
+        User user =
+                userRepo
+                        .findById(userId)
+                        .orElseThrow(
+                                () -> new ResourceNotFoundException("Cannot find user with id", "id", userId));
 
-  public ResponseEntity<?> updateReservation(Long id, ReservationRequest newReservation) {
-    Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
-    Reservations reservations =
-        reservationsRepo
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
+        Rooms room =
+                roomsRepo
+                        .findById(reservationRequest.getRoomId())
+                        .orElseThrow(
+                                () ->
+                                        new ResourceNotFoundException(
+                                                "Cannot find room with", "id", reservationRequest.getRoomId()));
 
-    if (!reservations.getUser().getId().equals(ownerId)) {
-      throw new ForbiddenException();
+        URI uri = URI.create("");
+
+        // Check dates for correct  TODO to validation layer
+        if (reservationRequest.getStartDate().after(reservationRequest.getEndDate())) {
+            throw new LogicException("Date start cannot be bigger then date end!");
+        }
+
+        // Check if dates not available
+        List<Reservations> reservationsCheckList =
+                reservationsRepo.findByRoomId(reservationRequest.getRoomId()).get();
+        reservationsCheckList.forEach(
+                reservations -> {
+                    if (
+                            (reservationRequest.getStartDate().before(reservations.getStartDate()) && reservationRequest.getEndDate().before(reservations.getStartDate()))
+                                    || (reservationRequest.getStartDate().after(reservations.getEndDate()))
+                    ) {
+                    } else {
+                        // TODO check exceptions all refactor
+                        throw new LogicException("Error in date logic, please check...");
+                    }
+                });
+
+        reservationsCheckList.forEach(
+                reservations -> {
+                    SimpleDateFormat formatter = new SimpleDateFormat(
+                            "dd/MM/yyyy");
+                    Date dateOnlyStart = null, dateOnlyStartItem = null, dateOnlyEnd = null, dateOnlyEndItem = null;
+                    try {
+                        dateOnlyStart = formatter.parse(formatter.format(reservationRequest.getStartDate()));
+                        dateOnlyStartItem = formatter.parse(formatter.format(reservations.getStartDate()));
+                        dateOnlyEnd = formatter.parse(formatter.format(reservationRequest.getEndDate()));
+                        dateOnlyEndItem = formatter.parse(formatter.format(reservations.getEndDate()));
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    if (dateOnlyStart.equals(dateOnlyStartItem) && dateOnlyEnd.equals(dateOnlyEndItem)) {
+                        throw new LogicException("Error in date logic, please check...");
+                    }
+                });
+
+        Reservations reservations =
+                new Reservations(reservationRequest.getStartDate(), reservationRequest.getEndDate());
+        reservations.setUser(user);
+        reservations.setRoom(room);
+
+        return ResponseEntity.created(uri)
+                .body(reservationMapper.toDto(reservationsRepo.save(reservations)));
     }
 
-    // Check dates for correct  TODO to validation layer
-    if (newReservation.getStartDate().after(newReservation.getEndDate())) {
-      throw new LogicException("Date cannot be bigger then date end");
+    public ResponseEntity<?> updateReservation(Long id, ReservationRequest newReservation) {
+        Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+        Reservations reservations =
+                reservationsRepo
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
+
+        if (!reservations.getUser().getId().equals(ownerId)) {
+            throw new ForbiddenException();
+        }
+
+        // Check dates for correct  TODO to validation layer
+        if (newReservation.getStartDate().after(newReservation.getEndDate())) {
+            throw new LogicException("Date cannot be bigger then date end");
+        }
+        // Check if dates not available
+        List<Reservations> reservationsCheckList =
+                reservationsRepo.findByRoomId(newReservation.getRoomId()).get();
+        reservationsCheckList.forEach(
+                res -> {
+                    if ((newReservation.getStartDate().before(res.getStartDate())
+                            && newReservation.getEndDate().before(res.getStartDate()))
+                            || (newReservation.getStartDate().after(res.getEndDate()))) {
+                    } else {
+                        // TODO check exceptions all refactor
+                        throw new LogicException("date cannot be bigger then date end");
+                    }
+                });
+
+        reservations.setFields(
+                new Reservations(newReservation.getStartDate(), newReservation.getEndDate()));
+        return ResponseEntity.ok().body(reservationMapper.toDto(reservationsRepo.save(reservations)));
     }
-    // Check if dates not available
-    List<Reservations> reservationsCheckList =
-        reservationsRepo.findByRoomId(newReservation.getRoomId()).get();
-    reservationsCheckList.forEach(
-        res -> {
-          if ((newReservation.getStartDate().before(res.getStartDate())
-                  && newReservation.getEndDate().before(res.getStartDate()))
-              || (newReservation.getStartDate().after(res.getEndDate()))) {
-          } else {
-            // TODO check exceptions all refactor
-            throw new LogicException("date cannot be bigger then date end");
-          }
-        });
 
-    reservations.setFields(
-        new Reservations(newReservation.getStartDate(), newReservation.getEndDate()));
-    return ResponseEntity.ok().body(reservationMapper.toDto(reservationsRepo.save(reservations)));
-  }
+    public ResponseEntity<?> deleteReservation(Long id) {
+        Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
 
-  public ResponseEntity<?> deleteReservation(Long id) {
-    Long ownerId = Long.parseLong(SecurityContextHolder.getContext().getAuthentication().getName());
+        Reservations reservations =
+                reservationsRepo
+                        .findById(id)
+                        .orElseThrow(
+                                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
 
-    Reservations reservations =
-        reservationsRepo
-            .findById(id)
-            .orElseThrow(
-                () -> new ResourceNotFoundException("Cannot find reservation with", "id", id));
+        if (!reservations.getUser().getId().equals(ownerId)) {
+            throw new ForbiddenException();
+        }
 
-    if (!reservations.getUser().getId().equals(ownerId)) {
-      throw new ForbiddenException();
+        reservationsRepo.delete(reservations);
+        return ResponseEntity.ok()
+                .body(new ApiResponse(Boolean.TRUE, "Reservation deleted successfully!"));
     }
-
-    reservationsRepo.delete(reservations);
-    return ResponseEntity.ok()
-        .body(new ApiResponse(Boolean.TRUE, "Reservation deleted successfully!"));
-  }
 }

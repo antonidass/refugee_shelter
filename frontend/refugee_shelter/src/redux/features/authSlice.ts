@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Action } from "@remix-run/router";
 import { IUser } from "../api/types";
 
 interface IUserState extends IUser {}
@@ -20,13 +19,9 @@ export const authSlice = createSlice({
       return initialState;
     },
     login: () => {
-      // const newState: IUserState = {
-      //   isLoggedIn: true,
-      // };
       localStorage.setItem("isLoggedIn", "1");
-      // return newState;
     },
-    setUser: (state, action: any) => {
+    setUser: (state, action: PayloadAction<IUser>) => {
       console.log("HERE", state, action.payload);
       const newState: IUserState = {
         id: action.payload.id,

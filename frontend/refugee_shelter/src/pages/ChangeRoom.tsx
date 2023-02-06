@@ -7,8 +7,6 @@ import {
 } from "../redux/api/roomApi";
 import { useEffect, useState } from "react";
 import { IRoomRequest } from "../redux/api/types";
-import { toast } from "react-toastify";
-
 import {
   YMaps,
   Map,
@@ -17,6 +15,7 @@ import {
   RulerControl,
 } from "@pbe/react-yandex-maps";
 import { useNavigate, useParams } from "react-router-dom";
+import handleServerResponse from "../utils/Utils";
 
 const ChangeRoom: React.FC<{}> = () => {
   const [name, setName] = useState("");
@@ -102,26 +101,8 @@ const ChangeRoom: React.FC<{}> = () => {
 
   // Обрабатываем ответ сервера
   useEffect(() => {
-    if (result.isSuccess) {
-      toast.success("You successfully added room!", {
-        position: "top-center",
-      });
-
+    if (handleServerResponse(result, "You successfully change room!") === 0) {
       navigate("/profile/rooms");
-    }
-    if (result.isError) {
-      if (Array.isArray((result.error as any).data.error)) {
-        (result.error as any).data.error.forEach((el: any) =>
-          toast.error(el.message, {
-            position: "top-center",
-          })
-        );
-      } else {
-        console.log(result.error);
-        toast.error((result.error as any).data.message, {
-          position: "top-center",
-        });
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [result.isLoading]);

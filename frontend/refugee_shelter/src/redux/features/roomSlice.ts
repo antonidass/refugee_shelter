@@ -7,7 +7,7 @@ export const roomSlice = createSlice({
   initialState,
   name: "roomSlice",
   reducers: {
-    setRooms: (state, action: any) => {
+    setRooms: (state, action: PayloadAction<IRoom[]>) => {
       console.log("IN SET ROOMS", state, action.payload);
       let newState: IRoom[] = [];
       for (let i = 0; i < action.payload.length; i++) {
@@ -27,11 +27,11 @@ export const roomSlice = createSlice({
       }
       return newState;
     },
-    pushRoom: (state, action: any) => {
+    pushRoom: (state, action: PayloadAction<IRoom>) => {
       console.log("IN ADD ROOM SLICE");
       return [...state, action.payload];
     },
-    updateRoom: (state, action: any) => {
+    updateRoom: (state, action: PayloadAction<IRoom>) => {
       const newState = state.filter((room) => room.id !== action.payload.id);
       return [...newState, action.payload];
     },

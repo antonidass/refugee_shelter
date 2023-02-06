@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useGetRoomByIdQuery } from "../redux/api/roomApi";
 import ItemImages from "../components/ItemImages";
 import Button from "../components/layout/Button";
@@ -9,6 +9,7 @@ import {
   useAddReservationMutation,
   useGetReservationsByRoomIdQuery,
 } from "../redux/api/reservationsApi";
+import handleServerResponse from "../utils/Utils";
 
 const Item: React.FC<{}> = () => {
   const { id } = useParams();
@@ -16,12 +17,19 @@ const Item: React.FC<{}> = () => {
   const { data = {}, isLoading } = useGetRoomByIdQuery(id);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
+  const navigate = useNavigate();
 
   const { data: reservationsData, isLoading: isLoadingRes } =
     useGetReservationsByRoomIdQuery(id);
 
   const [addReservation, result] = useAddReservationMutation();
+
   const handleBookUp = () => {
+    if (localStorage.getItem("access_token") == null) {
+      navigate("/login");
+      return;
+    }
+
     if (id === undefined) {
       return;
     }
@@ -36,11 +44,17 @@ const Item: React.FC<{}> = () => {
     });
   };
 
+  // Обрабатываем ответ сервера
+  useEffect(() => {
+    if (handleServerResponse(result, "You successfully booked room!") === 0) {
+      navigate(`/profile/reservations`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [result.isLoading]);
+
   if (isLoadingRes) {
     return <h1>Loading...</h1>;
   }
-
-  console.log(new Date(reservationsData[2]["startDate"]));
 
   const dates = [];
   for (let i = 0; i < reservationsData.length; i++) {
@@ -55,15 +69,18 @@ const Item: React.FC<{}> = () => {
       <h1 className="text-4xl text-textColor text-center">{data.name}</h1>
       <ItemImages id={id} />
 
-      <div className="flex items-center justify-between w-full">
-        <div className="flex flex-col items-left">
-          <p className="text-md text-textColor font-thin max-w-xs">
-            {data.description}
+      <div className="flex items-start justify-between w-full space-x-12">
+        <div className="flex flex-col items-left justify-start">
+          <p className="text-xl text-textColor font-semibold max-w-xs mt-6">
+            {data.address}
           </p>
-          <p className="text-xl text-textColor mt-20">
+          <p className="text-xl text-textColor mt-4">
             Max People : {data.people}
           </p>
           <p className="text-xl text-textColor">Beds : {data.beds}</p>
+          <p className="text-md text-textColor font-thin max-w-xs mt-4">
+            {data.description}
+          </p>
         </div>
 
         {/* Блок заказа  */}
@@ -101,21 +118,6 @@ const Item: React.FC<{}> = () => {
                 />
               </div>
             </div>
-            {/* Разделительная линия */}
-            {/* <div className="w-full border-t border-white"></div> */}
-            {/* Количество людей 
-            <div className="flex justify-between items-center px-4 py-1 ">
-              <select className="select w-full bg-opacity-0 text-lg px-0">
-                <option disabled selected>
-                  People
-                </option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-              </select>
-            </div> */}
           </div>
           {/* Book Up Button  */}
           <div className="w-full">

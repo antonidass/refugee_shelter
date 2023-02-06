@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useRegisterUserMutation } from "../redux/api/authApi";
 import Button from "../components/layout/Button";
 import Input from "../components/layout/Input";
+import handleServerResponse from "../utils/Utils";
 
 const Register: React.FC<{}> = () => {
   const [login, setLogin] = useState("");
@@ -28,8 +29,7 @@ const Register: React.FC<{}> = () => {
   };
 
   // Api permutation
-  const [registerUser, { isLoading, isError, error, isSuccess }] =
-    useRegisterUserMutation();
+  const [registerUser, result] = useRegisterUserMutation();
 
   const onSubmitHandler = () => {
     // Check if field is empty Login and Password
@@ -52,28 +52,16 @@ const Register: React.FC<{}> = () => {
 
   // Обрабатываем ответ сервера
   useEffect(() => {
-    if (isSuccess) {
-      toast.success("You successfully registered! Now please log in...", {
-        position: "top-center",
-      });
+    if (
+      handleServerResponse(
+        result,
+        "You successfully registered! Now please log in..."
+      ) === 0
+    ) {
       navigate("/");
     }
-    if (isError) {
-      if (Array.isArray((error as any).data.error)) {
-        (error as any).data.error.forEach((el: any) =>
-          toast.error(el.message, {
-            position: "top-center",
-          })
-        );
-      } else {
-        console.log(error);
-        toast.error((error as any).data.message, {
-          position: "top-center",
-        });
-      }
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoading]);
+  }, [result.isLoading]);
 
   return (
     <div className="bg-gradient-to-b from-primary/10 to-neutral/5  shadow-2xl my-8 flex flex-col items-center mx-auto rounded-xl ">

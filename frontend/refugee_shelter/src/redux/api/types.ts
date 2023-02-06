@@ -33,6 +33,11 @@ export interface IResevationsRequest {
   roomId: number;
 }
 
+export interface IResevationsRequestUpdate {
+  startDate: number;
+  endDate: number;
+}
+
 export interface IRoomRequest {
   name: string;
   address: string;
@@ -49,4 +54,12 @@ export interface IChangeUser {
   name: string;
   email: string;
   password: string;
+}
+
+export interface UserInfo {
+  sub: string;
+  roles: string[];
+  iss: string;
+  exp: number;
+  userId: number;
 }
