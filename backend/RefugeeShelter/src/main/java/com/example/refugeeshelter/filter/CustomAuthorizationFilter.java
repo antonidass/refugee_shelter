@@ -82,10 +82,10 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
         } catch (Exception e) {
           // Если попытка авторизации пользователя не удалась (неверный токен)
           log.error("Error logging in: {}", e.getMessage());
-          response.setStatus(NOT_FOUND.value());
+          response.setStatus(401);
           Map<String, String> error = new HashMap<>();
           error.put(
-              "error_message", "Error while authorization... Please check login and password");
+              "error_message", "You are not logged in");
           response.setContentType(APPLICATION_JSON_VALUE);
           new ObjectMapper().writeValue(response.getOutputStream(), error);
         }

@@ -97,7 +97,7 @@ public class UserController {
         String accessToken =
             JWT.create()
                 .withSubject(user.getUsername())
-                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 1000))
+                .withExpiresAt(new Date(System.currentTimeMillis() + 10 * 60 * 10000))
                 .withIssuer(request.getRequestURI())
                 .withClaim("userId", user.getId())
                 .withClaim(

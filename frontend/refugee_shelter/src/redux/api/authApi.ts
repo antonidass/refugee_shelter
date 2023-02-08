@@ -1,12 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { login, setUser } from "../features/authSlice";
 import { IUser } from "./types";
+import customFetchBase from "./customFetchBase";
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: `http://localhost:8081/api/v1/`,
-  }),
+  // baseQuery: fetchBaseQuery({
+  //   baseUrl: `http://localhost:8081/api/v1/`,
+  // }),
+  baseQuery: customFetchBase,
   endpoints: (builder) => ({
     registerUser: builder.mutation<
       {},

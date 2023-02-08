@@ -9,10 +9,11 @@ import {
   IResevationsRequestUpdate,
   IResevations,
 } from "./types";
+import customFetchBase from "./customFetchBase";
 
 export const reservationsApi = createApi({
   reducerPath: "reservationsApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8081/api/v1/" }),
+  baseQuery: customFetchBase,
   endpoints: (build) => ({
     getReservations: build.query({
       query: () => "reservations",
