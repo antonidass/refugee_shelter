@@ -46,6 +46,10 @@ const customFetchBase: BaseQueryFn<
         if (refreshResult.data) {
           console.log("RETRY");
           // Retry the initial query
+          localStorage.setItem(
+            "access_token",
+            refreshResult.data["access_token"]
+          );
           args.headers.Authorization =
             "Bearer " + refreshResult.data["access_token"];
           result = await baseQuery(args, api, extraOptions);

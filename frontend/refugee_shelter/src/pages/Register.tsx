@@ -41,6 +41,15 @@ const Register: React.FC<{}> = () => {
       return;
     }
 
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (email !== "" && regex.test(email) === false) {
+      toast.error("Incorrect Email!", {
+        position: "top-center",
+      });
+      return;
+    }
+
     registerUser({
       name: name,
       username: login,

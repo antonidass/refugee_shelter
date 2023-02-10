@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { login, setUser } from "../features/authSlice";
 import { IUser } from "./types";
 import customFetchBase from "./customFetchBase";
+import jwt_decode from "jwt-decode";
+import { UserInfo } from "./types";
 
 export const authApi = createApi({
   reducerPath: "authApi",
@@ -99,7 +101,13 @@ export const authApi = createApi({
           const { data } = await queryFulfilled;
           localStorage.setItem("access_token", data.access_token);
           localStorage.setItem("refresh_token", data.refresh_token);
-          localStorage.setItem("roles", "ROLE_USER");
+
+          const userInfo: UserInfo = jwt_decode(
+            localStorage.getItem("access_token") || ""
+          );
+          // localStorage.setItem("roles", "ROLE_USER");
+          localStorage.setItem("roles", userInfo.roles[0]);
+          // console.log("user AFTER LOGIN = ", userInfo);
           dispatch(login());
         } catch (error) {}
       },

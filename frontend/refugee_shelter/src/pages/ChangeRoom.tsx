@@ -16,6 +16,7 @@ import {
 } from "@pbe/react-yandex-maps";
 import { useNavigate, useParams } from "react-router-dom";
 import handleServerResponse from "../utils/Utils";
+import { toast } from "react-toastify";
 
 const ChangeRoom: React.FC<{}> = () => {
   const [name, setName] = useState("");
@@ -44,6 +45,20 @@ const ChangeRoom: React.FC<{}> = () => {
   };
 
   const handleChangeRoom = async () => {
+    if (name === "" || address === "") {
+      toast.error("Please fill at least name and address!", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    if (price <= 0) {
+      toast.error("Price should be more then 0!", {
+        position: "top-center",
+      });
+      return;
+    }
+
     const roomPayload: IRoomRequest = {
       name,
       description,

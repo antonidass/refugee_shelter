@@ -13,7 +13,7 @@ import {
   RulerControl,
 } from "@pbe/react-yandex-maps";
 import { useNavigate } from "react-router-dom";
-import { FetchBaseQueryError } from "@reduxjs/toolkit/dist/query";
+import { toast } from "react-toastify";
 
 const AddRoom: React.FC<{}> = () => {
   const [name, setName] = useState("");
@@ -40,6 +40,20 @@ const AddRoom: React.FC<{}> = () => {
   };
 
   const handleAddRoom = async () => {
+    if (name === "" || address === "") {
+      toast.error("Please fill at least name and address!", {
+        position: "top-center",
+      });
+      return;
+    }
+
+    if (price <= 0) {
+      toast.error("Price should be more then 0!", {
+        position: "top-center",
+      });
+      return;
+    }
+
     const roomPayload: IRoomRequest = {
       name,
       description,
@@ -129,7 +143,7 @@ const AddRoom: React.FC<{}> = () => {
             value={price}
             color=""
             size="w-96"
-            type="text"
+            type="number"
             onChangeHandler={(event) => {
               setPrice(+event.target.value);
             }}

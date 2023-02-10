@@ -4,6 +4,7 @@ import { useUpdateUserMutation } from "../redux/api/authApi";
 import Button from "../components/layout/Button";
 import Input from "../components/layout/Input";
 import jwt_decode from "jwt-decode";
+import { toast } from "react-toastify";
 
 interface UserInfo {
   sub: string;
@@ -32,6 +33,15 @@ const ChangeProfile: React.FC<{}> = () => {
   const navigate = useNavigate();
 
   const onSubmitHandler = () => {
+    const regex =
+      /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    if (email !== "" && regex.test(email) === false) {
+      toast.error("Incorrect Email!", {
+        position: "top-center",
+      });
+      return;
+    }
+
     updateUser({
       name: name,
       email: email,
