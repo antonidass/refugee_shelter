@@ -10,7 +10,8 @@
 Множеству людей, покинувших по всевозможным причинам свою страну, приходится в кратчайшие сроки искать жилье, однако владельцы не всегда готовы сдавать квартиру беженцам.
 
 ### Функционал
- - 
+
+-
 - Регистрация
 - Вход в систему
 - Выход из системы
@@ -30,13 +31,12 @@
 
 ### Figma
 
-
 [Click me](<https://www.figma.com/file/5JGn1TqVEQ73GlIRsDyllJ/SE-(Copy)?node-id=14%3A16>)
 
 ### swagger
 
 [Click me](https://app.swaggerhub.com/apis/AKRIKOFF/RefugeeShelter/1.0.0)
 
-### moddboard
+### moodboard
 
 [Click me](https://ru.pinterest.com/akrikofff/refugee-shelter/)
